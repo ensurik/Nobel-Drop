@@ -1,0 +1,26 @@
+node_modules/
+.expo/
+.expo-shared/
+dist/
+web-build/
+*.log
+.env
+.env.local
+.env.production
+.env.*.local
+.DS_Store
+ios/
+android/
+.eas/
+.vscode/
+
+# Supabase
+supabase/.branches
+supabase/.temp
+.supabase/
+
+# Coverage
+coverage/
+
+# OS
+Thumbs.db

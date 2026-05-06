@@ -1,0 +1,49 @@
+# SPA-fallback for Expo Router (single-output mode).
+# Alle ruter som ikke matcher en eksisterende fil eller mappe sendes til index.html
+# slik at klient-routeren kan håndtere dem.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Ikke rewrite for eksisterende filer eller mapper
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Alt annet → index.html
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Sett riktig MIME-type for JS-moduler og web-manifest
+<IfModule mod_mime.c>
+  AddType application/javascript .js .mjs
+  AddType application/json .json
+  AddType image/svg+xml .svg
+</IfModule>
+
+# Cache statiske assets aggressivt (de har hash i filnavnet fra Expo)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# index.html skal aldri caches (slik at deploy slår gjennom umiddelbart)
+<FilesMatch "index\.html$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </IfModule>
+</FilesMatch>
+
+# service worker skal heller ikke caches
+<FilesMatch "sw\.js$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </IfModule>
+</FilesMatch>

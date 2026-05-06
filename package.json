@@ -1,0 +1,26 @@
+{
+  "name": "nobel-drop",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/nobel-drop",
+    "web": "npm run web --workspace=apps/nobel-drop",
+    "ios": "npm run ios --workspace=apps/nobel-drop",
+    "android": "npm run android --workspace=apps/nobel-drop",
+    "build:web": "npm run build:web --workspace=apps/nobel-drop",
+    "supabase:start": "supabase start",
+    "supabase:reset": "supabase db reset",
+    "supabase:push": "supabase db push",
+    "supabase:functions:serve": "supabase functions serve",
+    "supabase:functions:deploy": "supabase functions deploy",
+    "types:db": "supabase gen types typescript --local > packages/types/src/db.ts"
+  },
+  "devDependencies": {
+    "supabase": "^1.200.3",
+    "typescript": "~5.5.3"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(supabase start *)",
+      "Bash(supabase db *)",
+      "Bash(supabase status *)",
+      "PowerShell($bytes = New-Object byte[] 32; [Security.Cryptography.RandomNumberGenerator]::Create\\(\\).GetBytes\\($bytes\\); -join \\($bytes | ForEach-Object { $_.ToString\\('x2'\\) }\\))",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:8081/)",
+      "Bash(curl -s http://localhost:8081/)",
+      "Bash(grep -oE \">[A-Za-zæøåÆØÅ ][^<>]{2,80}<\" /tmp/nd-page.html)",
+      "Bash(curl -s -o /tmp/nd-login.html -w \"HTTP %{http_code} | size=%{size_download}\\\\n\" --max-time 60 http://localhost:8081/auth/login)",
+      "Bash(grep -oE \">[A-Za-zæøåÆØÅ ][^<>]{2,80}<\" /tmp/nd-login.html)",
+      "Bash(grep -oE \"[A-Za-zæøåÆØÅ][A-Za-zæøåÆØÅ ]{4,40}\" /tmp/nd-login.html)",
+      "Bash(curl -s -o /dev/null -w \"publishable: HTTP %{http_code} | time=%{time_total}s\\\\n\" --max-time 5 -H \"apikey: sb_publishable_ACJWlzQHlZjBrEguHvfOxg_3BJgxAaH\" -H \"Authorization: Bearer sb_publishable_ACJWlzQHlZjBrEguHvfOxg_3BJgxAaH\" \"http://127.0.0.1:54331/auth/v1/health\")",
+      "Bash(curl -s -o /dev/null -w \"anon JWT:    HTTP %{http_code} | time=%{time_total}s\\\\n\" --max-time 5 -H \"apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0\" \"http://127.0.0.1:54331/auth/v1/health\")",
+      "PowerShell(Get-NetTCPConnection *)",
+      "Bash(npx expo *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:54331/auth/v1/health)",
+      "Bash(grep -E \"expo-router|expo$|react-native$|nativewind\")"
+    ]
+  }
+}

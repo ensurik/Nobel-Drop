@@ -1,0 +1,82 @@
+# Supabase project config — generelt brukt av `supabase start` for lokal dev.
+project_id = "nobel-drop"
+
+[api]
+enabled = true
+port = 54331
+schemas = ["public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54332
+shadow_port = 54330
+major_version = 15
+
+[studio]
+enabled = true
+port = 54333
+
+[inbucket]
+enabled = true
+port = 54334
+
+[analytics]
+enabled = false
+
+[auth]
+enabled = true
+site_url = "http://localhost:8081"
+additional_redirect_urls = ["http://localhost:8081/auth/callback", "https://nobeldrop.no/auth/callback"]
+jwt_expiry = 3600
+enable_signup = true
+enable_anonymous_sign_ins = false
+
+[auth.email]
+enable_signup = true
+double_confirm_changes = true
+enable_confirmations = false
+
+[auth.sms]
+enable_signup = false
+
+[realtime]
+enabled = true
+
+[storage]
+enabled = true
+file_size_limit = "50MiB"
+
+[edge_runtime]
+enabled = true
+inspector_port = 8083
+
+[functions.create-order]
+verify_jwt = true
+
+[functions.vipps-create-payment]
+verify_jwt = true
+
+[functions.stripe-create-intent]
+verify_jwt = true
+
+[functions.klarna-create-session]
+verify_jwt = true
+
+[functions.verify-pickup]
+verify_jwt = true
+
+[functions.vipps-webhook]
+verify_jwt = false
+
+[functions.stripe-webhook]
+verify_jwt = false
+
+[functions.klarna-webhook]
+verify_jwt = false
+
+[functions.evaluate-pickup-windows]
+verify_jwt = false
+
+[functions.send-drop-notification]
+verify_jwt = true
