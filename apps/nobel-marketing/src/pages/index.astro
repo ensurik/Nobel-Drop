@@ -5,7 +5,6 @@ import SectionLabel from "~/components/SectionLabel.astro";
 import Photo from "~/components/Photo.astro";
 import TagPill from "~/components/TagPill.astro";
 import CTABand from "~/components/CTABand.astro";
-import IntroVideo from "~/components/IntroVideo.astro";
 
 const products = [
   {
@@ -67,70 +66,193 @@ const occasions = [
 ---
 
 <BaseLayout title="Nobel Drop">
-  <IntroVideo />
+  <!-- ============== HERO with video background ============== -->
+  <section
+    id="hero"
+    class="relative -mt-16 flex min-h-[680px] items-end overflow-hidden bg-espresso-950 sm:-mt-20 sm:min-h-[760px]"
+    style="height: 92vh;"
+  >
+    <!-- Cinematic video background -->
+    <video
+      id="hero-video"
+      src="/assets/hero/intro.mp4"
+      autoplay
+      muted
+      playsinline
+      preload="auto"
+      class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-[1200ms] ease-out"
+      aria-hidden="true"
+    ></video>
 
-  <!-- ============== HERO ============== -->
-  <section class="relative pt-12 pb-24 sm:pt-20 sm:pb-32">
-    <div class="container-edge">
-      <div class="grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-16">
-        <!-- Left: hero copy -->
-        <div class="lg:col-span-6 lg:pb-12">
-          <p class="label-tiny mb-6" data-fade>
-            Nobel Catering & Conditori — Bærum siden 1986
-          </p>
+    <!-- Film vignette (radial darkening on edges) -->
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(15,10,6,0.55)_100%)]"
+      aria-hidden="true"
+    >
+    </div>
 
-          <h1
-            class="font-display text-[52px] font-medium leading-[0.95] tracking-tight text-espresso-900 sm:text-7xl lg:text-[88px]"
-            data-fade
-          >
-            Bakeriet
-            <br />
-            kommer
-            <br />
-            <span class="display-italic text-brass-700">til deg.</span>
-          </h1>
+    <!-- Bottom gradient — strengthens text readability + transitions to cream page -->
+    <div
+      class="pointer-events-none absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-espresso-950/85 via-espresso-950/45 to-transparent"
+      aria-hidden="true"
+    >
+    </div>
+    <!-- Bottom cream fade — soft handoff into the page background -->
+    <div
+      class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-cream-100"
+      aria-hidden="true"
+    >
+    </div>
 
-          <p
-            class="mt-10 max-w-md font-sans text-[17px] leading-relaxed text-espresso-700 sm:text-[18px]"
-            data-fade
-          >
-            Friskbakte makroner og kaker fra et 39-årig konditori. Bestilt med
-            ett trykk når et drop er klart, hentet på et stopp nær deg.
-          </p>
+    <!-- Hero content -->
+    <div class="container-edge relative z-10 pb-28 pt-32 sm:pb-32">
+      <p class="label-tiny mb-7 text-brass-200">
+        Nobel Catering & Conditori — Bærum siden 1986
+      </p>
 
-          <div
-            class="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-4"
-            data-fade
-          >
-            <GoldButton href="https://shop.nobeldrop.no" variant="primary" size="lg">
-              Bestill nå
-            </GoldButton>
-            <GoldButton href="/slik-fungerer-det" variant="ghost" size="lg" arrow={false}>
-              Se hvordan det fungerer
-            </GoldButton>
-          </div>
+      <h1
+        id="hero-headline"
+        class="font-display max-w-[18ch] font-medium leading-[0.95] tracking-tight text-cream-50"
+        style="font-size: clamp(48px, 8.4vw, 124px); text-shadow: 0 2px 32px rgba(0,0,0,0.45);"
+      >
+        <span class="hero-word" style="--d: 350ms">Bakeriet</span>
+        <span class="hero-word" style="--d: 1100ms">kommer</span>
+        <br />
+        <span class="hero-word display-italic text-brass-200" style="--d: 1900ms">
+          til deg.
+        </span>
+      </h1>
 
-          <div class="mt-12 flex flex-wrap gap-2.5" data-fade>
-            <TagPill size="sm">Bakt fra bunnen siden 1986</TagPill>
-            <TagPill size="sm">Bestill med ett trykk</TagPill>
-            <TagPill size="sm">Hentet samme dag</TagPill>
-          </div>
-        </div>
+      <p
+        class="hero-subline mt-10 max-w-md font-sans text-[16px] leading-relaxed text-cream-200 opacity-0 sm:text-[18px]"
+        style="text-shadow: 0 1px 16px rgba(0,0,0,0.5);"
+      >
+        Friskbakte makroner og kaker fra et 39-årig konditori. Bestilt med ett
+        trykk når et drop er klart, hentet på et stopp nær deg.
+      </p>
 
-        <!-- Right: hero photo -->
-        <div class="lg:col-span-6" data-fade>
-          <Photo
-            src="/assets/hero/box-hero.jpg"
-            alt="Nobel Drop-eske med gullfoliert logo, bakt for hånd"
-            aspect="aspect-[4/5]"
-            loading="eager"
-            fetchpriority="high"
-            fallbackLabel="Hero · Nobel Drop-eske"
-          />
-        </div>
+      <div
+        class="hero-cta mt-9 flex flex-col items-start gap-3 opacity-0 sm:flex-row sm:items-center sm:gap-4"
+      >
+        <a
+          href="https://shop.nobeldrop.no"
+          class="group inline-flex items-center justify-center gap-3 rounded-full bg-cream-50 px-7 py-4 font-sans text-[14px] font-medium text-espresso-900 shadow-[0_2px_0_rgba(15,10,6,0.04),0_8px_24px_-8px_rgba(0,0,0,0.35)] transition hover:bg-cream-100"
+        >
+          Bestill nå
+          <svg class="h-3.5 w-3.5 transition group-hover:translate-x-0.5" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M2 6h8M7 2l4 4-4 4" />
+          </svg>
+        </a>
+        <a
+          href="/slik-fungerer-det"
+          class="inline-flex items-center justify-center gap-3 rounded-full border border-cream-50/35 px-7 py-4 font-sans text-[14px] font-medium text-cream-50 backdrop-blur-sm transition hover:border-cream-50/70 hover:bg-cream-50/10"
+        >
+          Se hvordan det fungerer
+        </a>
       </div>
     </div>
+
+    <!-- Skip / scroll-down button -->
+    <a
+      id="hero-skip"
+      href="#hero-skip-target"
+      class="group absolute bottom-7 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2 opacity-0 transition-all duration-700"
+      aria-label="Hopp over hero, gå til innhold"
+    >
+      <span class="font-sans text-[10px] uppercase tracking-ultra-wide text-cream-100/80 transition group-hover:text-cream-50">
+        Hopp over
+      </span>
+      <span class="flex h-6 w-6 items-center justify-center rounded-full border border-cream-50/30 transition group-hover:border-cream-50/60">
+        <svg
+          width="10"
+          height="10"
+          viewBox="0 0 12 12"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          class="text-cream-100/80 transition group-hover:text-cream-50"
+          aria-hidden="true"
+        >
+          <path d="M2 4l4 4 4-4" />
+        </svg>
+      </span>
+    </a>
   </section>
+
+  <span id="hero-skip-target" aria-hidden="true" style="display: block; scroll-margin-top: 80px;"></span>
+
+  <style>
+    /* Word-by-word "ink reveal" — each word slides in from left like brushed ink. */
+    .hero-word {
+      display: inline-block;
+      clip-path: inset(0 100% -0.15em 0);
+      transform: translate3d(0, 0.18em, 0);
+      animation: ink-reveal 1100ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation-delay: var(--d, 0ms);
+    }
+    @keyframes ink-reveal {
+      to {
+        clip-path: inset(0 0 -0.15em 0);
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    .hero-subline {
+      animation: hero-fade-up 900ms cubic-bezier(0.22, 1, 0.36, 1) 2700ms forwards;
+    }
+    .hero-cta {
+      animation: hero-fade-up 900ms cubic-bezier(0.22, 1, 0.36, 1) 3000ms forwards;
+    }
+    #hero-skip {
+      animation: hero-fade-up 900ms cubic-bezier(0.22, 1, 0.36, 1) 3400ms forwards;
+    }
+    @keyframes hero-fade-up {
+      from { opacity: 0; transform: translate3d(0, 8px, 0); }
+      to { opacity: 1; transform: translate3d(0, 0, 0); }
+    }
+
+    /* Float arrow gently after fade-in */
+    #hero-skip svg {
+      animation: hero-float 2.6s ease-in-out 4500ms infinite;
+    }
+    @keyframes hero-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(3px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-word {
+        clip-path: none !important;
+        transform: none !important;
+        animation: none !important;
+      }
+      .hero-subline,
+      .hero-cta,
+      #hero-skip {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      #hero-skip svg {
+        animation: none !important;
+      }
+    }
+  </style>
+
+  <script is:inline>
+    (function () {
+      const v = document.getElementById("hero-video");
+      if (v) {
+        v.addEventListener(
+          "canplay",
+          () => {
+            v.style.opacity = "1";
+          },
+          { once: true }
+        );
+      }
+    })();
+  </script>
 
   <!-- ============== EDITORIAL OPENER ============== -->
   <section class="relative py-24 sm:py-32">
