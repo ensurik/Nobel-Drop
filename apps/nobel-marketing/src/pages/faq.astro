@@ -8,16 +8,16 @@ const groups = [
     label: "Bestilling",
     items: [
       {
-        q: "Når og hvor ofte er det drops?",
-        a: "Hver fredag kl. 10:00. Vi sender push-varsel i samme sekund dropet går live, slik at du blir varslet med en gang du har slått det på i appen.",
+        q: "Når er det drops?",
+        a: "Vi varsler i appen så snart neste drop er live. Drops kan komme én eller flere ganger i uken — det avhenger av hva vi baker. Slå på push så du blir varslet i samme sekund.",
       },
       {
         q: "Hvor mange bokser er det per drop?",
-        a: "Det varierer mellom 100 og 250 bokser per uke, avhengig av hvor mye vi rekker å bake samme morgen. Tellverket i appen viser hvor mange som er igjen i sanntid.",
+        a: "Det varierer mellom 100 og 250 bokser, avhengig av hvor mye vi rekker å bake samme morgen. Tellverket i appen viser hvor mange som er igjen i sanntid.",
       },
       {
         q: "Kan jeg reservere på forhånd?",
-        a: "Nei. Hele poenget er at alle starter på samme linje. Den eneste måten å sikre seg på er å være klar når klokka slår 10:00 fredag morgen.",
+        a: "Nei. Hele poenget er at alle starter på samme linje. Den eneste måten å sikre seg på er å være klar når dropet går live.",
       },
       {
         q: "Hva er minimum jeg kan bestille for?",
@@ -30,15 +30,15 @@ const groups = [
     items: [
       {
         q: "Hvilke betalingsmåter støtter dere?",
-        a: "Vipps, Apple Pay og Klarna. Alle krever at du betaler i forveien. Pengene reserveres med en gang, men du blir ikke trukket før vi har bakt boksen din.",
+        a: "Vipps, Apple Pay og Klarna. Alle krever forhåndsbetaling. Pengene reserveres med en gang, men du blir ikke trukket før vi har bakt boksen din.",
       },
       {
         q: "Hva er Nobel-kreditt?",
-        a: "Bestiller du for over 1 000 kr får du 10 % i kreditt til neste fredag. Over 1 500 kr — 15 %. Over 2 000 kr — 20 %. Krediten dukker opp i appen etter at du har hentet ordren, og brukes som betaling neste gang.",
+        a: "Bestiller du for over 1 000 kr, får du 10 % tilbake i Nobel-kreditt til neste gang. Over 1 500 kr — 15 %. Over 2 000 kr — 20 %. Krediten dukker opp i appen etter at du har hentet ordren.",
       },
       {
         q: "Hvorfor får jeg kreditt og ikke rabatt?",
-        a: "Det er en takk vi gir tilbake til faste kunder. Krediten er gyldig i 90 dager, slik at du har god tid til å bruke den, og kommer aldri som en avslag-pris.",
+        a: "Det er en takk vi gir tilbake til faste kunder. Krediten er gyldig i 90 dager, slik at du har god tid til å bruke den, og kommer aldri som en avslagspris.",
       },
       {
         q: "Hva skjer hvis jeg ikke fullfører betalingen?",
@@ -51,7 +51,7 @@ const groups = [
     items: [
       {
         q: "Hvor henter jeg ordren?",
-        a: "Du velger ditt nærmeste stopp i appen — Holmestrand, Horten eller Tønsberg er våre faste stopp hver fredag. Drammen og Lier er samarbeidsstopp som åpnes når nok kunder i området har bestilt.",
+        a: "Du velger ditt nærmeste stopp i appen — Holmestrand, Horten eller Tønsberg er våre faste stopp. Drammen og Lier er samarbeidsstopp som åpnes når nok kunder i området har bestilt.",
       },
       {
         q: "Hvor lenge står dere på stoppet?",
@@ -97,11 +97,11 @@ const groups = [
       },
       {
         q: "Er bakverket ferskt?",
-        a: "Det er bakt samme morgen som dropet. Forhåndsbetalingen lar oss bake nøyaktig det vi trenger, så ingenting blir liggende fra dagen før. Du henter samme dag som det er bakt.",
+        a: "Det er bakt samme dag som dropet. Forhåndsbetalingen lar oss bake nøyaktig det vi trenger, så ingenting blir liggende fra dagen før. Du henter samme dag som det er bakt.",
       },
       {
         q: "Bruker dere lokale råvarer?",
-        a: "Så langt det er mulig. Vi har vært miljøfyrtårn-sertifisert lenge, hele leveringsflåten er elektrisk, og vi prioriterer lokalt og økologisk der det finnes. Drop-modellen reduserer i tillegg svinn — vi baker mot låste bestillinger.",
+        a: "Så langt det er mulig. Vi har vært miljøfyrtårn-sertifisert lenge, hele leveringsflåten er elektrisk, og vi prioriterer lokalt og økologisk der det finnes.",
       },
     ],
   },
@@ -113,24 +113,24 @@ const groups = [
   description="Svar på de vanligste spørsmålene om Nobel Drop: når er dropet, hvordan henter jeg, hva om stoppet ikke aktiveres, hva er Nobel-kreditt."
 >
   <!-- HERO -->
-  <section class="relative overflow-hidden pt-24 pb-24 sm:pt-36 sm:pb-32">
-    <div
-      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(200,162,76,0.06)_0%,transparent_55%)]"
-      aria-hidden="true"
-    >
-    </div>
-    <div class="container-edge relative">
+  <section class="relative pt-12 pb-20 sm:pt-20 sm:pb-28">
+    <div class="container-edge">
       <div class="mx-auto max-w-3xl">
         <SectionLabel label="Vanlige spørsmål" />
         <h1
-          class="mt-8 font-display text-5xl leading-[1.02] text-bone-100 sm:text-7xl lg:text-[88px]"
+          class="mt-8 font-display text-[52px] font-medium leading-[0.98] tracking-tight text-espresso-900 sm:text-7xl lg:text-[80px]"
           data-fade
         >
-          Det folk lurer på<br /><span class="italic text-shimmer">før de bestiller</span>.
+          Det folk lurer på
+          <br />
+          <span class="display-italic text-brass-700">før de bestiller</span>.
         </h1>
-        <p class="mt-10 max-w-2xl font-sans text-lg leading-relaxed text-bone-300" data-fade>
-          Drops, betaling, henting, refusjon. Det meste er enklere enn det høres ut som —
-          her er svarene.
+        <p
+          class="mt-10 max-w-xl font-sans text-[17px] leading-relaxed text-espresso-700 sm:text-[18px]"
+          data-fade
+        >
+          Drops, betaling, henting, refusjon. Det meste er enklere enn det høres
+          ut som — her er svarene.
         </p>
       </div>
     </div>
@@ -145,26 +145,26 @@ const groups = [
         {
           groups.map((g) => (
             <div data-fade>
-              <p class="font-sans text-[11px] uppercase tracking-ultra-wide text-gold-200/80">
+              <p class="font-sans text-[11px] uppercase tracking-ultra-wide text-brass-700">
                 {g.label}
               </p>
-              <div class="mt-2 h-px w-full bg-gold-400/30" />
+              <div class="mt-2 h-px w-full bg-espresso-900/10" />
 
-              <div class="mt-2 divide-y divide-ink-600/60">
+              <div class="mt-2 divide-y divide-espresso-900/10">
                 {g.items.map((item) => (
                   <details class="group py-6">
                     <summary class="flex cursor-pointer list-none items-start justify-between gap-6 text-left">
-                      <h3 class="font-display text-xl text-bone-100 transition group-hover:text-gold-200 sm:text-2xl">
+                      <h3 class="font-display text-[20px] font-medium leading-tight text-espresso-900 transition group-hover:text-brass-700 sm:text-[24px]">
                         {item.q}
                       </h3>
                       <span
-                        class="mt-2 flex h-6 w-6 shrink-0 items-center justify-center border border-gold-400/40 text-gold-200 transition group-open:rotate-45"
+                        class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-brass-300 text-brass-700 transition group-open:rotate-45"
                         aria-hidden="true"
                       >
                         +
                       </span>
                     </summary>
-                    <p class="mt-4 max-w-3xl font-sans text-base leading-relaxed text-bone-300">
+                    <p class="mt-4 max-w-3xl font-sans text-[15px] leading-relaxed text-espresso-700 sm:text-[16px]">
                       {item.a}
                     </p>
                   </details>
@@ -181,7 +181,7 @@ const groups = [
     eyebrow="Mangler det noe?"
     title="Vi svarer alle, alltid."
     body="Send oss en mail på hello@nobeldrop.no, eller åpne appen og chat oss direkte."
-    primaryLabel="Last ned appen"
+    primaryLabel="Bestill nå"
     secondaryHref="/kontakt"
     secondaryLabel="Kontakt oss"
   />

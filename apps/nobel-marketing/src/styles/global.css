@@ -1,26 +1,16 @@
-@import "@fontsource/playfair-display/400.css";
-@import "@fontsource/playfair-display/400-italic.css";
-@import "@fontsource/playfair-display/700.css";
-@import "@fontsource/playfair-display/700-italic.css";
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/500.css";
-@import "@fontsource/inter/700.css";
+@import "@fontsource-variable/fraunces/index.css";
+@import "@fontsource-variable/fraunces/wght-italic.css";
+@import "@fontsource-variable/inter/index.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --gold: 200 162 76;
-    --gold-bright: 232 197 122;
-    --ink: 10 10 11;
-  }
-
   html {
-    background-color: #0a0a0b;
-    color: #f5f2ea;
-    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    background-color: #f5f0e6;
+    color: #1a1410;
+    font-family: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -29,14 +19,29 @@
 
   body {
     margin: 0;
-    background-color: #0a0a0b;
-    color: #f5f2ea;
+    background-color: #f5f0e6;
+    color: #1a1410;
     overflow-x: hidden;
+    /* subtle paper texture */
+    background-image:
+      radial-gradient(ellipse 1200px 800px at 15% 5%, rgba(184, 158, 109, 0.08) 0%, transparent 55%),
+      radial-gradient(ellipse 900px 600px at 85% 90%, rgba(90, 61, 39, 0.05) 0%, transparent 55%);
+    background-attachment: fixed;
+  }
+
+  /* Fraunces fine-tuning — softer serifs, optical for display */
+  .font-display {
+    font-family: "Fraunces Variable", "Fraunces", ui-serif, Georgia, serif;
+    font-variation-settings:
+      "opsz" 144,
+      "SOFT" 60,
+      "WONK" 0;
+    font-feature-settings: "ss01", "ss02", "ss03";
   }
 
   ::selection {
-    background-color: rgba(200, 162, 76, 0.4);
-    color: #fbfaf6;
+    background-color: rgba(163, 125, 46, 0.25);
+    color: #1a1410;
   }
 
   ::-webkit-scrollbar {
@@ -44,14 +49,14 @@
     height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #0a0a0b;
+    background: #f5f0e6;
   }
   ::-webkit-scrollbar-thumb {
-    background: #2a2a33;
+    background: #d9cdb6;
     border-radius: 0;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #3a3a44;
+    background: #c9bc9d;
   }
 }
 
@@ -60,88 +65,63 @@
     @apply mx-auto w-full max-w-8xl px-6 sm:px-10 lg:px-16;
   }
 
+  .container-narrow {
+    @apply mx-auto w-full max-w-5xl px-6 sm:px-10;
+  }
+
+  .container-prose {
+    @apply mx-auto w-full max-w-3xl px-6 sm:px-10;
+  }
+
   .hairline {
     background-image: linear-gradient(
       to right,
       transparent 0%,
-      rgba(200, 162, 76, 0.4) 20%,
-      rgba(200, 162, 76, 0.4) 80%,
+      rgba(180, 144, 74, 0.4) 20%,
+      rgba(180, 144, 74, 0.4) 80%,
       transparent 100%
     );
     height: 1px;
   }
 
-  .hairline-vert {
-    background-image: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(200, 162, 76, 0.4) 20%,
-      rgba(200, 162, 76, 0.4) 80%,
-      transparent 100%
-    );
-    width: 1px;
-  }
-
   .label-tiny {
-    @apply font-sans text-[11px] font-medium uppercase tracking-ultra-wide text-gold-200/80;
+    @apply font-sans text-[11px] font-medium uppercase tracking-ultra-wide text-brass-600;
   }
 
-  .text-shimmer {
-    background: linear-gradient(
-      90deg,
-      #c8a24c 0%,
-      #e8c57a 35%,
-      #fbf6e8 50%,
-      #e8c57a 65%,
-      #c8a24c 100%
-    );
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: shimmer 6s linear infinite;
+  /* Editorial italic flourish for display headlines */
+  .display-italic {
+    font-family: "Fraunces Variable", "Fraunces", ui-serif, Georgia, serif;
+    font-style: italic;
+    font-variation-settings:
+      "opsz" 144,
+      "SOFT" 100,
+      "WONK" 1;
   }
 
-  .gold-frame {
-    position: relative;
+  /* Gentle press-on link with brass underline */
+  .link-brass {
+    @apply text-brass-700 underline decoration-brass-300 decoration-1 underline-offset-4 transition hover:decoration-brass-700;
   }
-  .gold-frame::before {
+
+  /* Image fallback when src is missing — graceful patisserie placeholder */
+  .img-fallback {
+    @apply relative bg-cream-200;
+  }
+  .img-fallback::after {
     content: "";
     position: absolute;
     inset: 0;
-    border: 1px solid rgba(200, 162, 76, 0.45);
-    pointer-events: none;
-  }
-  .gold-frame::after {
-    content: "";
-    position: absolute;
-    inset: 8px;
-    border: 1px solid rgba(200, 162, 76, 0.18);
+    background-image:
+      radial-gradient(circle at 30% 30%, rgba(163, 125, 46, 0.06) 0%, transparent 60%),
+      radial-gradient(circle at 70% 70%, rgba(90, 61, 39, 0.06) 0%, transparent 60%);
     pointer-events: none;
   }
 
-  .corner-marks {
-    position: relative;
-  }
-  .corner-marks::before,
-  .corner-marks::after {
-    content: "";
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    border: 1px solid rgba(200, 162, 76, 0.7);
-    pointer-events: none;
-  }
-  .corner-marks::before {
-    top: -1px;
-    left: -1px;
-    border-right: 0;
-    border-bottom: 0;
-  }
-  .corner-marks::after {
-    bottom: -1px;
-    right: -1px;
-    border-left: 0;
-    border-top: 0;
+  .photo-frame {
+    @apply relative overflow-hidden;
+    box-shadow:
+      0 1px 0 rgba(26, 20, 16, 0.04),
+      0 12px 32px -12px rgba(26, 20, 16, 0.18),
+      0 4px 12px -4px rgba(26, 20, 16, 0.08);
   }
 }

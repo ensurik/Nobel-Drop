@@ -2,238 +2,240 @@
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import GoldButton from "~/components/GoldButton.astro";
 import SectionLabel from "~/components/SectionLabel.astro";
-import HairlineFrame from "~/components/HairlineFrame.astro";
+import Photo from "~/components/Photo.astro";
 import TagPill from "~/components/TagPill.astro";
 import CTABand from "~/components/CTABand.astro";
 
 const products = [
   {
     title: "Signaturmakronen",
-    line: "Friskpiped fredag morgen",
-    body: "Brent karamell, mørk sjokolade, hasselnøtt og sesongens egen smak. Sprø skall, mykt indre — bakt på kjøkkenet samme morgen som dropet.",
+    line: "Hovedboksen",
+    body: "Sprø skall, mykt indre. Brent karamell, mørk sjokolade, knust hasselnøtt og sesongens egen smak — pipet for hånd samme morgen som dropet.",
+    image: "/assets/products/macron.jpg",
+    fallback: "Bilde · Signaturmakronen",
   },
   {
     title: "Porsjonskaker",
-    line: "For 2–4 personer",
-    body: "Petit four, mini-cheesecake, sjokolademousse, sitronterte. Perfekt mellom hovedretten og kaffen, eller som en stille søndagskveld for to.",
+    line: "For to og fire",
+    body: "Petit four, sjokolademousse, sitronterte, bær på vanilje. Små desserter for søndagskaffen eller en stille kveld med noen du er glad i.",
+    image: "/assets/products/porsjonskaker.jpg",
+    fallback: "Bilde · Porsjonskaker",
   },
   {
     title: "Premiumkaken",
-    line: "Når det skal feires",
-    body: "Hele kaker for bursdag, helg, besøk og feiring. Hasselnøttbunn, friske bær, mørk sjokolade — bestilles på fredagen, hentes klar til søndagen.",
+    line: "Hele kaker",
+    body: "Bursdag, dåp, helgebesøk. Mandelbunn, friske bær, ekte krem — den slags kake du husker fra barndommen, fortsatt bakt på samme måte.",
+    image: "/assets/products/premiumkake.jpg",
+    fallback: "Bilde · Premiumkaken",
   },
   {
     title: "Middag i porsjon",
     line: "Kommer Q4",
-    body: "Coq au vin, viltgryte og laks — singel-pakket og klar for ovnen. Samme app, samme stopp, samme håndverk fra Nobels kjøkken.",
+    body: "Coq au vin, viltgryte, lakseretter — singel-pakket og klar for ovnen. Samme app, samme stopp, samme håndverk.",
+    image: "/assets/products/middag.jpg",
+    fallback: "Bilde · Middag i porsjon",
   },
 ];
 
 const steps = [
   {
-    num: "1",
-    title: "Få varsel",
-    body: "Last ned appen og slå på push. Vi sender deg en melding fredag kl. 10 i samme sekund neste drop går live.",
+    num: "01",
+    title: "Vi varsler",
+    body: "Når et nytt drop er klart sender vi deg en push i appen. Du ser med en gang hva vi har bakt, hvor mange bokser som er igjen, og hvilke stopp som kjører.",
   },
   {
-    num: "2",
-    title: "Velg og betal",
-    body: "Plukk boks, legg til kake. 30 sekunder med Vipps eller Apple Pay. Du får en QR-kode tilbake med en gang.",
+    num: "02",
+    title: "Du velger",
+    body: "Plukk boks. Legg til kake. Velg ditt nærmeste stopp og et 30-minutters vindu. Ett trykk Vipps eller Apple Pay, og du har en QR-kode i lomma.",
   },
   {
-    num: "3",
-    title: "Hent når det passer",
-    body: "Velg ditt nærmeste stopp og et 30-minutters vindu. Vis QR i bilen — vi rekker deg på 3 minutter.",
+    num: "03",
+    title: "Vi møtes",
+    body: "På ditt valgte stopp i ditt valgte vindu. Vis QR — vi har boksen klar med navnet ditt på. Tre minutter, ut og inn. Hjemme før kaffen blir kald.",
   },
 ];
 
-const occasions = ["Fredagskos", "Bursdag", "Helgebesøk", "Vertinnegave", "Søndagskaffe", "Feiring"];
+const occasions = [
+  "Søndagskaffe",
+  "Bursdag",
+  "Helgebesøk",
+  "Vertinnegave",
+  "Dåp og feiring",
+  "Etter en lang uke",
+];
 ---
 
-<BaseLayout
-  title="Nobel Drop"
-  description="Friskbakte makroner, kaker og dessert-bokser fra Nobel Catering & Conditori. Bestilt i appen fredag, hentet på ditt nærmeste stopp. Etablert i Bærum siden 1986."
->
+<BaseLayout title="Nobel Drop">
   <!-- ============== HERO ============== -->
-  <section class="relative overflow-hidden pt-20 pb-32 sm:pt-32 sm:pb-44">
-    <div
-      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,rgba(200,162,76,0.10)_0%,transparent_55%)]"
-      aria-hidden="true"
-    >
-    </div>
-
-    <div class="container-edge relative">
-      <div class="mx-auto max-w-5xl text-center">
-        <p class="label-tiny mb-8" data-fade>
-          Nobel Catering & Conditori · Bærum siden 1986
-        </p>
-
-        <h1
-          class="font-display text-[44px] leading-[0.98] tracking-tight text-bone-100 sm:text-7xl md:text-[96px] lg:text-[120px]"
-          data-fade
-        >
-          Friskbakt fra Nobel.
-          <br />
-          <span class="italic text-shimmer">Hver fredag.</span>
-        </h1>
-
-        <p
-          class="mx-auto mt-10 max-w-2xl font-sans text-lg leading-relaxed text-bone-300 sm:text-xl"
-          data-fade
-        >
-          Eksklusive bokser med håndverksmakroner, porsjonskaker og hele kaker — bestilt
-          i appen fredag morgen, hentet på stoppet ditt samme dag.
-        </p>
-
-        <div
-          class="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
-          data-fade
-        >
-          <GoldButton href="https://app.nobeldrop.no" variant="primary" size="lg">
-            Sikre fredagens drop
-          </GoldButton>
-          <GoldButton href="/slik-fungerer-det" variant="ghost" size="lg" arrow={false}>
-            Slik fungerer det
-          </GoldButton>
-        </div>
-
-        <div class="mt-20 flex flex-wrap items-center justify-center gap-3 sm:gap-4" data-fade>
-          <TagPill>Bakt på fredag morgen</TagPill>
-          <TagPill>Faste hentesteder</TagPill>
-          <TagPill>Bestill på 30 sekunder</TagPill>
-        </div>
-      </div>
-
-      <!-- Hero box image area -->
-      <div class="relative mx-auto mt-24 max-w-4xl" data-fade>
-        <HairlineFrame class="aspect-[16/9] bg-gradient-to-br from-ink-800 via-ink-900 to-ink-850">
-          <div class="absolute inset-0 flex items-center justify-center">
-            <div class="text-center">
-              <div class="mx-auto mb-4 h-12 w-12 rounded-full border border-gold-400/40 bg-ink-800 flex items-center justify-center">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="text-gold-200">
-                  <rect x="3" y="6" width="18" height="13" rx="1" />
-                  <path d="M3 9h18M8 6V4h8v2" />
-                </svg>
-              </div>
-              <p class="font-display text-2xl tracking-wide text-gold-200 sm:text-3xl">
-                NOBEL DROP
-              </p>
-              <p class="mt-2 font-sans text-xs uppercase tracking-ultra-wide text-bone-400">
-                Bokser i 4 · 6 · 8 stk · gullfoliert logo · klar samme morgen
-              </p>
-            </div>
-          </div>
-        </HairlineFrame>
-      </div>
-    </div>
-  </section>
-
-  <div class="hairline mx-auto max-w-5xl"></div>
-
-  <!-- ============== HVA ER DETTE ============== -->
-  <section class="relative py-32 sm:py-44">
+  <section class="relative pt-12 pb-24 sm:pt-20 sm:pb-32">
     <div class="container-edge">
-      <div class="mx-auto max-w-3xl text-center" data-fade>
-        <SectionLabel label="Hva er Nobel Drop" align="center" />
-        <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
-          En boks håndverk
-          <br />
-          <span class="italic text-gold-200">levert til ditt stopp</span>.
-        </h2>
-        <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
-          Vi baker et fast antall bokser hver fredag morgen — makroner i fire smaker,
-          porsjonskaker for to, hele kaker til søndagens feiring. Når de er klare,
-          kjører vi dem til faste stopp langs Vestfold og Drammen.
-          Du henter med en QR-kode, og er hjemme før kaffen blir kald.
-        </p>
-      </div>
+      <div class="grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-16">
+        <!-- Left: hero copy -->
+        <div class="lg:col-span-6 lg:pb-12">
+          <p class="label-tiny mb-6" data-fade>
+            Nobel Catering & Conditori — Bærum siden 1986
+          </p>
 
-      <div class="mt-24 grid gap-px bg-gold-400/15 md:grid-cols-3">
-        {
-          steps.map((s) => (
-            <div
-              class="group relative bg-ink-900 p-10 transition hover:bg-ink-850"
-              data-fade
-            >
-              <div class="font-display text-7xl text-gold-200 leading-none">{s.num}</div>
-              <div class="mt-6 h-px w-8 bg-gold-400/60 transition-all group-hover:w-12" />
-              <h3 class="mt-6 font-display text-2xl text-bone-100">{s.title}</h3>
-              <p class="mt-4 font-sans text-sm leading-relaxed text-bone-400">
-                {s.body}
-              </p>
-            </div>
-          ))
-        }
-      </div>
+          <h1
+            class="font-display text-[52px] font-medium leading-[0.95] tracking-tight text-espresso-900 sm:text-7xl lg:text-[88px]"
+            data-fade
+          >
+            Bakeriet
+            <br />
+            kommer
+            <br />
+            <span class="display-italic text-brass-700">til deg.</span>
+          </h1>
 
-      <div class="mt-12 text-center" data-fade>
-        <GoldButton href="/slik-fungerer-det" variant="ghost">
-          Se hele flyten
-        </GoldButton>
+          <p
+            class="mt-10 max-w-md font-sans text-[17px] leading-relaxed text-espresso-700 sm:text-[18px]"
+            data-fade
+          >
+            Friskbakte makroner og kaker fra et 39-årig konditori. Bestilt med
+            ett trykk når et drop er klart, hentet på et stopp nær deg.
+          </p>
+
+          <div
+            class="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-4"
+            data-fade
+          >
+            <GoldButton href="https://shop.nobeldrop.no" variant="primary" size="lg">
+              Bestill nå
+            </GoldButton>
+            <GoldButton href="/slik-fungerer-det" variant="ghost" size="lg" arrow={false}>
+              Se hvordan det fungerer
+            </GoldButton>
+          </div>
+
+          <div class="mt-12 flex flex-wrap gap-2.5" data-fade>
+            <TagPill size="sm">Bakt fra bunnen siden 1986</TagPill>
+            <TagPill size="sm">Bestill med ett trykk</TagPill>
+            <TagPill size="sm">Hentet samme dag</TagPill>
+          </div>
+        </div>
+
+        <!-- Right: hero photo -->
+        <div class="lg:col-span-6" data-fade>
+          <Photo
+            src="/assets/hero/box-hero.jpg"
+            alt="Nobel Drop-eske med gullfoliert logo, bakt for hånd"
+            aspect="aspect-[4/5]"
+            loading="eager"
+            fetchpriority="high"
+            fallbackLabel="Hero · Nobel Drop-eske"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== EDITORIAL OPENER ============== -->
+  <section class="relative py-24 sm:py-32">
+    <div class="container-prose text-center">
+      <p class="label-tiny" data-fade>Hva er Nobel Drop</p>
+      <p
+        class="mt-8 font-display text-[28px] font-medium leading-[1.3] text-espresso-900 sm:text-[40px]"
+        data-fade
+      >
+        Et konditori med en
+        <span class="display-italic text-brass-700">ny dør</span>.
+      </p>
+      <p
+        class="mt-8 font-sans text-[17px] leading-[1.7] text-espresso-700 sm:text-[18px]"
+        data-fade
+      >
+        Nobel Catering & Conditori har bakt for Bærum og Østlandet i 39 år —
+        bryllup, dåp, fredagsmiddager, kaker til konfirmasjon. Nobel Drop er
+        den nyeste døren ut. Friskbakte bokser bestilt i appen, hentet på et
+        stopp nær deg, alt fra det samme kjøkkenet.
+      </p>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <!-- ============== 3 STEG ============== -->
+  <section class="relative py-24 sm:py-32">
+    <div class="container-edge">
+      <div class="grid gap-16 lg:grid-cols-12 lg:gap-20">
+        <div class="lg:col-span-4" data-fade>
+          <SectionLabel label="Slik foregår det" />
+          <h2 class="mt-6 font-display text-[40px] font-medium leading-[1.05] text-espresso-900 sm:text-5xl">
+            Tre steg.
+            <br />
+            <span class="display-italic text-brass-700">Ingen friksjon.</span>
+          </h2>
+          <p class="mt-6 max-w-md font-sans text-[16px] leading-relaxed text-espresso-700">
+            Vi har bygget bestillingen så enkel at den passer mellom kaffepausen
+            og neste møte. Last ned, slå på varsler, og du er klar.
+          </p>
+          <div class="mt-8">
+            <GoldButton href="/slik-fungerer-det" variant="ghost">
+              Se hele flyten
+            </GoldButton>
+          </div>
+        </div>
+
+        <div class="lg:col-span-8">
+          <ol class="space-y-12 sm:space-y-16">
+            {
+              steps.map((s, i) => (
+                <li class="grid grid-cols-12 items-start gap-6" data-fade>
+                  <div class="col-span-3 sm:col-span-2">
+                    <span class="font-display text-[40px] font-medium leading-none text-brass-600 sm:text-6xl">
+                      {s.num}
+                    </span>
+                  </div>
+                  <div class="col-span-9 border-t border-espresso-900/10 pt-3 sm:col-span-10">
+                    <h3 class="font-display text-[26px] font-medium leading-tight text-espresso-900 sm:text-[34px]">
+                      {s.title}
+                    </h3>
+                    <p class="mt-3 max-w-xl font-sans text-[15px] leading-relaxed text-espresso-700 sm:text-[16px]">
+                      {s.body}
+                    </p>
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
       </div>
     </div>
   </section>
 
   <div class="hairline mx-auto max-w-5xl"></div>
 
-  <!-- ============== KVALITETSHISTORIE ============== -->
-  <section class="relative overflow-hidden py-32 sm:py-44">
-    <div
-      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(200,162,76,0.08)_0%,transparent_50%)]"
-      aria-hidden="true"
-    >
-    </div>
-
-    <div class="container-edge relative">
-      <div class="grid gap-16 lg:grid-cols-12 lg:gap-20 lg:items-center">
-        <div class="lg:col-span-5" data-fade>
-          <SectionLabel label="Hvorfor begrenset" />
-          <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
+  <!-- ============== HVORFOR BEGRENSET (sensory) ============== -->
+  <section class="relative py-24 sm:py-32">
+    <div class="container-edge">
+      <div class="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-20">
+        <div class="lg:col-span-6 lg:order-2" data-fade>
+          <SectionLabel label="Bakt med tid" />
+          <h2 class="mt-6 font-display text-[40px] font-medium leading-[1.05] text-espresso-900 sm:text-[60px]">
             Få bokser.
             <br />
-            <span class="italic text-gold-200">Bakt med tid.</span>
+            <span class="display-italic text-brass-700">Av en grunn.</span>
           </h2>
-          <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
-            Hvert drop har et fast antall bokser. Når de er borte, er de borte —
-            ikke som et markedsføringstriks, men fordi vi vil at hver eneste makron
-            skal være friskbakt samme morgen.
+          <p class="mt-8 font-sans text-[17px] leading-[1.7] text-espresso-700 sm:text-[18px]">
+            Vi baker et fast antall til hvert drop fordi vi vil at hver eneste
+            makron skal være friskpiped samme morgen. Når de er borte, er de
+            borte — det er ikke et triks, det er en konsekvens av hvordan vi
+            jobber.
           </p>
-          <p class="mt-6 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
-            Smør, mandler, sjokolade og bær fra lokale leverandører. Pipet for hånd.
-            Bakt i ovner som fortsatt blir varme av to hender, ikke en knapp.
+          <p class="mt-5 font-sans text-[16px] leading-[1.7] text-espresso-700">
+            Smør, ekte mandelmel, sjokolade fra produsenter vi har kjent i tjue
+            år, bær fra norske leverandører. Pipet for hånd, bakt i ovner som
+            fortsatt blir varme av to hender — ikke en knapp.
           </p>
         </div>
 
-        <div class="relative lg:col-span-7" data-fade>
-          <div class="relative space-y-4">
-            <div class="ml-auto w-fit border border-gold-400/50 bg-ink-900/60 px-6 py-4 backdrop-blur">
-              <p class="font-sans text-xs uppercase tracking-ultra-wide text-bone-400">
-                Forrige fredag
-              </p>
-              <p class="mt-1 font-display text-3xl text-gold-200">142 bokser bakt</p>
-            </div>
-
-            <div class="border border-gold-400/35 bg-ink-900/60 px-6 py-4 backdrop-blur">
-              <p class="font-sans text-xs uppercase tracking-ultra-wide text-bone-400">
-                Hentet samme dag
-              </p>
-              <p class="mt-1 font-display text-3xl text-gold-200">142 av 142</p>
-            </div>
-
-            <div class="ml-12 w-fit border border-gold-400/25 bg-ink-900/60 px-6 py-4 backdrop-blur">
-              <p class="font-sans text-xs uppercase tracking-ultra-wide text-bone-400">
-                Neste drop
-              </p>
-              <p class="mt-1 font-display text-3xl text-gold-200">Fredag kl. 10:00</p>
-            </div>
-          </div>
-
-          <div class="mt-12 border-t border-gold-400/20 pt-8">
-            <p class="font-sans text-sm leading-relaxed text-bone-400">
-              Vi sender push-varsel kl. 10:00 fredag. Du kan også åpne appen direkte —
-              tellverket viser hvor mange bokser som er igjen, oppdatert i sanntid.
-            </p>
-          </div>
+        <div class="lg:col-span-6 lg:order-1" data-fade>
+          <Photo
+            src="/assets/about/kitchen-hands.jpg"
+            alt="Hender som piper makron-røre på pergament i Nobels kjøkken"
+            aspect="aspect-[4/5]"
+            fallbackLabel="Bilde · Hender på kjøkkenet"
+          />
         </div>
       </div>
     </div>
@@ -242,40 +244,51 @@ const occasions = ["Fredagskos", "Bursdag", "Helgebesøk", "Vertinnegave", "Søn
   <div class="hairline mx-auto max-w-5xl"></div>
 
   <!-- ============== BAKVERKET ============== -->
-  <section class="relative py-32 sm:py-44">
+  <section class="relative py-24 sm:py-32">
     <div class="container-edge">
-      <div class="mx-auto max-w-3xl text-center" data-fade>
+      <div class="mx-auto mb-20 max-w-3xl text-center" data-fade>
         <SectionLabel label="Bakverket" align="center" />
-        <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
-          Det vi baker
-          <br />
-          <span class="italic text-gold-200">til hvert drop</span>.
+        <h2 class="mt-8 font-display text-[40px] font-medium leading-[1.05] text-espresso-900 sm:text-6xl">
+          Det vi <span class="display-italic text-brass-700">faktisk baker</span>.
         </h2>
-        <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
-          Hovedboksen er signaturmakronen. Du kan legge til porsjonskaker for to, eller
-          en hel premiumkake til helgens besøk. Alt i samme bestilling, samme henting.
+        <p class="mt-8 font-sans text-[17px] leading-relaxed text-espresso-700">
+          Hovedboksen er signaturmakronen. Du kan legge til porsjonskaker for to,
+          eller en hel kake til helgens besøk. Alt i samme bestilling.
         </p>
       </div>
 
-      <div class="mt-20 grid gap-6 md:grid-cols-2 lg:grid-cols-4" data-fade>
+      <div class="grid gap-x-8 gap-y-16 md:grid-cols-2">
         {
-          products.map((p) => (
-            <article class="group relative border border-ink-600/80 bg-ink-850 p-8 transition hover:border-gold-400/50">
-              <div class="absolute right-6 top-6 h-2 w-2 rounded-full bg-gold-400/40 transition group-hover:bg-gold-200" />
-              <p class="font-sans text-[10px] uppercase tracking-ultra-wide text-gold-200/80">
-                {p.line}
+          products.map((p, i) => (
+            <article class="group" data-fade>
+              <Photo
+                src={p.image}
+                alt={p.title}
+                aspect="aspect-[4/3]"
+                fallbackLabel={p.fallback}
+              />
+              <div class="mt-6 flex items-baseline justify-between">
+                <p class="font-sans text-[11px] uppercase tracking-ultra-wide text-brass-700">
+                  {p.line}
+                </p>
+                <span class="font-display text-sm italic text-espresso-500">
+                  {String(i + 1).padStart(2, "0")} / 04
+                </span>
+              </div>
+              <h3 class="mt-3 font-display text-[28px] font-medium leading-tight text-espresso-900 sm:text-[34px]">
+                {p.title}
+              </h3>
+              <p class="mt-3 max-w-md font-sans text-[15px] leading-relaxed text-espresso-700 sm:text-[16px]">
+                {p.body}
               </p>
-              <h3 class="mt-4 font-display text-2xl text-bone-100">{p.title}</h3>
-              <div class="my-5 h-px w-8 bg-gold-400/40" />
-              <p class="font-sans text-sm leading-relaxed text-bone-400">{p.body}</p>
             </article>
           ))
         }
       </div>
 
-      <div class="mt-12 text-center" data-fade>
+      <div class="mt-20 text-center" data-fade>
         <GoldButton href="/produkter" variant="ghost">
-          Se alt vi baker
+          Se hele bakverket
         </GoldButton>
       </div>
     </div>
@@ -283,99 +296,114 @@ const occasions = ["Fredagskos", "Bursdag", "Helgebesøk", "Vertinnegave", "Søn
 
   <div class="hairline mx-auto max-w-5xl"></div>
 
-  <!-- ============== TIL HVILKE ANLEDNINGER ============== -->
-  <section class="relative py-32 sm:py-44">
+  <!-- ============== ANLEDNINGER ============== -->
+  <section class="relative py-24 sm:py-32">
     <div class="container-edge">
-      <div class="mx-auto max-w-3xl text-center" data-fade>
-        <SectionLabel label="Når det smaker best" align="center" />
-        <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
-          For hverdag <br />og <span class="italic text-gold-200">små feiringer</span>.
-        </h2>
-        <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
-          En boks i fanget på fredagskvelden. Søndagens kaffe med en porsjonskake til to.
-          Hjemtatt vertinnegave. Bursdagskaken som kommer ferdig fra et ekte konditori.
-        </p>
-      </div>
+      <div class="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-20">
+        <div class="lg:col-span-7" data-fade>
+          <Photo
+            src="/assets/lifestyle/sunday-table.jpg"
+            alt="Søndagsbord med kaffe og en åpnet boks med makroner"
+            aspect="aspect-[5/4]"
+            fallbackLabel="Bilde · Søndagsbord"
+          />
+        </div>
 
-      <div class="mt-16 flex flex-wrap items-center justify-center gap-3 sm:gap-4" data-fade>
-        {occasions.map((o) => <TagPill>{o}</TagPill>)}
+        <div class="lg:col-span-5" data-fade>
+          <SectionLabel label="Når det smaker best" />
+          <h2 class="mt-6 font-display text-[40px] font-medium leading-[1.05] text-espresso-900 sm:text-[52px]">
+            For hverdag og
+            <br />
+            <span class="display-italic text-brass-700">små feiringer</span>.
+          </h2>
+          <p class="mt-8 font-sans text-[16px] leading-relaxed text-espresso-700">
+            En boks i fanget på fredagskvelden. Søndagskaffen med en porsjonskake
+            til to. Vertinnegaven du tok med fordi du visste den var bakt fra
+            bunnen.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-2">
+            {occasions.map((o) => <TagPill size="sm">{o}</TagPill>)}
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <div class="hairline mx-auto max-w-5xl"></div>
 
-  <!-- ============== HISTORIE / NOBEL CATERING ============== -->
-  <section class="relative overflow-hidden py-32 sm:py-44">
-    <div
-      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(200,162,76,0.06)_0%,transparent_50%)]"
-      aria-hidden="true"
-    >
-    </div>
-
-    <div class="container-edge relative">
-      <div class="grid gap-16 lg:grid-cols-12 lg:items-center lg:gap-24">
-        <div class="lg:col-span-5 lg:order-2" data-fade>
+  <!-- ============== HISTORIE / ARV ============== -->
+  <section class="relative py-24 sm:py-32">
+    <div class="container-edge">
+      <div class="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-20">
+        <div class="lg:col-span-5" data-fade>
           <SectionLabel label="Om Nobel" />
-          <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-5xl lg:text-6xl">
-            Det startet i
+          <h2 class="mt-6 font-display text-[40px] font-medium leading-[1.05] text-espresso-900 sm:text-[52px]">
+            Det startet
             <br />
-            <span class="italic text-gold-200">Nobelsgate 23.</span>
+            <span class="display-italic text-brass-700">i Nobelsgate 23.</span>
           </h2>
-          <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
-            I 1986 åpnet to gründere et lite konditori i Nobelsgate 23 i Oslo. De jobbet
-            dag og natt — bokstavelig talt — for å bygge noe som skulle stå seg.
-            Adressen ga navnet, og navnet har stått i 39 år.
+          <p class="mt-8 font-sans text-[16px] leading-[1.7] text-espresso-700">
+            I 1986 åpnet to gründere et lite konditori midt i Oslo. De hadde
+            verken stort budsjett eller en plan om å bli store — bare en idé om
+            at det fantes plass for noen som baket kakene fra bunnen, hver
+            morgen. Adressen ga navnet, og navnet har stått siden.
           </p>
-          <p class="mt-6 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
-            I dag baker rundt 40 ansatte fra kjøkkenene i Bærum og på Skedsmokorset.
-            Vi leverer mat og kaker til private selskaper, bryllup, dåp og bedrifter
-            over hele Østlandet. Nobel Drop er vår nye måte å dele bakverket på,
-            uten at du må legge en bestilling i forveien.
+          <p class="mt-5 font-sans text-[16px] leading-[1.7] text-espresso-700">
+            I dag er det rundt 40 hender på kjøkkenene i Bærum og på Skedsmokorset.
+            Miljøfyrtårn-sertifisert. Hele leveringsflåten elektrisk.
           </p>
-          <div class="mt-10">
+          <div class="mt-8">
             <GoldButton href="/om-nobel" variant="ghost">
               Les hele historien
             </GoldButton>
           </div>
         </div>
 
-        <div class="lg:col-span-7 lg:order-1" data-fade>
-          <div class="grid grid-cols-2 gap-px bg-gold-400/15">
-            <div class="bg-ink-900 p-8">
-              <p class="font-display text-5xl text-gold-200">1986</p>
-              <p class="mt-3 font-sans text-sm uppercase tracking-ultra-wide text-bone-400">
+        <div class="lg:col-span-7" data-fade>
+          <div class="grid grid-cols-2 gap-px bg-espresso-900/10">
+            <div class="bg-cream-50 p-8 sm:p-10">
+              <p class="font-display text-[56px] font-medium leading-none text-brass-700 sm:text-[72px]">
+                1986
+              </p>
+              <p class="mt-3 font-sans text-[11px] uppercase tracking-ultra-wide text-espresso-500">
                 Etablert
               </p>
-              <p class="mt-2 font-sans text-xs leading-relaxed text-bone-500">
+              <p class="mt-2 font-sans text-[13px] leading-relaxed text-espresso-600">
                 Nobelsgate 23, Oslo. To gründere, dag og natt.
               </p>
             </div>
-            <div class="bg-ink-900 p-8">
-              <p class="font-display text-5xl text-gold-200">39 år</p>
-              <p class="mt-3 font-sans text-sm uppercase tracking-ultra-wide text-bone-400">
-                I drift
+            <div class="bg-cream-50 p-8 sm:p-10">
+              <p class="font-display text-[56px] font-medium leading-none text-brass-700 sm:text-[72px]">
+                39 år
               </p>
-              <p class="mt-2 font-sans text-xs leading-relaxed text-bone-500">
-                Samme oppskrifter, varmere ovner, flere bryllup.
+              <p class="mt-3 font-sans text-[11px] uppercase tracking-ultra-wide text-espresso-500">
+                Siden
+              </p>
+              <p class="mt-2 font-sans text-[13px] leading-relaxed text-espresso-600">
+                Samme oppskrifter. Større ovner. Flere bryllup.
               </p>
             </div>
-            <div class="bg-ink-900 p-8">
-              <p class="font-display text-5xl text-gold-200">~40</p>
-              <p class="mt-3 font-sans text-sm uppercase tracking-ultra-wide text-bone-400">
-                På kjøkkenet
+            <div class="bg-cream-50 p-8 sm:p-10">
+              <p class="font-display text-[56px] font-medium leading-none text-brass-700 sm:text-[72px]">
+                ~40
               </p>
-              <p class="mt-2 font-sans text-xs leading-relaxed text-bone-500">
+              <p class="mt-3 font-sans text-[11px] uppercase tracking-ultra-wide text-espresso-500">
+                Hender på kjøkkenet
+              </p>
+              <p class="mt-2 font-sans text-[13px] leading-relaxed text-espresso-600">
                 Bakere, konditorer, kjøkkensjefer. Faste hender.
               </p>
             </div>
-            <div class="bg-ink-900 p-8">
-              <p class="font-display text-5xl text-gold-200">100%</p>
-              <p class="mt-3 font-sans text-sm uppercase tracking-ultra-wide text-bone-400">
+            <div class="bg-cream-50 p-8 sm:p-10">
+              <p class="font-display text-[56px] font-medium leading-none text-brass-700 sm:text-[72px]">
+                100 %
+              </p>
+              <p class="mt-3 font-sans text-[11px] uppercase tracking-ultra-wide text-espresso-500">
                 Elektrisk kjøring
               </p>
-              <p class="mt-2 font-sans text-xs leading-relaxed text-bone-500">
-                Miljøfyrtårn-sertifisert. Lokale, økologiske råvarer der vi kan.
+              <p class="mt-2 font-sans text-[13px] leading-relaxed text-espresso-600">
+                Miljøfyrtårn-sertifisert. Lokale råvarer der vi kan.
               </p>
             </div>
           </div>
@@ -387,33 +415,35 @@ const occasions = ["Fredagskos", "Bursdag", "Helgebesøk", "Vertinnegave", "Søn
   <div class="hairline mx-auto max-w-5xl"></div>
 
   <!-- ============== HENTESTEDER ============== -->
-  <section class="relative py-32 sm:py-44">
+  <section class="relative py-24 sm:py-32">
     <div class="container-edge">
       <div class="mx-auto max-w-3xl text-center" data-fade>
         <SectionLabel label="Hentesteder" align="center" />
-        <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
-          Vi kommer til deg.
+        <h2 class="mt-8 font-display text-[40px] font-medium leading-[1.05] text-espresso-900 sm:text-6xl">
+          Vi kommer dit
           <br />
-          <span class="italic text-gold-200">Faste stopp, faste tider.</span>
+          <span class="display-italic text-brass-700">du allerede er</span>.
         </h2>
-        <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
-          Hver fredag kjører vi den samme ruten — fra Drammen ned til Tønsberg. Du
-          velger ditt nærmeste stopp i appen, og et 30-minutters vindu som passer deg.
+        <p class="mt-8 font-sans text-[17px] leading-relaxed text-espresso-700">
+          Faste stopp fra Drammen og ned langs Vestfold. Du velger ditt nærmeste,
+          og et 30-minutters vindu som passer deg.
         </p>
       </div>
 
-      <div class="mx-auto mt-20 max-w-5xl" data-fade>
-        <div class="relative grid grid-cols-5 gap-px bg-gold-400/20 text-center">
+      <div class="mx-auto mt-16 max-w-5xl" data-fade>
+        <div class="grid grid-cols-5 gap-px bg-espresso-900/10 text-center">
           {
             ["Lier", "Drammen", "Holmestrand", "Horten", "Tønsberg"].map(
               (city, i) => (
-                <div class="bg-ink-900 px-3 py-8 sm:py-12">
-                  <p class="font-display text-3xl text-gold-200 sm:text-5xl">
+                <div class="bg-cream-50 px-2 py-7 sm:py-12">
+                  <p class="font-display text-[28px] font-medium text-brass-700 sm:text-[44px]">
                     {String(i + 1).padStart(2, "0")}
                   </p>
-                  <p class="mt-4 font-display text-base text-bone-100 sm:text-xl">{city}</p>
-                  <p class="mt-2 font-sans text-[10px] uppercase tracking-ultra-wide text-bone-500 sm:text-xs">
-                    {i < 2 ? "Samarbeidsstopp" : "Fast stopp"}
+                  <p class="mt-3 font-display text-[15px] font-medium text-espresso-900 sm:text-[20px]">
+                    {city}
+                  </p>
+                  <p class="mt-1.5 font-sans text-[10px] uppercase tracking-ultra-wide text-espresso-500 sm:text-[11px]">
+                    {i < 2 ? "Samarbeid" : "Fast stopp"}
                   </p>
                 </div>
               )

@@ -4,42 +4,61 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: {
-          950: "#050507",
-          900: "#0A0A0B",
-          850: "#0F0F12",
-          800: "#15151A",
-          700: "#1F1F26",
-          600: "#2A2A33",
-          500: "#3A3A44",
-          400: "#4F4F5C",
+        // Cream — warm light backgrounds (anti dark-web)
+        cream: {
+          50: "#FBF8F2",
+          100: "#F5F0E6",
+          200: "#EDE6D6",
+          300: "#E0D5BD",
+          400: "#C9BC9D",
         },
-        bone: {
-          50: "#FBFAF6",
-          100: "#F5F2EA",
-          200: "#E8E3D5",
-          300: "#C9C2AE",
-          400: "#8E8B82",
-          500: "#5C5A55",
+        // Espresso — primary text and dark accents
+        espresso: {
+          950: "#0F0A06",
+          900: "#1A1410",
+          800: "#241B14",
+          700: "#3A2F22",
+          600: "#54473A",
+          500: "#6F5F4A",
+          400: "#8C7C66",
         },
-        gold: {
-          DEFAULT: "#C8A24C",
-          50: "#FBF6E8",
-          100: "#F4E8C2",
-          200: "#E8C57A",
-          300: "#D8B25E",
-          400: "#C8A24C",
-          500: "#B08A3A",
-          600: "#7A6532",
-          700: "#473A1A",
-          800: "#2C2310",
+        // Cocoa — secondary warm dark
+        cocoa: {
+          900: "#2A1A0F",
+          800: "#3A2317",
+          700: "#5A3D27",
+          600: "#7A5538",
         },
-        ember: "#D4503E",
-        moss: "#5BAE7A",
+        // Brass — primary accent (muted, not blingy)
+        brass: {
+          DEFAULT: "#A37D2E",
+          50: "#F8F1DF",
+          100: "#EFE0BB",
+          200: "#DCC18C",
+          300: "#C9A56A",
+          400: "#B5904A",
+          500: "#A37D2E",
+          600: "#8B6722",
+          700: "#6B4F1A",
+          800: "#473312",
+        },
+        blush: {
+          100: "#F5E8DC",
+          200: "#E8D4C0",
+        },
+        ember: "#B8462E",
+        moss: "#5C7A4A",
       },
       fontFamily: {
-        display: ['"Playfair Display"', "ui-serif", "Georgia", "serif"],
+        display: [
+          '"Fraunces Variable"',
+          "Fraunces",
+          "ui-serif",
+          "Georgia",
+          "serif",
+        ],
         sans: [
+          '"Inter Variable"',
           "Inter",
           "ui-sans-serif",
           "system-ui",
@@ -50,45 +69,29 @@ export default {
         ],
       },
       letterSpacing: {
-        "ultra-wide": "0.32em",
+        "ultra-wide": "0.28em",
       },
       maxWidth: {
         "8xl": "88rem",
         "9xl": "104rem",
+        prose: "65ch",
       },
       backgroundImage: {
-        "gold-sheen":
-          "linear-gradient(135deg, rgba(232,197,122,0) 0%, rgba(232,197,122,0.18) 35%, rgba(200,162,76,0.05) 50%, rgba(232,197,122,0.18) 65%, rgba(232,197,122,0) 100%)",
-        "ink-vignette":
-          "radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.6) 100%)",
-        "hairline-grid":
-          "linear-gradient(to right, rgba(200,162,76,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(200,162,76,0.06) 1px, transparent 1px)",
-      },
-      backgroundSize: {
-        "grid-1": "96px 96px",
+        "paper-grain":
+          "radial-gradient(ellipse 800px 600px at 20% 10%, rgba(184,158,109,0.05) 0%, transparent 50%), radial-gradient(ellipse 600px 400px at 80% 80%, rgba(90,61,39,0.04) 0%, transparent 50%)",
       },
       animation: {
-        "fade-up": "fadeUp 1.1s cubic-bezier(0.22,1,0.36,1) both",
-        "fade-in": "fadeIn 1.4s ease-out both",
-        shimmer: "shimmer 8s linear infinite",
-        "pulse-soft": "pulseSoft 4s ease-in-out infinite",
+        "fade-up": "fadeUp 1.0s cubic-bezier(0.22,1,0.36,1) both",
+        "fade-in": "fadeIn 1.2s ease-out both",
       },
       keyframes: {
         fadeUp: {
-          "0%": { opacity: "0", transform: "translate3d(0,24px,0)" },
+          "0%": { opacity: "0", transform: "translate3d(0,16px,0)" },
           "100%": { opacity: "1", transform: "translate3d(0,0,0)" },
         },
         fadeIn: {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
-        },
-        shimmer: {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
-        },
-        pulseSoft: {
-          "0%, 100%": { opacity: "0.6" },
-          "50%": { opacity: "1" },
         },
       },
     },

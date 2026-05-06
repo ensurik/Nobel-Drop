@@ -2,7 +2,7 @@
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import GoldButton from "~/components/GoldButton.astro";
 import SectionLabel from "~/components/SectionLabel.astro";
-import HairlineFrame from "~/components/HairlineFrame.astro";
+import Photo from "~/components/Photo.astro";
 import CTABand from "~/components/CTABand.astro";
 
 const milestones = [
@@ -24,17 +24,17 @@ const milestones = [
   {
     year: "2010-tallet",
     title: "Miljøfyrtårn og elektrisk kjøring",
-    body: "Vi sertifiserer oss som miljøfyrtårn lenge før det blir et markedsføringsord. Hele leveringsflåten settes om til elektrisk. Lokale, økologiske råvarer der de finnes — fordi vi skal være her i 39 år til.",
+    body: "Vi sertifiserer oss som miljøfyrtårn lenge før det blir et markedsføringsord. Hele leveringsflåten settes om til elektrisk. Lokale, økologiske råvarer der de finnes.",
   },
   {
     year: "I dag",
     title: "Rundt 40 hender på kjøkkenet",
-    body: "Bakere, konditorer, kjøkkensjefer, sjåfører. Vi serverer privatpersoner og bedrifter over hele Østlandet — bryllup om sommeren, julebord om vinteren, og noe nytt på fredagene.",
+    body: "Bakere, konditorer, kjøkkensjefer, sjåfører. Vi serverer privatpersoner og bedrifter over hele Østlandet — bryllup om sommeren, julebord om vinteren, og noe nytt på sidelinjen.",
   },
   {
     year: "Nå",
     title: "Nobel Drop åpner dørene",
-    body: "Tradisjonell catering har alltid krevd at du ringer inn en bestilling i forveien. Med Nobel Drop åpner vi en ny dør — du kan bestille for fredagskvelden mens du sitter i kø på vei til jobb mandag morgen. Samme kjøkken, samme håndverk, ny måte å nå deg på.",
+    body: "Tradisjonell catering har alltid krevd at du ringer inn en bestilling i forveien. Med Nobel Drop åpner vi en ny dør — du kan bestille mens du sitter i kø på vei til jobb mandag morgen. Samme kjøkken, samme håndverk, ny måte å nå deg på.",
   },
 ];
 
@@ -52,92 +52,103 @@ const principles = [
   {
     label: "Bærekraft",
     title: "Mindre kjøtt, kortere transport",
-    body: "Hele leveringsflåten er elektrisk. Vi prioriterer lokalt og økologisk der det er mulig, og bruker mindre kjøtt år for år. Drop-modellen betyr i tillegg at vi nesten ikke kaster noe — vi baker mot låste bestillinger.",
+    body: "Hele leveringsflåten er elektrisk. Vi prioriterer lokalt og økologisk der det er mulig. Drop-modellen betyr i tillegg at vi nesten ikke kaster noe.",
   },
 ];
 ---
 
 <BaseLayout
   title="Om Nobel"
-  description="Nobel Catering & Conditori ble etablert i Nobelsgate 23 i 1986 av to gründere som 'jobbet dag og natt'. 39 år senere bakes hver Nobel Drop fortsatt fra bunnen, fra de samme kjøkkenene."
+  description="Nobel Catering & Conditori ble etablert i Nobelsgate 23 i 1986 av to gründere som 'jobbet dag og natt'. 39 år senere bakes hver Nobel Drop fra de samme kjøkkenene."
 >
   <!-- HERO -->
-  <section class="relative overflow-hidden pt-24 pb-32 sm:pt-36 sm:pb-44">
-    <div
-      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(200,162,76,0.08)_0%,transparent_55%)]"
-      aria-hidden="true"
-    >
-    </div>
-    <div class="container-edge relative">
-      <div class="mx-auto max-w-4xl">
-        <SectionLabel label="Om Nobel · Etablert 1986" />
-        <h1
-          class="mt-8 font-display text-5xl leading-[1.02] text-bone-100 sm:text-7xl lg:text-[104px]"
-          data-fade
-        >
-          Bakt for hånd
-          <br />
-          <span class="italic text-shimmer">i 39 år.</span>
-        </h1>
-        <p class="mt-12 max-w-2xl font-sans text-lg leading-relaxed text-bone-300" data-fade>
-          Nobel Drop er ikke et nytt selskap. Det er en ny måte å dele kakene fra et
-          konditori som har stått i Oslo og Bærum siden 1986.
-        </p>
+  <section class="relative pt-12 pb-20 sm:pt-20 sm:pb-28">
+    <div class="container-edge">
+      <div class="grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-16">
+        <div class="lg:col-span-7 lg:pb-8">
+          <SectionLabel label="Om Nobel · Etablert 1986" />
+          <h1
+            class="mt-8 font-display text-[52px] font-medium leading-[0.98] tracking-tight text-espresso-900 sm:text-7xl lg:text-[88px]"
+            data-fade
+          >
+            Bakt for hånd
+            <br />
+            <span class="display-italic text-brass-700">i 39 år.</span>
+          </h1>
+          <p
+            class="mt-10 max-w-xl font-sans text-[17px] leading-relaxed text-espresso-700 sm:text-[18px]"
+            data-fade
+          >
+            Nobel Drop er ikke et nytt selskap. Det er en ny måte å dele kakene
+            fra et konditori som har stått i Oslo og Bærum siden 1986.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5" data-fade>
+          <Photo
+            src="/assets/about/founders-1986.jpg"
+            alt="Portrett fra Nobels første år"
+            aspect="aspect-[4/5]"
+            loading="eager"
+            fetchpriority="high"
+            fallbackLabel="Bilde · Fra de første årene"
+          />
+        </div>
       </div>
     </div>
   </section>
 
   <div class="hairline mx-auto max-w-5xl"></div>
 
-  <!-- INTRO + PORTRAIT -->
-  <section class="relative py-32 sm:py-44">
+  <!-- INTRO -->
+  <section class="relative py-24 sm:py-32">
     <div class="container-edge">
-      <div class="grid gap-16 lg:grid-cols-12 lg:items-center lg:gap-24">
+      <div class="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-20">
         <div class="lg:col-span-7" data-fade>
           <SectionLabel label="Hvorfor det heter Nobel" />
-          <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-5xl">
+          <h2 class="mt-6 font-display text-[40px] font-medium leading-[1.05] text-espresso-900 sm:text-[52px]">
             Et navn som
             <br />
-            <span class="italic text-gold-200">begynte med en adresse</span>.
+            <span class="display-italic text-brass-700">begynte med en adresse</span>.
           </h2>
-          <div class="mt-10 space-y-6 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
+          <div class="mt-10 space-y-5 font-sans text-[16px] leading-[1.7] text-espresso-700 sm:text-[17px]">
             <p>
-              I 1986 åpnet to gründere et lite konditori i Nobelsgate 23 i Oslo. De
-              hadde verken stort budsjett eller en plan om å bli store — bare en idé om
-              at det fantes plass for noen som baket kakene fra bunnen, hver morgen.
+              I 1986 åpnet to gründere et lite konditori i Nobelsgate 23 i Oslo.
+              De hadde verken stort budsjett eller en plan om å bli store — bare
+              en idé om at det fantes plass for noen som baket kakene fra
+              bunnen, hver morgen.
             </p>
             <p>
-              Navnet kom av adressen, og det har stått siden. Selv etter at vi flyttet
-              til Bærum og senere åpnet et andre kjøkken på Skedsmokorset, har Nobel
-              vært det samme: en kake skal smake av smør, mandel, sjokolade — ikke av
-              snarveier.
+              Navnet kom av adressen, og det har stått siden. Selv etter at vi
+              flyttet til Bærum og senere åpnet et andre kjøkken på
+              Skedsmokorset, har Nobel vært det samme: en kake skal smake av
+              smør, mandel, sjokolade — ikke av snarveier.
             </p>
             <p>
               I dag er det rundt 40 ansatte som baker, koker og pakker fra de to
-              kjøkkenene. Vi leverer mat og kaker til private selskaper, bryllup, dåp og
-              bedrifter over hele Østlandet. Nobel Drop er bare den nyeste døren ut til deg.
+              kjøkkenene. Vi leverer mat og kaker til private selskaper,
+              bryllup, dåp og bedrifter over hele Østlandet. Nobel Drop er bare
+              den nyeste døren ut til deg.
             </p>
           </div>
         </div>
 
         <div class="lg:col-span-5" data-fade>
-          <HairlineFrame class="aspect-[4/5] bg-gradient-to-br from-ink-850 via-ink-900 to-ink-800">
-            <div class="absolute inset-0 flex flex-col items-center justify-center p-10 text-center">
-              <p class="font-sans text-[10px] uppercase tracking-ultra-wide text-gold-200/80">
-                Etablert
-              </p>
-              <p class="mt-6 font-display text-[96px] leading-none text-gold-200 sm:text-[128px]">
-                1986
-              </p>
-              <div class="mt-8 h-px w-16 bg-gold-400/60"></div>
-              <p class="mt-8 max-w-xs font-display text-lg italic text-bone-200">
-                "Vi jobbet dag og natt."
-              </p>
-              <p class="mt-3 font-sans text-xs uppercase tracking-ultra-wide text-bone-500">
-                Grunnleggerne, om de første årene
-              </p>
-            </div>
-          </HairlineFrame>
+          <div class="rounded-lg border border-espresso-900/10 bg-cream-50 p-10 photo-frame">
+            <p class="font-sans text-[10px] uppercase tracking-ultra-wide text-brass-700">
+              Etablert
+            </p>
+            <p class="mt-6 font-display text-[112px] font-medium leading-none text-brass-700 sm:text-[128px]">
+              1986
+            </p>
+            <div class="mt-8 h-px w-12 bg-brass-400"></div>
+            <p class="mt-8 font-display text-[20px] italic leading-snug text-espresso-800 sm:text-[24px]">
+              "Vi jobbet dag og natt."
+            </p>
+            <p class="mt-3 font-sans text-[11px] uppercase tracking-ultra-wide text-espresso-500">
+              Grunnleggerne, om de første årene
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -146,29 +157,36 @@ const principles = [
   <div class="hairline mx-auto max-w-5xl"></div>
 
   <!-- TIDSLINJE -->
-  <section class="relative py-32 sm:py-44">
+  <section class="relative py-24 sm:py-32">
     <div class="container-edge">
       <div class="mx-auto max-w-3xl" data-fade>
         <SectionLabel label="Tidslinje" />
-        <h2 class="mt-6 font-display text-4xl leading-[1.05] text-bone-100 sm:text-5xl">
-          Fra konditoridisk til pickup-stopp.
+        <h2 class="mt-6 font-display text-[40px] font-medium leading-[1.05] text-espresso-900 sm:text-5xl">
+          Fra konditoridisk til
+          <span class="display-italic text-brass-700">pickup-stopp</span>.
         </h2>
       </div>
 
-      <div class="relative mt-20">
-        <div class="absolute left-6 top-0 bottom-0 hidden w-px bg-gradient-to-b from-gold-400/40 via-gold-400/20 to-transparent sm:block"></div>
+      <div class="relative mt-16">
+        <div class="absolute left-6 top-0 bottom-0 hidden w-px bg-gradient-to-b from-brass-400 via-brass-200 to-transparent sm:block"></div>
 
-        <div class="space-y-16">
+        <div class="space-y-14">
           {
             milestones.map((m) => (
               <div class="relative flex gap-8 pl-0 sm:gap-12 sm:pl-16" data-fade>
-                <div class="absolute left-0 top-2 hidden h-3 w-3 -translate-x-[6px] rounded-full border border-gold-400 bg-ink-900 sm:block" />
+                <div class="absolute left-0 top-2 hidden h-3 w-3 -translate-x-[6px] rounded-full border border-brass-500 bg-cream-100 sm:block" />
                 <div class="w-32 shrink-0">
-                  <p class="font-display text-2xl text-gold-200 sm:text-3xl">{m.year}</p>
+                  <p class="font-display text-[22px] font-medium text-brass-700 sm:text-[26px]">
+                    {m.year}
+                  </p>
                 </div>
-                <div class="flex-1 border-l border-ink-600 pl-6">
-                  <h3 class="font-display text-2xl text-bone-100 sm:text-3xl">{m.title}</h3>
-                  <p class="mt-3 font-sans text-base leading-relaxed text-bone-300">{m.body}</p>
+                <div class="flex-1 border-l border-espresso-900/10 pl-6">
+                  <h3 class="font-display text-[22px] font-medium leading-tight text-espresso-900 sm:text-[28px]">
+                    {m.title}
+                  </h3>
+                  <p class="mt-3 font-sans text-[15px] leading-relaxed text-espresso-700 sm:text-[16px]">
+                    {m.body}
+                  </p>
                 </div>
               </div>
             ))
@@ -180,29 +198,49 @@ const principles = [
 
   <div class="hairline mx-auto max-w-5xl"></div>
 
+  <!-- KJØKKEN BILDE -->
+  <section class="relative py-24 sm:py-32">
+    <div class="container-edge">
+      <Photo
+        src="/assets/about/oven.jpg"
+        alt="Et øyeblikk fra Nobel-kjøkkenet"
+        aspect="aspect-[16/8]"
+        caption="Et øyeblikk fra Nobel-kjøkkenet i Bærum."
+        fallbackLabel="Bilde · Nobel-kjøkkenet"
+      />
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
   <!-- PRINSIPPER -->
-  <section class="relative py-32 sm:py-44">
+  <section class="relative py-24 sm:py-32">
     <div class="container-edge">
       <div class="mx-auto max-w-3xl text-center" data-fade>
         <SectionLabel label="Bærebjelker" align="center" />
-        <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
+        <h2 class="mt-8 font-display text-[40px] font-medium leading-[1.05] text-espresso-900 sm:text-6xl">
           Tre prinsipper.
-          <br /><span class="italic text-gold-200">Bakt inn i alt vi gjør.</span>
+          <br />
+          <span class="display-italic text-brass-700">Bakt inn i alt vi gjør.</span>
         </h2>
       </div>
 
-      <div class="mt-20 grid gap-px bg-gold-400/15 md:grid-cols-3" data-fade>
+      <div class="mt-16 grid gap-px bg-espresso-900/10 md:grid-cols-3" data-fade>
         {
           principles.map((p, i) => (
-            <div class="bg-ink-900 p-10">
-              <p class="font-display text-5xl text-gold-200">
+            <div class="bg-cream-50 p-10">
+              <p class="font-display text-[44px] font-medium leading-none text-brass-700">
                 {String(i + 1).padStart(2, "0")}
               </p>
-              <p class="mt-6 font-sans text-[11px] uppercase tracking-ultra-wide text-gold-200/80">
+              <p class="mt-6 font-sans text-[11px] uppercase tracking-ultra-wide text-brass-700">
                 {p.label}
               </p>
-              <h3 class="mt-3 font-display text-2xl text-bone-100">{p.title}</h3>
-              <p class="mt-4 font-sans text-sm leading-relaxed text-bone-400">{p.body}</p>
+              <h3 class="mt-3 font-display text-[24px] font-medium leading-tight text-espresso-900">
+                {p.title}
+              </h3>
+              <p class="mt-4 font-sans text-[14px] leading-relaxed text-espresso-700">
+                {p.body}
+              </p>
             </div>
           ))
         }
@@ -213,29 +251,27 @@ const principles = [
   <div class="hairline mx-auto max-w-5xl"></div>
 
   <!-- BROEN -->
-  <section class="relative overflow-hidden py-32 sm:py-44">
-    <div
-      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(200,162,76,0.10)_0%,transparent_50%)]"
-      aria-hidden="true"
-    >
-    </div>
-    <div class="container-edge relative">
+  <section class="relative py-24 sm:py-32">
+    <div class="container-edge">
       <div class="mx-auto max-w-3xl text-center" data-fade>
         <SectionLabel label="Drop er Nobel" align="center" />
-        <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
-          Samme hender.<br /><span class="italic text-gold-200">Ny måte å dele.</span>
+        <h2 class="mt-8 font-display text-[40px] font-medium leading-[1.05] text-espresso-900 sm:text-6xl">
+          Samme hender.
+          <br />
+          <span class="display-italic text-brass-700">Ny måte å dele.</span>
         </h2>
-        <p class="mt-10 font-sans text-lg leading-relaxed text-bone-300">
-          Nobel Drop er bakt på de samme to kjøkkenene som leverer bryllupskaken til
-          tantes andre forsøk. Forskjellen er at du ikke trenger å ringe en uke i
-          forveien. Last ned appen, slå på varsler, og du er klar til neste fredag.
+        <p class="mt-10 font-sans text-[17px] leading-relaxed text-espresso-700 sm:text-[18px]">
+          Nobel Drop er bakt på de samme to kjøkkenene som leverer bryllupskaken
+          til tantes andre forsøk. Forskjellen er at du ikke trenger å ringe en
+          uke i forveien. Last ned appen, slå på varsler, og du er klar når
+          neste drop er live.
         </p>
       </div>
 
-      <div class="mx-auto mt-16 max-w-3xl border border-gold-400/40 bg-ink-850 p-10" data-fade>
-        <p class="font-display text-2xl leading-relaxed text-bone-100 sm:text-3xl">
-          "Vi har bakt for byen i 39 år. Nobel Drop er bare første gang vi sender det
-          <span class="italic text-gold-200">direkte til deg</span>."
+      <div class="mx-auto mt-12 max-w-3xl rounded-lg border border-espresso-900/10 bg-cream-50 p-10 photo-frame" data-fade>
+        <p class="font-display text-[22px] leading-relaxed text-espresso-900 sm:text-[28px]">
+          "Vi har bakt for byen i 39 år. Nobel Drop er bare første gang vi sender
+          det <span class="display-italic text-brass-700">direkte til deg</span>."
         </p>
       </div>
 
@@ -248,10 +284,10 @@ const principles = [
   </section>
 
   <CTABand
-    eyebrow="Klar for fredag?"
+    eyebrow="Klar?"
     title="39 år med håndverk. Ett trykk unna."
-    body="Last ned, slå på varsler, og bli en del av neste fredags drop."
-    primaryLabel="Last ned appen"
+    body="Last ned, slå på varsler, og bli en del av neste drop."
+    primaryLabel="Bestill nå"
     secondaryHref="/slik-fungerer-det"
     secondaryLabel="Slik fungerer det"
   />

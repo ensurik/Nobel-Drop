@@ -1,7 +1,7 @@
 ---
 interface Props {
   href: string;
-  variant?: "primary" | "ghost";
+  variant?: "primary" | "secondary" | "ghost";
   size?: "md" | "lg";
   external?: boolean;
   arrow?: boolean;
@@ -18,15 +18,19 @@ const {
 } = Astro.props;
 
 const baseClasses =
-  "group inline-flex items-center justify-center gap-3 font-sans uppercase tracking-ultra-wide transition";
+  "group inline-flex items-center justify-center gap-3 font-sans font-medium transition";
+
 const sizeClasses =
-  size === "lg"
-    ? "px-8 py-4 text-sm"
-    : "px-6 py-3 text-xs";
-const variantClasses =
-  variant === "primary"
-    ? "border border-gold-400 bg-gold-400/5 text-gold-100 hover:border-gold-200 hover:bg-gold-400/15 hover:text-gold-50"
-    : "border border-ink-500 text-bone-200 hover:border-gold-400/60 hover:text-gold-200";
+  size === "lg" ? "px-7 py-4 text-[14px]" : "px-5 py-3 text-[13px]";
+
+const variantClasses = {
+  primary:
+    "rounded-full bg-espresso-900 text-cream-50 hover:bg-espresso-800 shadow-[0_2px_0_rgba(15,10,6,0.04),0_8px_24px_-8px_rgba(26,20,16,0.35)]",
+  secondary:
+    "rounded-full bg-brass-500 text-cream-50 hover:bg-brass-600 shadow-[0_2px_0_rgba(15,10,6,0.04),0_8px_24px_-8px_rgba(163,125,46,0.45)]",
+  ghost:
+    "rounded-full border border-espresso-900/20 text-espresso-900 hover:border-espresso-900/45 hover:bg-cream-100",
+}[variant];
 ---
 
 <a

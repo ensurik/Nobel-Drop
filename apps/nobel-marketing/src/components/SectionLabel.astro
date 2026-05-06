@@ -1,11 +1,10 @@
 ---
 interface Props {
-  number?: string;
   label: string;
   align?: "left" | "center";
 }
 
-const { number, label, align = "left" } = Astro.props;
+const { label, align = "left" } = Astro.props;
 ---
 
 <div
@@ -14,10 +13,9 @@ const { number, label, align = "left" } = Astro.props;
     align === "center" && "justify-center",
   ]}
 >
-  <span class="h-px w-8 bg-gold-400/60"></span>
-  {number && <span class="font-display text-sm italic text-gold-200">{number}</span>}
-  <span class="font-sans text-[11px] font-medium uppercase tracking-ultra-wide text-gold-200/80">
+  <span class="h-px w-6 bg-brass-500"></span>
+  <span class="font-sans text-[11px] font-medium uppercase tracking-ultra-wide text-brass-700">
     {label}
   </span>
-  <span class="h-px w-8 bg-gold-400/60"></span>
+  <span class="h-px w-6 bg-brass-500"></span>
 </div>

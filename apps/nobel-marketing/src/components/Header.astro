@@ -9,30 +9,30 @@ const links = [
 const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 ---
 
-<header class="sticky top-0 z-40 border-b border-ink-600/60 bg-ink-900/80 backdrop-blur-md">
+<header class="sticky top-0 z-40 border-b border-espresso-900/10 bg-cream-50/85 backdrop-blur-md">
   <div class="container-edge flex h-16 items-center justify-between sm:h-20">
     <a href="/" class="group flex items-center gap-3" aria-label="Nobel Drop forside">
-      <span
-        class="font-display text-2xl tracking-wide text-bone-100 transition group-hover:text-gold-200 sm:text-[26px]"
-      >
-        Nobel<span class="ml-2 inline-block text-gold-200">Drop</span>
+      <span class="font-display text-[26px] font-medium leading-none tracking-tight text-espresso-900 transition group-hover:text-brass-700">
+        Nobel<span class="ml-1.5 text-brass-600 italic">Drop</span>
       </span>
     </a>
 
-    <nav class="hidden items-center gap-8 md:flex" aria-label="Hovednavigasjon">
+    <nav class="hidden items-center gap-9 md:flex" aria-label="Hovednavigasjon">
       {
         links.map((l) => {
           const active = currentPath === l.href;
           return (
             <a
               href={l.href}
-              class={`relative font-sans text-sm tracking-wide transition ${
-                active ? "text-gold-200" : "text-bone-300 hover:text-bone-100"
+              class={`relative font-sans text-[13px] transition ${
+                active
+                  ? "text-espresso-900"
+                  : "text-espresso-600 hover:text-espresso-900"
               }`}
             >
               {l.label}
               {active && (
-                <span class="absolute -bottom-2 left-0 right-0 mx-auto h-px w-4 bg-gold-200" />
+                <span class="absolute -bottom-2 left-0 right-0 mx-auto h-px w-3 bg-brass-600" />
               )}
             </a>
           );
@@ -42,10 +42,10 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 
     <div class="flex items-center gap-3">
       <a
-        href="https://app.nobeldrop.no"
-        class="group hidden items-center gap-2 border border-gold-400/60 px-4 py-2 font-sans text-xs uppercase tracking-ultra-wide text-gold-200 transition hover:border-gold-200 hover:bg-gold-400/10 hover:text-gold-100 sm:inline-flex"
+        href="https://shop.nobeldrop.no"
+        class="group hidden items-center gap-2 rounded-full bg-espresso-900 px-5 py-2.5 font-sans text-[12px] font-medium text-cream-50 transition hover:bg-espresso-800 sm:inline-flex"
       >
-        Åpne app
+        Bestill nå
         <svg
           class="h-3 w-3 transition group-hover:translate-x-0.5"
           viewBox="0 0 12 12"
@@ -59,11 +59,11 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 
       <button
         id="mobile-menu-btn"
-        class="md:hidden p-2 text-bone-100"
+        class="md:hidden p-2 text-espresso-900"
         aria-label="Meny"
         aria-expanded="false"
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <line x1="4" y1="8" x2="20" y2="8" />
           <line x1="4" y1="16" x2="20" y2="16" />
         </svg>
@@ -73,25 +73,25 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 
   <div
     id="mobile-menu"
-    class="hidden border-t border-ink-600/60 bg-ink-900 md:hidden"
+    class="hidden border-t border-espresso-900/10 bg-cream-50 md:hidden"
   >
     <nav class="container-edge py-6">
-      <div class="flex flex-col gap-5">
+      <div class="flex flex-col gap-4">
         {
           links.map((l) => (
             <a
               href={l.href}
-              class="font-display text-2xl text-bone-100 hover:text-gold-200"
+              class="font-display text-2xl text-espresso-900 hover:text-brass-700"
             >
               {l.label}
             </a>
           ))
         }
         <a
-          href="https://app.nobeldrop.no"
-          class="mt-4 inline-flex items-center justify-between border border-gold-400/60 px-4 py-3 font-sans text-xs uppercase tracking-ultra-wide text-gold-200"
+          href="https://shop.nobeldrop.no"
+          class="mt-4 inline-flex items-center justify-between rounded-full bg-espresso-900 px-5 py-3.5 font-sans text-sm font-medium text-cream-50"
         >
-          Åpne app
+          Bestill nå
           <span aria-hidden="true">→</span>
         </a>
       </div>

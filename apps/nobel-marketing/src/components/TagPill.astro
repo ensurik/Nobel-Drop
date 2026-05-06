@@ -5,12 +5,12 @@ interface Props {
 }
 const { size = "md", class: className = "" } = Astro.props;
 const sizeClass =
-  size === "sm" ? "px-3 py-1 text-[11px]" : "px-5 py-2 text-xs";
+  size === "sm" ? "px-3 py-1 text-[11px]" : "px-4 py-1.5 text-[12px]";
 ---
 
 <span
   class:list={[
-    "inline-flex items-center justify-center rounded-full border border-gold-400/55 bg-ink-900/40 font-sans uppercase tracking-ultra-wide text-gold-100",
+    "inline-flex items-center justify-center rounded-full border border-espresso-900/15 bg-cream-50 font-sans font-medium text-espresso-800",
     sizeClass,
     className,
   ]}

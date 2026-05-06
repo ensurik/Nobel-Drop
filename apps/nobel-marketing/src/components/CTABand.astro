@@ -12,36 +12,28 @@ interface Props {
 }
 
 const {
-  eyebrow = "Neste drop · fredag kl. 10",
-  title = "Vær klar når ovnen åpnes.",
-  body = "Vi sender deg push i samme sekund neste drop går live. Last ned appen, slå på varsler, og du er først i køen.",
-  primaryHref = "https://app.nobeldrop.no",
-  primaryLabel = "Last ned appen",
+  eyebrow = "Neste drop",
+  title = "Vi varsler. Du henter.",
+  body = "Vi sender deg push når et nytt drop går live. Last ned, slå på varsler, og vær blant de første.",
+  primaryHref = "https://shop.nobeldrop.no",
+  primaryLabel = "Bestill nå",
   secondaryHref = "/slik-fungerer-det",
   secondaryLabel = "Slik fungerer det",
 } = Astro.props;
 ---
 
-<section class="relative overflow-hidden py-32" data-fade>
-  <div
-    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(200,162,76,0.08)_0%,transparent_60%)]"
-    aria-hidden="true"
-  >
-  </div>
-
+<section class="relative py-32" data-fade>
   <div class="container-edge relative">
     <div class="mx-auto max-w-3xl text-center">
-      <p class="font-sans text-[11px] font-medium uppercase tracking-ultra-wide text-gold-200/80">
-        {eyebrow}
-      </p>
-      <h2 class="mt-6 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl lg:text-7xl">
+      <p class="label-tiny">{eyebrow}</p>
+      <h2 class="mt-6 font-display text-[40px] font-medium leading-[1.05] text-espresso-900 sm:text-6xl lg:text-7xl">
         {title}
       </h2>
-      <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
+      <p class="mx-auto mt-8 max-w-xl font-sans text-[17px] leading-relaxed text-espresso-700">
         {body}
       </p>
 
-      <div class="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <div class="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
         <GoldButton href={primaryHref} variant="primary" size="lg">
           {primaryLabel}
         </GoldButton>
@@ -50,15 +42,9 @@ const {
         </GoldButton>
       </div>
 
-      <p class="mt-10 font-sans text-xs uppercase tracking-ultra-wide text-bone-500">
-        Betal med Vipps · Apple Pay · Klarna
+      <p class="mt-10 font-sans text-[11px] uppercase tracking-ultra-wide text-espresso-500">
+        Vipps · Apple Pay · Klarna
       </p>
     </div>
-  </div>
-
-  <div
-    class="pointer-events-none absolute bottom-0 left-1/2 h-px w-1/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-gold-400/60 to-transparent"
-    aria-hidden="true"
-  >
   </div>
 </section>

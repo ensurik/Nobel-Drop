@@ -1,24 +1,15 @@
 ---
 interface Props {
   class?: string;
-  inset?: boolean;
 }
-const { class: className = "", inset = true } = Astro.props;
+const { class: className = "" } = Astro.props;
 ---
 
-<div class:list={["relative", className]}>
-  <div
-    class="pointer-events-none absolute inset-0 border border-gold-400/40"
-    aria-hidden="true"
-  >
-  </div>
-  {
-    inset && (
-      <div
-        class="pointer-events-none absolute inset-2 border border-gold-400/15"
-        aria-hidden="true"
-      />
-    )
-  }
+<div
+  class:list={[
+    "relative overflow-hidden bg-cream-100 photo-frame",
+    className,
+  ]}
+>
   <slot />
 </div>

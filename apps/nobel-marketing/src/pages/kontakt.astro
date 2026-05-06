@@ -2,7 +2,7 @@
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import GoldButton from "~/components/GoldButton.astro";
 import SectionLabel from "~/components/SectionLabel.astro";
-import HairlineFrame from "~/components/HairlineFrame.astro";
+import Photo from "~/components/Photo.astro";
 
 const contactBlocks = [
   {
@@ -31,23 +31,21 @@ const contactBlocks = [
   description="Kom i kontakt med oss bak Nobel Drop. Bestilling, henting, presse, eller tradisjonell catering fra Nobel Catering & Conditori."
 >
   <!-- HERO -->
-  <section class="relative overflow-hidden pt-24 pb-24 sm:pt-36 sm:pb-32">
-    <div
-      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(200,162,76,0.08)_0%,transparent_55%)]"
-      aria-hidden="true"
-    >
-    </div>
-    <div class="container-edge relative">
+  <section class="relative pt-12 pb-20 sm:pt-20 sm:pb-28">
+    <div class="container-edge">
       <div class="mx-auto max-w-3xl">
         <SectionLabel label="Kontakt" />
         <h1
-          class="mt-8 font-display text-5xl leading-[1.02] text-bone-100 sm:text-7xl lg:text-[88px]"
+          class="mt-8 font-display text-[52px] font-medium leading-[0.98] tracking-tight text-espresso-900 sm:text-7xl lg:text-[80px]"
           data-fade
         >
-          Vi svarer alle, <br /><span class="italic text-shimmer">alltid</span>.
+          Vi svarer alle,
+          <br />
+          <span class="display-italic text-brass-700">alltid</span>.
         </h1>
-        <p class="mt-10 max-w-2xl font-sans text-lg leading-relaxed text-bone-300" data-fade>
-          Spør oss om alt. Vi liker spørsmål — det er sånn vi har bygget Nobel i 39 år.
+        <p class="mt-10 max-w-xl font-sans text-[17px] leading-relaxed text-espresso-700 sm:text-[18px]" data-fade>
+          Spør oss om alt. Vi liker spørsmål — det er sånn vi har bygget Nobel
+          i 39 år.
         </p>
       </div>
     </div>
@@ -58,23 +56,23 @@ const contactBlocks = [
   <!-- KONTAKT-BLOKKER -->
   <section class="relative py-24 sm:py-32">
     <div class="container-edge">
-      <div class="grid gap-px bg-gold-400/15 lg:grid-cols-3" data-fade>
+      <div class="grid gap-px bg-espresso-900/10 lg:grid-cols-3" data-fade>
         {
           contactBlocks.map((b) => (
-            <div class="group flex flex-col bg-ink-900 p-10 transition hover:bg-ink-850">
-              <p class="font-sans text-[11px] uppercase tracking-ultra-wide text-gold-200/80">
+            <div class="group flex flex-col bg-cream-50 p-10 transition hover:bg-cream-100">
+              <p class="font-sans text-[11px] uppercase tracking-ultra-wide text-brass-700">
                 {b.label}
               </p>
-              <h3 class="mt-4 flex-1 font-display text-2xl leading-tight text-bone-100">
+              <h3 class="mt-4 flex-1 font-display text-[22px] font-medium leading-tight text-espresso-900 sm:text-[24px]">
                 {b.title}
               </h3>
               <a
                 href={`mailto:${b.email}`}
-                class="mt-8 font-display text-xl text-gold-200 transition hover:text-gold-100"
+                class="mt-8 font-display text-[18px] font-medium text-brass-700 transition hover:text-brass-800 sm:text-[20px]"
               >
                 {b.email}
               </a>
-              <p class="mt-3 font-sans text-xs uppercase tracking-ultra-wide text-bone-500">
+              <p class="mt-3 font-sans text-[11px] uppercase tracking-ultra-wide text-espresso-500">
                 {b.response}
               </p>
             </div>
@@ -86,33 +84,37 @@ const contactBlocks = [
 
   <div class="hairline mx-auto max-w-5xl"></div>
 
-  <!-- ADRESSE / VISITORS -->
+  <!-- ADRESSE -->
   <section class="relative py-24 sm:py-32">
     <div class="container-edge">
-      <div class="grid gap-16 lg:grid-cols-12 lg:gap-20">
+      <div class="grid gap-12 lg:grid-cols-12 lg:gap-20">
         <div class="lg:col-span-5" data-fade>
           <SectionLabel label="Kjøkkenet" />
-          <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-5xl">
-            Nobel Catering & Conditori
+          <h2 class="mt-8 font-display text-[40px] font-medium leading-[1.05] text-espresso-900 sm:text-[52px]">
+            Nobel Catering
+            <br />
+            <span class="display-italic text-brass-700">& Conditori</span>
           </h2>
-          <p class="mt-6 font-sans text-base leading-relaxed text-bone-300">
-            Vi baker fra Bærum, med et ekstra kjøkken på Skedsmokorset. Hovedkjøkkenet er
-            ikke åpent for besøk uten avtale, men send oss en mail så svarer vi på alt
-            innen et døgn.
+          <p class="mt-6 font-sans text-[16px] leading-relaxed text-espresso-700">
+            Vi baker fra Bærum, med et ekstra kjøkken på Skedsmokorset.
+            Hovedkjøkkenet er ikke åpent for besøk uten avtale, men send oss en
+            mail så svarer vi på alt innen et døgn.
           </p>
 
           <address class="mt-10 not-italic">
-            <p class="font-display text-2xl text-bone-100">Eiksveien 110</p>
-            <p class="mt-1 font-sans text-base text-bone-300">1361 Østerås</p>
-            <p class="mt-1 font-sans text-base text-bone-300">Bærum, Norge</p>
+            <p class="font-display text-[24px] font-medium text-espresso-900">
+              Eiksveien 110
+            </p>
+            <p class="mt-1 font-sans text-[16px] text-espresso-700">1361 Østerås</p>
+            <p class="mt-1 font-sans text-[16px] text-espresso-700">Bærum, Norge</p>
           </address>
 
-          <div class="mt-10 space-y-2 font-sans text-sm text-bone-400">
-            <p><span class="text-bone-500">Org.nr:</span> 931 878 409</p>
-            <p><span class="text-bone-500">Etablert:</span> 1986</p>
+          <div class="mt-10 space-y-2 font-sans text-[14px] text-espresso-600">
+            <p><span class="text-espresso-500">Org.nr:</span> 931 878 409</p>
+            <p><span class="text-espresso-500">Etablert:</span> 1986</p>
             <p>
-              <span class="text-bone-500">Søsterside:</span>{" "}
-              <a href="https://nobelcatering.no" class="text-gold-200 hover:text-gold-100">
+              <span class="text-espresso-500">Søsterside:</span>{" "}
+              <a href="https://nobelcatering.no" class="link-brass">
                 nobelcatering.no
               </a>
             </p>
@@ -120,29 +122,12 @@ const contactBlocks = [
         </div>
 
         <div class="lg:col-span-7" data-fade>
-          <HairlineFrame class="aspect-[4/3] bg-gradient-to-br from-ink-850 via-ink-900 to-ink-800">
-            <div class="absolute inset-0 flex items-center justify-center p-10 text-center">
-              <div>
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1"
-                  class="mx-auto text-gold-200"
-                  aria-hidden="true"
-                >
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-                <p class="mt-6 font-display text-3xl text-bone-100 sm:text-4xl">Østerås, Bærum</p>
-                <p class="mt-2 font-sans text-xs uppercase tracking-ultra-wide text-bone-500">
-                  Vårt hovedkjøkken siden 2000-tallet
-                </p>
-              </div>
-            </div>
-          </HairlineFrame>
+          <Photo
+            src="/assets/about/storefront.jpg"
+            alt="Nobel Catering & Conditori, eksteriør i Bærum"
+            aspect="aspect-[5/4]"
+            fallbackLabel="Bilde · Eksteriør"
+          />
         </div>
       </div>
     </div>
@@ -152,17 +137,17 @@ const contactBlocks = [
   <section class="relative py-24 sm:py-32">
     <div class="container-edge">
       <div
-        class="mx-auto flex max-w-4xl flex-col items-center gap-8 border border-gold-400/40 bg-ink-850 p-12 text-center"
+        class="mx-auto flex max-w-4xl flex-col items-center gap-8 rounded-lg border border-espresso-900/10 bg-cream-50 p-12 text-center photo-frame"
         data-fade
       >
-        <p class="font-sans text-[11px] uppercase tracking-ultra-wide text-gold-200/80">
+        <p class="font-sans text-[11px] uppercase tracking-ultra-wide text-brass-700">
           Vil du heller bare bestille?
         </p>
-        <h2 class="font-display text-3xl leading-tight text-bone-100 sm:text-5xl">
+        <h2 class="font-display text-[28px] font-medium leading-tight text-espresso-900 sm:text-[44px]">
           Åpne appen og se neste drop.
         </h2>
-        <GoldButton href="https://app.nobeldrop.no" variant="primary" size="lg">
-          Åpne app.nobeldrop.no
+        <GoldButton href="https://shop.nobeldrop.no" variant="primary" size="lg">
+          Bestill nå
         </GoldButton>
       </div>
     </div>

@@ -5,31 +5,26 @@ import SectionLabel from "~/components/SectionLabel.astro";
 ---
 
 <BaseLayout title="404 — Ikke funnet" description="Siden du leter etter finnes ikke.">
-  <section class="relative flex min-h-[80vh] items-center overflow-hidden py-24">
-    <div
-      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(200,162,76,0.08)_0%,transparent_55%)]"
-      aria-hidden="true"
-    >
-    </div>
-    <div class="container-edge relative">
+  <section class="relative flex min-h-[80vh] items-center py-24">
+    <div class="container-edge">
       <div class="mx-auto max-w-3xl text-center">
         <SectionLabel label="Feil 404" align="center" />
-        <h1 class="mt-8 font-display text-7xl leading-none text-bone-100 sm:text-[160px]" data-fade>
-          <span class="text-shimmer">404</span>
+        <h1 class="mt-8 font-display text-[88px] font-medium leading-none text-brass-700 sm:text-[160px]" data-fade>
+          404
         </h1>
-        <p class="mt-8 font-display text-3xl text-bone-100 sm:text-5xl" data-fade>
+        <p class="mt-8 font-display text-[28px] font-medium leading-tight text-espresso-900 sm:text-[44px]" data-fade>
           Dette dropet finnes ikke.
         </p>
-        <p class="mx-auto mt-6 max-w-xl font-sans text-base leading-relaxed text-bone-300 sm:text-lg" data-fade>
-          Lenken er enten utløpt, eller du skrev feil. Sjansen for at det er det første er
-          størst — drops varer ikke lenge.
+        <p class="mx-auto mt-6 max-w-xl font-sans text-[16px] leading-relaxed text-espresso-700 sm:text-[17px]" data-fade>
+          Lenken er enten utløpt, eller du skrev feil. Sjansen for at det er det
+          første er størst — drops varer ikke lenge.
         </p>
-        <div class="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row" data-fade>
+        <div class="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4" data-fade>
           <GoldButton href="/" variant="primary" size="lg">
             Tilbake til forsiden
           </GoldButton>
-          <GoldButton href="https://app.nobeldrop.no" variant="ghost" size="lg" arrow={false}>
-            Åpne app
+          <GoldButton href="https://shop.nobeldrop.no" variant="ghost" size="lg" arrow={false}>
+            Bestill nå
           </GoldButton>
         </div>
       </div>

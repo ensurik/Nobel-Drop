@@ -7,18 +7,17 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
-  noFooterCTA?: boolean;
 }
 
 const {
   title,
-  description = "Nobel Drop — friskbakte makroner og kaker fra Nobel Catering & Conditori. Bestilt i appen fredag, hentet på ditt nærmeste stopp. Bærum siden 1986.",
+  description = "Nobel Drop — friskbakte makroner og kaker fra Nobel Catering & Conditori. Bestilt i appen, hentet på ditt nærmeste stopp. Bærum siden 1986.",
   image = "/og-image.jpg",
 } = Astro.props;
 
 const fullTitle = title === "Nobel Drop" ? title : `${title} — Nobel Drop`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const appUrl = "https://app.nobeldrop.no";
+const shopUrl = "https://shop.nobeldrop.no";
 ---
 
 <!doctype html>
@@ -26,8 +25,8 @@ const appUrl = "https://app.nobeldrop.no";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#0A0A0B" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#F5F0E6" />
+    <meta name="color-scheme" content="light" />
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
@@ -47,26 +46,20 @@ const appUrl = "https://app.nobeldrop.no";
     <meta name="twitter:image" content={new URL(image, Astro.site).href} />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href={appUrl} />
+    <link rel="preconnect" href={shopUrl} />
   </head>
 
-  <body class="bg-ink-900 text-bone-100 selection:bg-gold/40">
+  <body class="bg-cream-100 text-espresso-900">
     <a
       href="#main"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-ink-800 focus:px-4 focus:py-2 focus:text-bone-100 focus:outline focus:outline-1 focus:outline-gold"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:bg-espresso-900 focus:px-4 focus:py-2 focus:text-cream-50"
     >
       Hopp til innhold
     </a>
 
-    <div
-      class="pointer-events-none fixed inset-0 z-0 bg-hairline-grid bg-grid-1 opacity-30 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_85%)]"
-      aria-hidden="true"
-    >
-    </div>
-
     <Header />
 
-    <main id="main" class="relative z-10">
+    <main id="main" class="relative">
       <slot />
     </main>
 
@@ -79,17 +72,17 @@ const appUrl = "https://app.nobeldrop.no";
           entries.forEach((e) => {
             if (e.isIntersecting) {
               e.target.classList.add("opacity-100", "translate-y-0");
-              e.target.classList.remove("opacity-0", "translate-y-4");
+              e.target.classList.remove("opacity-0", "translate-y-3");
               obs.unobserve(e.target);
             }
           });
         },
-        { rootMargin: "0px 0px -10% 0px", threshold: 0.05 }
+        { rootMargin: "0px 0px -8% 0px", threshold: 0.05 }
       );
       document.querySelectorAll("[data-fade]").forEach((el) => {
         el.classList.add(
           "opacity-0",
-          "translate-y-4",
+          "translate-y-3",
           "transition-all",
           "duration-700",
           "ease-out"

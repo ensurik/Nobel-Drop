@@ -2,80 +2,93 @@
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import GoldButton from "~/components/GoldButton.astro";
 import SectionLabel from "~/components/SectionLabel.astro";
-import HairlineFrame from "~/components/HairlineFrame.astro";
+import Photo from "~/components/Photo.astro";
 import CTABand from "~/components/CTABand.astro";
 
 const flow = [
   {
-    num: "1",
+    num: "01",
     title: "Last ned appen",
-    body: "Søk opp Nobel Drop i App Store eller Google Play, eller åpne den direkte på app.nobeldrop.no. Lag konto med e-post — det tar under et minutt.",
+    body: "Søk opp Nobel Drop i App Store eller Google Play, eller åpne den på shop.nobeldrop.no. Konto med e-post — under et minutt.",
     detail: "Slå på push-varsler så du blir varslet i samme sekund neste drop går live.",
   },
   {
-    num: "2",
-    title: "Få varsel fredag kl. 10",
-    body: "Hver fredag morgen sender vi deg en push når dropet er åpent. Du ser med en gang hvor mange bokser som er igjen, og hvilke smaker som er tilgjengelige denne uken.",
-    detail: "Inne i appen kan du også se hentestedene før dropet starter, slik at du er klar.",
+    num: "02",
+    title: "Få varsel når et drop er live",
+    body: "Vi varsler i appen når et nytt drop er klart. Du ser med en gang hva vi har bakt, hvilke smaker som er tilgjengelige, og hvor mange bokser som er igjen.",
+    detail: "Drops kan komme én eller flere ganger i uken — alt etter hva som lages på kjøkkenet.",
   },
   {
-    num: "3",
+    num: "03",
     title: "Velg boks og kake",
-    body: "Plukk størrelse på boksen — 4, 6 eller 8 makroner. Legg til en porsjonskake for to, eller en hel premiumkake til søndagens besøk. Alt i samme kurv.",
+    body: "Plukk boks — 4, 6 eller 8 makroner. Legg til en porsjonskake for to, eller en hel premiumkake til helgens besøk. Alt i samme kurv.",
     detail: "Du har 20 sekunder på å fullføre etter du har lagt i kurven. Vi reserverer plassen så lenge.",
   },
   {
-    num: "4",
+    num: "04",
     title: "Betal med Vipps eller Apple Pay",
-    body: "Ett trykk og du er ferdig. Vi støtter Vipps, Apple Pay og Klarna. Pengene reserveres med en gang slik at vi kan begynne å bake — du blir ikke trukket før vi har bakt boksen din.",
-    detail: "Bestiller du for over 1 000 kr, får du Nobel-kreditt til neste fredag (mer om det lenger ned).",
+    body: "Ett trykk og du er ferdig. Vi støtter Vipps, Apple Pay og Klarna. Pengene reserveres med en gang — du blir ikke trukket før vi har bakt boksen din.",
+    detail: "Bestiller du for over 1 000 kr, får du Nobel-kreditt til neste gang. Mer om det lenger ned.",
   },
   {
-    num: "5",
+    num: "05",
     title: "Velg hentested og tid",
-    body: "Velg ditt nærmeste stopp — Lier, Drammen, Holmestrand, Horten eller Tønsberg. Vi har 30-minutters vinduer du kan booke deg inn i, maks 10 kunder per vindu, så ingen kø.",
-    detail: "Du får øyeblikkelig en QR-kode i appen. Den er også på e-posten din.",
+    body: "Velg ditt nærmeste stopp — Lier, Drammen, Holmestrand, Horten eller Tønsberg. 30-minutters vinduer å booke deg inn i, maks 10 kunder per vindu, så ingen kø.",
+    detail: "Du får øyeblikkelig en QR-kode i appen. Den ligger også i e-posten din.",
   },
   {
-    num: "6",
+    num: "06",
     title: "Hent på 3 minutter",
-    body: "Kjør til stoppet ditt i ditt valgte vindu. Vis QR-koden — vi har boksen din klar med navnet ditt på. Hele utleveringen tar tre minutter.",
-    detail: "Boksen er pakket i kraftkartong med gullfoliert logo — perfekt om du skal videre med den som vertinnegave.",
+    body: "Kjør til stoppet ditt i ditt valgte vindu. Vis QR-koden — vi har boksen klar med navnet ditt på. Ut og inn på tre minutter.",
+    detail: "Boksen er pakket i kraftkartong med gullfoliert logo — perfekt om du tar den med som vertinnegave.",
   },
 ];
 
 const credit = [
   { tier: "1 000 kr+", credit: "10 %", body: "En boks og litt til, eller en hel kake." },
   { tier: "1 500 kr+", credit: "15 %", body: "Boksen, kaken og porsjonskaker for besøket." },
-  { tier: "2 000 kr+", credit: "20 %", body: "Helgens samlede dessert. Tjent kreditt til neste fredag." },
+  { tier: "2 000 kr+", credit: "20 %", body: "Helgens samlede dessert. Tjent kreditt til neste gang." },
 ];
 ---
 
 <BaseLayout
   title="Slik fungerer det"
-  description="Last ned, få varsel fredag kl. 10, bestill på 30 sekunder, hent på ditt nærmeste stopp. Slik fungerer Nobel Drop steg for steg."
+  description="Last ned, få varsel når et nytt drop er live, bestill på 30 sekunder, hent på ditt nærmeste stopp. Slik fungerer Nobel Drop steg for steg."
 >
   <!-- HERO -->
-  <section class="relative overflow-hidden pt-24 pb-24 sm:pt-36 sm:pb-32">
-    <div
-      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(200,162,76,0.08)_0%,transparent_55%)]"
-      aria-hidden="true"
-    >
-    </div>
-    <div class="container-edge relative">
-      <div class="mx-auto max-w-4xl text-center">
-        <SectionLabel label="Slik fungerer det" align="center" />
-        <h1
-          class="mt-8 font-display text-5xl leading-[1.02] text-bone-100 sm:text-7xl lg:text-[104px]"
-          data-fade
-        >
-          Fra varsel til boks<br /><span class="italic text-shimmer">på én fredag</span>.
-        </h1>
-        <p class="mx-auto mt-10 max-w-2xl font-sans text-lg leading-relaxed text-bone-300" data-fade>
-          Vi har bygget bestillingen så enkel at den passer inn mellom kaffepausen og
-          neste møte. Last ned, slå på varsler, og du er ferdig på 30 sekunder når neste
-          drop går live.
-        </p>
+  <section class="relative pt-12 pb-20 sm:pt-20 sm:pb-28">
+    <div class="container-edge">
+      <div class="grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-16">
+        <div class="lg:col-span-7 lg:pb-8">
+          <SectionLabel label="Slik fungerer det" />
+          <h1
+            class="mt-8 font-display text-[52px] font-medium leading-[0.98] tracking-tight text-espresso-900 sm:text-7xl lg:text-[88px]"
+            data-fade
+          >
+            Bestilt med ett trykk.
+            <br />
+            <span class="display-italic text-brass-700">Hentet samme dag.</span>
+          </h1>
+          <p
+            class="mt-10 max-w-xl font-sans text-[17px] leading-relaxed text-espresso-700 sm:text-[18px]"
+            data-fade
+          >
+            Vi har bygget bestillingen så enkel at den passer mellom kaffepausen og
+            neste møte. Last ned, slå på varsler, og du er ferdig på 30 sekunder
+            når neste drop går live.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5" data-fade>
+          <Photo
+            src="/assets/hero/macron-detail.jpg"
+            alt="Detalj av en Nobel-makron med gullflak"
+            aspect="aspect-[4/5]"
+            loading="eager"
+            fetchpriority="high"
+            fallbackLabel="Detalj · Makron med gullflak"
+          />
+        </div>
       </div>
     </div>
   </section>
@@ -85,85 +98,78 @@ const credit = [
   <!-- 6 STEG -->
   <section class="relative py-24 sm:py-32">
     <div class="container-edge">
-      <div class="mx-auto max-w-3xl" data-fade>
+      <div class="mx-auto mb-16 max-w-3xl" data-fade>
         <SectionLabel label="Hele flyten" />
-        <h2 class="mt-6 font-display text-4xl leading-[1.05] text-bone-100 sm:text-5xl">
-          Seks steg, ingen overraskelser.
+        <h2 class="mt-6 font-display text-[40px] font-medium leading-[1.05] text-espresso-900 sm:text-5xl">
+          Seks steg.
+          <span class="display-italic text-brass-700">Ingen overraskelser.</span>
         </h2>
       </div>
 
-      <div class="mt-20 space-y-px bg-gold-400/15">
+      <ol class="mx-auto max-w-5xl divide-y divide-espresso-900/10 border-y border-espresso-900/10">
         {
           flow.map((s) => (
-            <div class="grid bg-ink-900 lg:grid-cols-12 lg:items-start" data-fade>
-              <div class="border-b border-ink-700/60 p-10 lg:col-span-2 lg:border-b-0 lg:border-r">
-                <p class="font-display text-7xl leading-none text-gold-200">{s.num}</p>
-                <p class="mt-3 font-sans text-[11px] uppercase tracking-ultra-wide text-bone-500">
-                  Steg {s.num}
-                </p>
+            <li class="grid grid-cols-12 gap-6 px-1 py-12" data-fade>
+              <div class="col-span-12 sm:col-span-2">
+                <span class="font-display text-[44px] font-medium leading-none text-brass-600 sm:text-[64px]">
+                  {s.num}
+                </span>
               </div>
-              <div class="p-10 lg:col-span-7">
-                <h3 class="font-display text-3xl leading-tight text-bone-100">{s.title}</h3>
-                <p class="mt-4 font-sans text-base leading-relaxed text-bone-300">
+              <div class="col-span-12 sm:col-span-7">
+                <h3 class="font-display text-[26px] font-medium leading-tight text-espresso-900 sm:text-[34px]">
+                  {s.title}
+                </h3>
+                <p class="mt-3 font-sans text-[15px] leading-relaxed text-espresso-700 sm:text-[16px]">
                   {s.body}
                 </p>
               </div>
-              <div class="border-l border-ink-700/60 p-10 lg:col-span-3">
-                <p class="font-sans text-[11px] uppercase tracking-ultra-wide text-gold-200/80">
+              <div class="col-span-12 sm:col-span-3">
+                <p class="font-sans text-[10px] uppercase tracking-ultra-wide text-brass-700">
                   Bra å vite
                 </p>
-                <p class="mt-3 font-sans text-sm leading-relaxed text-bone-400">
+                <p class="mt-2 font-sans text-[13px] leading-relaxed text-espresso-600">
                   {s.detail}
                 </p>
               </div>
-            </div>
+            </li>
           ))
         }
-      </div>
+      </ol>
     </div>
   </section>
 
   <div class="hairline mx-auto max-w-5xl"></div>
 
   <!-- HVORFOR FORHÅNDSBETALING -->
-  <section class="relative overflow-hidden py-32 sm:py-44">
-    <div class="container-edge relative">
-      <div class="grid gap-16 lg:grid-cols-2 lg:items-center lg:gap-24">
-        <div data-fade>
+  <section class="relative py-24 sm:py-32">
+    <div class="container-edge">
+      <div class="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-20">
+        <div class="lg:col-span-6" data-fade>
           <SectionLabel label="Forhåndsbetaling" />
-          <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
-            Du betaler først
+          <h2 class="mt-6 font-display text-[40px] font-medium leading-[1.05] text-espresso-900 sm:text-[60px]">
+            Du betaler først.
             <br />
-            <span class="italic text-gold-200">— vi baker etterpå</span>.
+            <span class="display-italic text-brass-700">Vi baker etterpå.</span>
           </h2>
-          <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
-            Vi krever forhåndsbetaling fordi vi baker hver eneste boks etter at bestillingen
-            er låst. Det betyr at det aldri blir kastet noe — alt vi baker fredag morgen,
-            er allerede solgt og venter på å bli hentet samme dag.
+          <p class="mt-8 font-sans text-[16px] leading-[1.7] text-espresso-700 sm:text-[17px]">
+            Vi krever forhåndsbetaling fordi vi baker hver eneste boks etter at
+            bestillingen er låst. Det betyr at det aldri blir kastet noe — alt vi
+            baker, er allerede solgt og venter på å bli hentet.
           </p>
-          <p class="mt-6 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
-            For deg betyr det at det du henter, er bakt samme morgen. For oss betyr det at
-            vi kan jobbe med ekstra omhu. Ingen stress, ingen "kanskje noen kommer innom".
+          <p class="mt-5 font-sans text-[16px] leading-[1.7] text-espresso-700 sm:text-[17px]">
+            For deg betyr det at det du henter er bakt samme dag. For oss betyr
+            det at vi kan jobbe med ekstra omhu. Ingen stress, ingen "kanskje
+            noen kommer innom".
           </p>
         </div>
 
-        <div data-fade>
-          <HairlineFrame class="aspect-[4/5] bg-gradient-to-br from-ink-850 via-ink-900 to-ink-850">
-            <div class="absolute inset-0 flex flex-col items-center justify-center p-10">
-              <p class="font-sans text-[10px] uppercase tracking-ultra-wide text-gold-200/80">
-                Du har
-              </p>
-              <p class="mt-3 font-display text-7xl tabular-nums text-bone-100 sm:text-8xl">
-                <span class="text-shimmer">00:20</span>
-              </p>
-              <div class="mt-8 h-px w-24 bg-gold-400/60"></div>
-              <p class="mt-8 max-w-xs text-center font-sans text-sm leading-relaxed text-bone-400">
-                Reservasjonen holdes i 20 sekunder etter du har lagt i kurven. Det er nok
-                tid til å trykke Vipps. Hvis du er for treg, frigjøres plassen til neste
-                kunde — og du kan prøve igjen.
-              </p>
-            </div>
-          </HairlineFrame>
+        <div class="lg:col-span-6" data-fade>
+          <Photo
+            src="/assets/about/oven.jpg"
+            alt="Et øyeblikk fra Nobel-kjøkkenet — varmt lys, hender ved ovn"
+            aspect="aspect-[4/5]"
+            fallbackLabel="Bilde · Et øyeblikk fra kjøkkenet"
+          />
         </div>
       </div>
     </div>
@@ -172,108 +178,117 @@ const credit = [
   <div class="hairline mx-auto max-w-5xl"></div>
 
   <!-- HENTING -->
-  <section class="relative py-32 sm:py-44">
+  <section class="relative py-24 sm:py-32">
     <div class="container-edge">
       <div class="mx-auto max-w-3xl text-center" data-fade>
         <SectionLabel label="Henting" align="center" />
-        <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
-          Tre minutter
-          <br /><span class="italic text-gold-200">— ut og inn</span>.
+        <h2 class="mt-8 font-display text-[40px] font-medium leading-[1.05] text-espresso-900 sm:text-6xl">
+          Tre minutter,
+          <span class="display-italic text-brass-700">ut og inn</span>.
         </h2>
       </div>
 
-      <div class="mx-auto mt-20 max-w-5xl">
-        <div class="grid gap-px bg-gold-400/15 md:grid-cols-3" data-fade>
-          <div class="bg-ink-900 p-10 text-center">
-            <p class="font-display text-7xl text-gold-200 tabular-nums">90</p>
-            <p class="mt-3 font-sans text-xs uppercase tracking-ultra-wide text-bone-400">
-              Minutter på stoppet
-            </p>
-            <p class="mt-3 font-sans text-sm leading-relaxed text-bone-500">
-              Vi står på hvert hentested i 90 minutter, slik at du finner et vindu som passer.
-            </p>
-          </div>
-          <div class="bg-ink-900 p-10 text-center">
-            <p class="font-display text-7xl text-gold-200 tabular-nums">30</p>
-            <p class="mt-3 font-sans text-xs uppercase tracking-ultra-wide text-bone-400">
-              Minutters vinduer
-            </p>
-            <p class="mt-3 font-sans text-sm leading-relaxed text-bone-500">
-              Du booker deg inn i et 30-minutters vindu. Komme når du vil i det vinduet.
-            </p>
-          </div>
-          <div class="bg-ink-900 p-10 text-center">
-            <p class="font-display text-7xl text-gold-200 tabular-nums">10</p>
-            <p class="mt-3 font-sans text-xs uppercase tracking-ultra-wide text-bone-400">
-              Maks per vindu
-            </p>
-            <p class="mt-3 font-sans text-sm leading-relaxed text-bone-500">
-              Vi setter et tak slik at det aldri står kø. Tre minutter per kunde, ingen stress.
-            </p>
-          </div>
-        </div>
-
-        <div class="mt-10 border border-gold-400/40 bg-ink-850 p-8 text-center" data-fade>
-          <p class="font-display text-2xl italic text-gold-200">
-            Vis QR. Få boksen. Kjør hjem.
+      <div class="mx-auto mt-16 grid max-w-5xl grid-cols-3 gap-px bg-espresso-900/10 text-center" data-fade>
+        <div class="bg-cream-50 px-4 py-10 sm:py-14">
+          <p class="font-display text-[56px] font-medium leading-none text-brass-700 sm:text-[88px]">
+            90
           </p>
-          <p class="mt-3 font-sans text-sm text-bone-400">
-            Du trenger ikke å si navnet ditt. Vi kjenner deg igjen på koden.
+          <p class="mt-4 font-sans text-[11px] uppercase tracking-ultra-wide text-espresso-500">
+            Min på stoppet
+          </p>
+          <p class="mx-auto mt-3 max-w-[180px] font-sans text-[12px] leading-relaxed text-espresso-600 sm:text-[13px]">
+            Vi står på hvert hentested i 90 minutter slik at du finner et vindu som passer.
+          </p>
+        </div>
+        <div class="bg-cream-50 px-4 py-10 sm:py-14">
+          <p class="font-display text-[56px] font-medium leading-none text-brass-700 sm:text-[88px]">
+            30
+          </p>
+          <p class="mt-4 font-sans text-[11px] uppercase tracking-ultra-wide text-espresso-500">
+            Min vinduer
+          </p>
+          <p class="mx-auto mt-3 max-w-[180px] font-sans text-[12px] leading-relaxed text-espresso-600 sm:text-[13px]">
+            Du booker det vinduet som passer deg. Komme når du vil i det vinduet.
+          </p>
+        </div>
+        <div class="bg-cream-50 px-4 py-10 sm:py-14">
+          <p class="font-display text-[56px] font-medium leading-none text-brass-700 sm:text-[88px]">
+            10
+          </p>
+          <p class="mt-4 font-sans text-[11px] uppercase tracking-ultra-wide text-espresso-500">
+            Maks per vindu
+          </p>
+          <p class="mx-auto mt-3 max-w-[180px] font-sans text-[12px] leading-relaxed text-espresso-600 sm:text-[13px]">
+            Vi setter et tak slik at det aldri står kø. Tre minutter per kunde.
           </p>
         </div>
       </div>
+
+      <p class="mx-auto mt-12 max-w-2xl text-center font-display text-[22px] italic text-brass-700 sm:text-[28px]" data-fade>
+        Vis QR. Få boksen. Kjør hjem.
+      </p>
     </div>
   </section>
 
   <div class="hairline mx-auto max-w-5xl"></div>
 
-  <!-- HVIS VI IKKE NÅR DITT STOPP -->
-  <section class="relative py-32 sm:py-44">
+  <!-- VOLUMSTYRT -->
+  <section class="relative py-24 sm:py-32">
     <div class="container-edge">
-      <div class="grid gap-16 lg:grid-cols-2 lg:items-center lg:gap-24">
-        <div data-fade>
+      <div class="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-20">
+        <div class="lg:col-span-6" data-fade>
           <SectionLabel label="Hvis stoppet ikke aktiveres" />
-          <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
+          <h2 class="mt-6 font-display text-[40px] font-medium leading-[1.05] text-espresso-900 sm:text-[52px]">
             Vi kjører kun
-            <br /><span class="italic text-gold-200">der det er etterspørsel</span>.
+            <br />
+            <span class="display-italic text-brass-700">der det er etterspørsel</span>.
           </h2>
-          <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
-            Et hentested aktiveres bare hvis nok bestillinger ligger inne på det stoppet
-            — typisk innen 12 timer før vi setter oss i bilen. Det er sånn vi sikrer at
-            det er ferskt det vi leverer, og at vi ikke bruker tiden på en bil halvveis tom.
+          <p class="mt-8 font-sans text-[16px] leading-[1.7] text-espresso-700">
+            Et hentested aktiveres bare hvis nok bestillinger ligger inne på det
+            stoppet — typisk innen 12 timer før vi setter oss i bilen. Det er sånn
+            vi sikrer at det er ferskt det vi leverer, og at vi ikke bruker tiden
+            på en bil halvveis tom.
           </p>
-          <p class="mt-6 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
-            Hvis ditt stopp ikke aktiveres, får du to valg i appen: full refusjon med en gang,
-            eller flytt bestillingen til et annet aktivt stopp uten ekstra kostnad. Vi sender
-            deg push så snart vi vet.
+          <p class="mt-5 font-sans text-[16px] leading-[1.7] text-espresso-700">
+            Hvis ditt stopp ikke aktiveres, får du to valg i appen: full refusjon
+            med en gang, eller flytt bestillingen til et annet aktivt stopp uten
+            ekstra kostnad. Vi sender deg push så snart vi vet.
           </p>
         </div>
 
-        <div class="space-y-4" data-fade>
-          <div class="border border-moss/40 bg-moss/5 p-6">
+        <div class="space-y-3 lg:col-span-6" data-fade>
+          <div class="rounded-lg border border-moss/30 bg-moss/5 p-6">
             <div class="flex items-center justify-between">
-              <p class="font-display text-xl text-bone-100">Holmestrand</p>
-              <span class="font-sans text-xs uppercase tracking-ultra-wide text-moss">
+              <p class="font-display text-[20px] font-medium text-espresso-900">
+                Holmestrand
+              </p>
+              <span class="font-sans text-[10px] uppercase tracking-ultra-wide text-moss">
                 Aktivert
               </span>
             </div>
-            <div class="mt-4 h-1 w-full overflow-hidden bg-ink-700">
+            <div class="mt-4 h-1 w-full overflow-hidden rounded bg-espresso-900/10">
               <div class="h-full w-full bg-moss"></div>
             </div>
-            <p class="mt-2 font-sans text-xs text-bone-500">Bilen kjører som planlagt</p>
+            <p class="mt-2 font-sans text-[12px] text-espresso-600">
+              Bilen kjører som planlagt
+            </p>
           </div>
 
-          <div class="border border-ember/40 bg-ember/5 p-6">
+          <div class="rounded-lg border border-ember/30 bg-ember/5 p-6">
             <div class="flex items-center justify-between">
-              <p class="font-display text-xl text-bone-100">Eksempelstopp</p>
-              <span class="font-sans text-xs uppercase tracking-ultra-wide text-ember">
+              <p class="font-display text-[20px] font-medium text-espresso-900">
+                Eksempelstopp
+              </p>
+              <span class="font-sans text-[10px] uppercase tracking-ultra-wide text-ember">
                 Ikke nok bestillinger
               </span>
             </div>
-            <div class="mt-4 h-1 w-full overflow-hidden bg-ink-700">
+            <div class="mt-4 h-1 w-full overflow-hidden rounded bg-espresso-900/10">
               <div class="h-full w-[40%] bg-ember"></div>
             </div>
-            <p class="mt-2 font-sans text-xs text-bone-500">Du får valget om refusjon eller å bytte stopp</p>
+            <p class="mt-2 font-sans text-[12px] text-espresso-600">
+              Du får valget om refusjon eller å bytte stopp
+            </p>
           </div>
         </div>
       </div>
@@ -283,38 +298,39 @@ const credit = [
   <div class="hairline mx-auto max-w-5xl"></div>
 
   <!-- NOBEL-KREDITT -->
-  <section class="relative py-32 sm:py-44">
+  <section class="relative py-24 sm:py-32">
     <div class="container-edge">
       <div class="mx-auto max-w-3xl text-center" data-fade>
         <SectionLabel label="Nobel-kreditt" align="center" />
-        <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
+        <h2 class="mt-8 font-display text-[40px] font-medium leading-[1.05] text-espresso-900 sm:text-6xl">
           En takk fra oss
-          <br /><span class="italic text-gold-200">når du bestiller stort</span>.
+          <br />
+          <span class="display-italic text-brass-700">når du bestiller stort</span>.
         </h2>
-        <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
-          Bestiller du for et helgebesøk eller en feiring, gir vi tilbake en del av kjøpet
-          som Nobel-kreditt til neste fredag. Det er ikke en kupong eller rabatt — det er
-          en skjult bonus som dukker opp i appen din etter henting.
+        <p class="mt-8 font-sans text-[17px] leading-relaxed text-espresso-700">
+          Bestiller du for et helgebesøk eller en feiring, gir vi tilbake en del
+          av kjøpet som Nobel-kreditt til neste gang. Det er ikke en kupong eller
+          rabatt — det er en bonus som dukker opp i appen din etter henting.
         </p>
       </div>
 
-      <div class="mx-auto mt-20 max-w-3xl space-y-3" data-fade>
+      <div class="mx-auto mt-16 max-w-3xl space-y-3" data-fade>
         {
           credit.map((c, i) => (
-            <div class="flex items-center gap-6 border border-gold-400/30 bg-ink-850 p-6 transition hover:border-gold-400/60">
-              <div class="flex h-16 w-16 shrink-0 items-center justify-center border border-gold-400/40 bg-ink-900 font-display text-xl text-gold-200">
+            <div class="flex items-center gap-6 rounded-lg border border-espresso-900/10 bg-cream-50 p-6 transition hover:border-brass-400/60">
+              <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-brass-300 bg-brass-50 font-display text-[18px] font-medium text-brass-700">
                 {i + 1}
               </div>
               <div class="flex-1">
-                <p class="font-sans text-[11px] uppercase tracking-ultra-wide text-gold-200/80">
+                <p class="font-sans text-[10px] uppercase tracking-ultra-wide text-brass-700">
                   Bestilling fra {c.tier}
                 </p>
-                <p class="mt-1 font-display text-xl text-bone-100">
+                <p class="mt-1 font-display text-[18px] font-medium text-espresso-900 sm:text-[20px]">
                   Du får {c.credit} i Nobel-kreditt
                 </p>
-                <p class="mt-1 font-sans text-sm text-bone-400">{c.body}</p>
+                <p class="mt-1 font-sans text-[14px] text-espresso-600">{c.body}</p>
               </div>
-              <div class="hidden font-display text-5xl text-gold-200 sm:block">
+              <div class="hidden font-display text-[44px] font-medium text-brass-700 sm:block">
                 {c.credit}
               </div>
             </div>
@@ -322,19 +338,19 @@ const credit = [
         }
       </div>
 
-      <p class="mx-auto mt-12 max-w-2xl text-center font-sans text-sm leading-relaxed text-bone-400" data-fade>
-        Krediten brukes som betalingsmiddel ved neste kjøp i appen, og er gyldig i 90
-        dager. Ingen koder, ingen "husk å bruk denne på neste handel" — den ligger der og
-        venter når du logger inn.
+      <p class="mx-auto mt-10 max-w-2xl text-center font-sans text-[14px] leading-relaxed text-espresso-600" data-fade>
+        Krediten brukes som betalingsmiddel ved neste kjøp i appen, og er gyldig i
+        90 dager. Ingen koder, ingen "husk å bruk denne på neste handel" — den
+        ligger der og venter når du logger inn.
       </p>
     </div>
   </section>
 
   <CTABand
-    eyebrow="Klar for fredag?"
+    eyebrow="Klar?"
     title="Last ned. Slå på varsler. Vi tar resten."
-    body="Det tar et minutt å bli klar. Neste drop går live fredag kl. 10."
-    primaryLabel="Last ned appen"
+    body="Det tar et minutt å bli klar. Vi varsler deg når neste drop går live."
+    primaryLabel="Bestill nå"
     secondaryHref="/produkter"
     secondaryLabel="Se hva vi baker"
   />
