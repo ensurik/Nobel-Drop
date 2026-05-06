@@ -1,0 +1,63 @@
+{
+  "expo": {
+    "name": "Nobel Drop",
+    "slug": "nobel-drop",
+    "scheme": "nobeldrop",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": false,
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0A0A0B"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "no.nobeldrop.app",
+      "associatedDomains": ["applinks:nobeldrop.no"],
+      "infoPlist": {
+        "NSCameraUsageDescription": "For å skanne pickup-QR ved henting.",
+        "NSPhotoLibraryUsageDescription": "For å velge profilbilde."
+      }
+    },
+    "android": {
+      "package": "no.nobeldrop.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0A0A0B"
+      },
+      "permissions": ["CAMERA", "POST_NOTIFICATIONS"]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro",
+      "output": "single"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Tillat Nobel Drop å bruke kamera for å skanne pickup-QR."
+        }
+      ],
+      [
+        "@stripe/stripe-react-native",
+        {
+          "merchantIdentifier": "merchant.no.nobeldrop",
+          "enableGooglePay": true
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "tsconfigPaths": true
+    },
+    "extra": {
+      "eas": { "projectId": "REPLACE-ME" }
+    }
+  }
+}
