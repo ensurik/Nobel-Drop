@@ -1,0 +1,495 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import GoldButton from "~/components/GoldButton.astro";
+import SectionLabel from "~/components/SectionLabel.astro";
+import HairlineFrame from "~/components/HairlineFrame.astro";
+import TagPill from "~/components/TagPill.astro";
+import CTABand from "~/components/CTABand.astro";
+
+const products = [
+  {
+    title: "Macronen",
+    role: "Hero · Inngangsport",
+    body: "Den digitale popupen. Ekstremt fristende, visuelt optimalisert for sosiale medier, og kun tilgjengelig i tidsbegrenset drop.",
+  },
+  {
+    title: "Porsjonskaker",
+    role: "Add-on · Kurvbygger",
+    body: "Visuelt sterke desserter for 2–4 personer. Lett å si ja til i checkout — perfekt for å nå minimumsordren.",
+  },
+  {
+    title: "Premiumkaken",
+    role: "Anledningen · Ordreløfter",
+    body: "Selve ryggraden. Bursdag, helg, besøk, feiring. Den store kaken som radikalt løfter snittordren.",
+  },
+  {
+    title: "Porsjonspakket Middag",
+    role: "Fase 2 · Skalering",
+    body: "Hverdagsmiddag av høy kvalitet. Singelpakket luksus levert i samme app, samme pickup-rute, samme logikk.",
+  },
+];
+
+const loopSteps = [
+  { num: "01", title: "Kunden bestiller først", body: "Push-varsel når dropet går live. Digital tilgang via app." },
+  { num: "02", title: "Betaling innen 20 sekunder", body: "Vipps, Apple Pay eller Klarna. 100 % forhåndsbetalt før produksjon." },
+  { num: "03", title: "Velger stopp og vindu", body: "Kunden låser seg til geografisk node og 90-minutters tidsvindu." },
+  { num: "04", title: "Legger til ekstra produkter", body: "Kurv-byggere og ordreløftere når hovedproduktet er sikret." },
+  { num: "05", title: "Volumstyrt levering", body: "Vi leverer kun når stoppet når sitt minimumsvolum. Null tomkjøring." },
+];
+
+const occasions = ["Helg", "Bursdag", "Feiring", "Gave", "Vertinnegave", "Besøk"];
+---
+
+<BaseLayout
+  title="Nobel Drop"
+  description="En ny standard for premium D2C. 100 % forhåndsbetalt, faste pickup-vinduer, skalerbart uten faste utsalgssteder. Et produkt fra Nobel Catering & Conditori, etablert 1986."
+>
+  <!-- ============== HERO ============== -->
+  <section class="relative overflow-hidden pt-20 pb-32 sm:pt-32 sm:pb-44">
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,rgba(200,162,76,0.10)_0%,transparent_55%)]"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="container-edge relative">
+      <div class="mx-auto max-w-5xl text-center">
+        <p class="label-tiny mb-8" data-fade>
+          En kanal av Nobel Catering & Conditori · Etablert 1986
+        </p>
+
+        <h1
+          class="font-display text-[44px] leading-[0.98] tracking-tight text-bone-100 sm:text-7xl md:text-[96px] lg:text-[120px]"
+          data-fade
+        >
+          En ny standard
+          <br />
+          for <span class="italic text-shimmer">premium D2C</span>.
+        </h1>
+
+        <p
+          class="mx-auto mt-10 max-w-2xl font-sans text-lg leading-relaxed text-bone-300 sm:text-xl"
+          data-fade
+        >
+          Nobel Drop er ikke en markedsføringskampanje. Det er en ny infrastruktur som
+          forvandler 39 år med håndverkskvalitet til en datadrevet, høymargin D2C-kanal.
+        </p>
+
+        <div
+          class="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          data-fade
+        >
+          <GoldButton href="https://app.nobeldrop.no" variant="primary" size="lg">
+            Sikre din neste drop
+          </GoldButton>
+          <GoldButton href="/konseptet" variant="ghost" size="lg" arrow={false}>
+            Se hvordan det fungerer
+          </GoldButton>
+        </div>
+
+        <div class="mt-20 flex flex-wrap items-center justify-center gap-3 sm:gap-4" data-fade>
+          <TagPill>100 % forhåndsbetalt</TagPill>
+          <TagPill>Faste pickup-vinduer</TagPill>
+          <TagPill>Skalerbart uten butikker</TagPill>
+        </div>
+      </div>
+
+      <!-- Hero box image area — placeholder med gold frame -->
+      <div class="relative mx-auto mt-24 max-w-4xl" data-fade>
+        <HairlineFrame class="aspect-[16/9] bg-gradient-to-br from-ink-800 via-ink-900 to-ink-850">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center">
+              <div class="mx-auto mb-4 h-12 w-12 rounded-full border border-gold-400/40 bg-ink-800 flex items-center justify-center">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="text-gold-200">
+                  <rect x="3" y="6" width="18" height="13" rx="1" />
+                  <path d="M3 9h18M8 6V4h8v2" />
+                </svg>
+              </div>
+              <p class="font-display text-2xl tracking-wide text-gold-200 sm:text-3xl">
+                NOBEL DROP
+              </p>
+              <p class="mt-2 font-sans text-xs uppercase tracking-ultra-wide text-bone-400">
+                Premium kraftpapir · gullfoliert logo · 4 / 6 / 8 stk
+              </p>
+            </div>
+          </div>
+        </HairlineFrame>
+      </div>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <!-- ============== KONSEPTET / KJERNEMODELLEN ============== -->
+  <section class="relative py-32 sm:py-44">
+    <div class="container-edge">
+      <div class="mx-auto max-w-3xl text-center" data-fade>
+        <SectionLabel number="I." label="Kjernemodellen" align="center" />
+        <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
+          En lukket sløyfe.
+          <br />
+          <span class="text-gold-200 italic">Fra impuls til levering.</span>
+        </h2>
+        <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
+          Push-varsel, valg, betaling, tidsvindu, henting. Ingen ledd glir; hver overgang
+          er bygget for null friksjon — og maksimert margin.
+        </p>
+      </div>
+
+      <div class="mt-24 grid gap-px bg-gold-400/15 md:grid-cols-5">
+        {
+          loopSteps.map((s) => (
+            <div
+              class="group relative bg-ink-900 p-8 transition hover:bg-ink-850"
+              data-fade
+            >
+              <div class="font-display text-3xl text-gold-200">{s.num}</div>
+              <div class="mt-6 h-px w-8 bg-gold-400/60 transition-all group-hover:w-12" />
+              <h3 class="mt-6 font-display text-xl text-bone-100">{s.title}</h3>
+              <p class="mt-3 font-sans text-sm leading-relaxed text-bone-400">
+                {s.body}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-12 text-center" data-fade>
+        <GoldButton href="/konseptet" variant="ghost">
+          Se hele mekanikken
+        </GoldButton>
+      </div>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <!-- ============== FOMO / DIGITAL POPUP ============== -->
+  <section class="relative overflow-hidden py-32 sm:py-44">
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(200,162,76,0.08)_0%,transparent_50%)]"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="container-edge relative">
+      <div class="grid gap-16 lg:grid-cols-12 lg:gap-20">
+        <div class="lg:col-span-5" data-fade>
+          <SectionLabel number="II." label="Den digitale popupen" />
+          <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
+            Knapphet,
+            <br />
+            som <span class="italic text-gold-200">ingeniørkunst</span>.
+          </h2>
+          <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
+            Et begrenset antall produkter frigjøres på faste tider. 60&nbsp;% av forbrukere
+            drives til reaktive kjøp på grunn av FOMO innen 24 timer. Vi bygger ikke
+            kampanjer — vi bygger begjær.
+          </p>
+
+          <div class="mt-12 space-y-6">
+            <div class="border-l border-gold-400/40 pl-6">
+              <p class="font-display text-xl text-bone-100">Digital knapphet</p>
+              <p class="mt-2 font-sans text-sm leading-relaxed text-bone-400">
+                Begrenset antall slippes på faste tider — knapphet tvinger frem umiddelbar konvertering.
+              </p>
+            </div>
+            <div class="border-l border-gold-400/40 pl-6">
+              <p class="font-display text-xl text-bone-100">Eliminerer nøling</p>
+              <p class="mt-2 font-sans text-sm leading-relaxed text-bone-400">
+                Kundene vet at hvis de ikke kjøper nå, er muligheten borte. Ingen ventelister, ingen "kanskje senere".
+              </p>
+            </div>
+            <div class="border-l border-gold-400/40 pl-6">
+              <p class="font-display text-xl text-bone-100">Sosial validering</p>
+              <p class="mt-2 font-sans text-sm leading-relaxed text-bone-400">
+                Et produkt som forsvinner raskt, bygger sin egen verdi og status. The Supreme of snacks.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative lg:col-span-7" data-fade>
+          <div class="relative space-y-4">
+            <div class="ml-auto w-fit border border-gold-400/50 bg-ink-900/60 px-6 py-4 backdrop-blur">
+              <p class="font-sans text-xs uppercase tracking-ultra-wide text-bone-400">
+                Live · uke 18
+              </p>
+              <p class="mt-1 font-display text-3xl text-gold-200">Kun 22 bokser igjen</p>
+            </div>
+
+            <div class="border border-gold-400/35 bg-ink-900/60 px-6 py-4 backdrop-blur">
+              <p class="font-sans text-xs uppercase tracking-ultra-wide text-bone-400">
+                Avsluttet · uke 17
+              </p>
+              <p class="mt-1 font-display text-3xl text-gold-200">Utsolgt på 14 minutter</p>
+            </div>
+
+            <div class="ml-12 w-fit border border-gold-400/25 bg-ink-900/60 px-6 py-4 backdrop-blur">
+              <p class="font-sans text-xs uppercase tracking-ultra-wide text-bone-400">
+                Neste drop
+              </p>
+              <p class="mt-1 font-display text-3xl text-gold-200">Fredag kl. 10:00</p>
+            </div>
+          </div>
+
+          <div class="mt-12 border-t border-gold-400/20 pt-8">
+            <div class="flex items-baseline justify-between">
+              <span class="font-sans text-xs uppercase tracking-ultra-wide text-bone-500">
+                Konvertering, fredag kl. 10:00
+              </span>
+              <span class="font-display text-2xl text-gold-200 tabular-nums">14:59:59 → 00:00:00</span>
+            </div>
+            <div class="mt-4 h-1 w-full overflow-hidden bg-ink-700">
+              <div class="h-full w-[68%] bg-gradient-to-r from-gold-700 via-gold-400 to-gold-200"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <!-- ============== SALGSARKITEKTUR / PYRAMIDE ============== -->
+  <section class="relative py-32 sm:py-44">
+    <div class="container-edge">
+      <div class="mx-auto max-w-3xl text-center" data-fade>
+        <SectionLabel number="III." label="Salgsarkitekturen" align="center" />
+        <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
+          Vi selger ikke et sortiment.
+          <br />
+          <span class="italic text-gold-200">Vi selger en kurv.</span>
+        </h2>
+        <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
+          Hvert produkt har en presis rolle: trekke kunden inn, bygge kurven, eller løfte
+          den. Strukturert oppbygging, ikke tilfeldig sortiment.
+        </p>
+      </div>
+
+      <div class="mx-auto mt-24 max-w-3xl space-y-6" data-fade>
+        <div class="relative mx-auto w-full max-w-[260px] border border-gold-400/60 bg-ink-850 p-6 text-center">
+          <p class="font-sans text-[11px] uppercase tracking-ultra-wide text-gold-200/80">Topp · Anledning</p>
+          <p class="mt-3 font-display text-xl text-bone-100">Ordreløftere</p>
+          <p class="mt-3 font-sans text-xs leading-relaxed text-bone-400">
+            Premium-kaker som radikalt løfter snittordren.
+          </p>
+        </div>
+        <div class="relative mx-auto w-full max-w-[420px] border border-gold-400/45 bg-ink-850 p-6 text-center">
+          <p class="font-sans text-[11px] uppercase tracking-ultra-wide text-gold-200/80">Midt · Kurvbygger</p>
+          <p class="mt-3 font-display text-xl text-bone-100">Add-ons</p>
+          <p class="mt-3 font-sans text-xs leading-relaxed text-bone-400">
+            Små fristelser kunden svært lett sier ja til i checkout. Petit four, porsjonskaker, slices.
+          </p>
+        </div>
+        <div class="relative mx-auto w-full max-w-[580px] border border-gold-400/30 bg-ink-850 p-6 text-center">
+          <p class="font-sans text-[11px] uppercase tracking-ultra-wide text-gold-200/80">Bunn · Inngangsport</p>
+          <p class="mt-3 font-display text-xl text-bone-100">Hero-produkt (Digital Pop-up)</p>
+          <p class="mt-3 font-sans text-xs leading-relaxed text-bone-400">
+            Skaper lyst, oppmerksomhet og drar kunden inn i plattformen. Eksempel: Nobel Drop-signaturmakron.
+          </p>
+        </div>
+      </div>
+
+      <div class="mx-auto mt-16 max-w-3xl border-l-2 border-gold-400 bg-ink-850/60 p-8" data-fade>
+        <p class="font-display text-lg leading-relaxed text-bone-100 sm:text-xl">
+          "Disse produktene transformerer impuls-klikk til
+          <span class="text-gold-200 italic">planlagte voksenkjøp med høy margin</span>."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <!-- ============== PRODUKTER ============== -->
+  <section class="relative py-32 sm:py-44">
+    <div class="container-edge">
+      <div class="mx-auto max-w-3xl text-center" data-fade>
+        <SectionLabel number="IV." label="Produktuniverset" align="center" />
+        <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
+          Fra impuls til <br /><span class="italic text-gold-200">Nobel-cakes-universet</span>.
+        </h2>
+        <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
+          Når kunden først er inne for å sikre seg dagens drop, møter de hele
+          premiumsortimentet i én friksjonsfri kasse.
+        </p>
+      </div>
+
+      <div class="mt-20 grid gap-6 md:grid-cols-2 lg:grid-cols-4" data-fade>
+        {
+          products.map((p) => (
+            <article class="group relative border border-ink-600/80 bg-ink-850 p-8 transition hover:border-gold-400/50">
+              <div class="absolute right-6 top-6 h-2 w-2 rounded-full bg-gold-400/40 transition group-hover:bg-gold-200" />
+              <p class="font-sans text-[10px] uppercase tracking-ultra-wide text-gold-200/80">
+                {p.role}
+              </p>
+              <h3 class="mt-4 font-display text-2xl text-bone-100">{p.title}</h3>
+              <div class="my-5 h-px w-8 bg-gold-400/40" />
+              <p class="font-sans text-sm leading-relaxed text-bone-400">{p.body}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="mt-12 text-center" data-fade>
+        <GoldButton href="/produkter" variant="ghost">
+          Se hele produktuniverset
+        </GoldButton>
+      </div>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <!-- ============== MÅLGRUPPE / OCCASIONS ============== -->
+  <section class="relative py-32 sm:py-44">
+    <div class="container-edge">
+      <div class="mx-auto max-w-3xl text-center" data-fade>
+        <SectionLabel number="V." label="Målgruppen" align="center" />
+        <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
+          Planleggere,
+          <br />
+          <span class="italic text-gold-200">ikke bare impuls</span>.
+        </h2>
+        <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
+          Vi bruker hype som inngang, men bygger for voksne kunder som planlegger.
+          Det sikrer en vesentlig høyere handlekurv og naturlig gjenkjøp.
+        </p>
+      </div>
+
+      <div class="mt-16 flex flex-wrap items-center justify-center gap-3 sm:gap-4" data-fade>
+        {occasions.map((o) => <TagPill>{o}</TagPill>)}
+      </div>
+
+      <p class="mt-12 text-center font-display text-lg italic text-gold-200" data-fade>
+        Vi bygger for anledninger.
+      </p>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <!-- ============== ARV / NOBEL CATERING ============== -->
+  <section class="relative overflow-hidden py-32 sm:py-44">
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(200,162,76,0.06)_0%,transparent_50%)]"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="container-edge relative">
+      <div class="grid gap-16 lg:grid-cols-12 lg:items-center lg:gap-24">
+        <div class="lg:col-span-5 lg:order-2" data-fade>
+          <SectionLabel label="Arven" />
+          <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-5xl lg:text-6xl">
+            39 år med håndverk.
+            <br />
+            <span class="italic text-gold-200">Nå skalert.</span>
+          </h2>
+          <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
+            Nobel Catering & Conditori ble grunnlagt i 1986 ved Nobelsgate 23 av to gründere
+            som "jobbet dag og natt". I dag er det et hus på rundt 40 ansatte, miljøfyrtårn-sertifisert,
+            med elektrisk leveringsflåte og lokale, økologiske råvarer som bærebjelke.
+          </p>
+          <p class="mt-6 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
+            Nobel Drop er ikke en ny merkevare. Det er en ny salgskanal — bygget oppå en
+            håndverkstradisjon kundene allerede stoler på.
+          </p>
+          <div class="mt-10">
+            <GoldButton href="/historien" variant="ghost">
+              Les hele historien
+            </GoldButton>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 lg:order-1" data-fade>
+          <div class="grid grid-cols-2 gap-px bg-gold-400/15">
+            <div class="bg-ink-900 p-8">
+              <p class="font-display text-5xl text-gold-200">1986</p>
+              <p class="mt-3 font-sans text-sm uppercase tracking-ultra-wide text-bone-400">
+                Etablert
+              </p>
+              <p class="mt-2 font-sans text-xs leading-relaxed text-bone-500">
+                Nobelsgate 23, Oslo. To gründere, dag og natt.
+              </p>
+            </div>
+            <div class="bg-ink-900 p-8">
+              <p class="font-display text-5xl text-gold-200">~40</p>
+              <p class="mt-3 font-sans text-sm uppercase tracking-ultra-wide text-bone-400">
+                Ansatte
+              </p>
+              <p class="mt-2 font-sans text-xs leading-relaxed text-bone-500">
+                Bærum og Skedsmokorset. Hele Østlandet som nedslagsfelt.
+              </p>
+            </div>
+            <div class="bg-ink-900 p-8">
+              <p class="font-display text-5xl text-gold-200">100%</p>
+              <p class="mt-3 font-sans text-sm uppercase tracking-ultra-wide text-bone-400">
+                Elektrisk flåte
+              </p>
+              <p class="mt-2 font-sans text-xs leading-relaxed text-bone-500">
+                Miljøfyrtårn-sertifisert. Lokale, økologiske råvarer.
+              </p>
+            </div>
+            <div class="bg-ink-900 p-8">
+              <p class="font-display text-5xl text-gold-200">D2C</p>
+              <p class="mt-3 font-sans text-sm uppercase tracking-ultra-wide text-bone-400">
+                Ny kanal
+              </p>
+              <p class="mt-2 font-sans text-xs leading-relaxed text-bone-500">
+                Drop-mekanikk og forhåndsbetalt cashflow på toppen av eksisterende kapasitet.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <!-- ============== RUTER ============== -->
+  <section class="relative py-32 sm:py-44">
+    <div class="container-edge">
+      <div class="mx-auto max-w-3xl text-center" data-fade>
+        <SectionLabel number="VI." label="Leveringsruter" align="center" />
+        <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
+          Datadrevet rute<br /><span class="italic text-gold-200">— uten butikk-kostnader</span>.
+        </h2>
+        <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
+          Bilene kjører utelukkende til områder hvor betalingsviljen er bekreftet. Null
+          tomkjøring. Risikofri ekspansjon.
+        </p>
+      </div>
+
+      <div class="mx-auto mt-20 max-w-5xl" data-fade>
+        <div class="relative grid grid-cols-5 gap-px bg-gold-400/20 text-center">
+          {
+            ["Lier", "Drammen", "Holmestrand", "Horten", "Tønsberg"].map(
+              (city, i) => (
+                <div class="bg-ink-900 px-3 py-8 sm:py-12">
+                  <p class="font-display text-3xl text-gold-200 sm:text-5xl">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <p class="mt-4 font-display text-base text-bone-100 sm:text-xl">{city}</p>
+                  <p class="mt-2 font-sans text-[10px] uppercase tracking-ultra-wide text-bone-500 sm:text-xs">
+                    {i < 2 ? "Partner" : "90-min stopp"}
+                  </p>
+                </div>
+              )
+            )
+          }
+        </div>
+      </div>
+
+      <div class="mt-12 text-center" data-fade>
+        <GoldButton href="/leveringsruter" variant="ghost">
+          Se kart og tider
+        </GoldButton>
+      </div>
+    </div>
+  </section>
+
+  <CTABand />
+</BaseLayout>

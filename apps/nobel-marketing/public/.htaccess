@@ -1,0 +1,82 @@
+# Apache config for Nobel Drop marketing site (statisk Astro-output).
+# Astro genererer ekte HTML-filer per route — ingen SPA-fallback nødvendig.
+# Vi bruker .htaccess til (1) trailing-slash, (2) 404, (3) caching, (4) sikkerhet.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Tving HTTPS (kommenter ut hvis Dedia ikke har cert ennå)
+  # RewriteCond %{HTTPS} off
+  # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Fjern trailing slash på filer (men behold på mapper)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+  # Pretty URLs: /konseptet → /konseptet/index.html (Astro standard format)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]+$
+  RewriteRule ^(.+?)/?$ $1/index.html [L]
+</IfModule>
+
+# Egendefinert 404 — Astro genererer 404.html i roten av dist/
+ErrorDocument 404 /404.html
+
+# Sett MIME-typer Astro genererer
+<IfModule mod_mime.c>
+  AddType application/javascript .js .mjs
+  AddType application/json .json
+  AddType image/svg+xml .svg
+  AddType image/webp .webp
+  AddType image/avif .avif
+  AddType font/woff2 .woff2
+</IfModule>
+
+# Cache-strategi
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Hashed assets fra Astro (har content hash) — cache aggressivt
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType image/jpeg "access plus 6 months"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType image/avif "access plus 6 months"
+  ExpiresByType image/svg+xml "access plus 6 months"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+
+  # HTML — kort cache slik at deploy slår gjennom
+  ExpiresByType text/html "access plus 5 minutes"
+</IfModule>
+
+# Komprimering
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml font/woff2
+</IfModule>
+
+# Sikkerhetsheaders
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "interest-cohort=()"
+  Header set X-Frame-Options "SAMEORIGIN"
+
+  # HTML — ikke cache aggressivt
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "public, max-age=300, must-revalidate"
+  </FilesMatch>
+
+  # Hashed assets — cache aggressivt
+  <FilesMatch "\.(css|js|woff2|svg|png|jpg|jpeg|webp|avif)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# Beskytt sensitive filer
+<FilesMatch "(^\.|^_)">
+  Require all denied
+</FilesMatch>

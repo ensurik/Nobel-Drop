@@ -1,0 +1,75 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import SectionLabel from "~/components/SectionLabel.astro";
+
+const sections = [
+  {
+    title: "Hva vi samler inn",
+    body: "Når du oppretter konto i Nobel Drop, lagrer vi e-postadresse, telefonnummer (valgfritt), og navn. Når du bestiller, lagrer vi ordrehistorikk, valgt pickup-node, og betalingsstatus. Vi lagrer ikke kortdetaljer — disse går direkte til Vipps, Stripe eller Klarna.",
+  },
+  {
+    title: "Hvorfor vi samler det",
+    body: "For å levere bestillingen, sende QR-koden, behandle betaling, og bygge Nobel-kreditt-balansen din. Vi sender push-varsler kun hvis du har slått det på, og kun om kommende drops.",
+  },
+  {
+    title: "Hvor lenge vi lagrer",
+    body: "Ordrehistorikk holdes i 5 år (regnskapslovens krav). Personprofilen din slettes 12 måneder etter siste innlogging hvis du ikke aktivt bruker tjenesten. Du kan be om sletting når som helst.",
+  },
+  {
+    title: "Dine rettigheter",
+    body: "Du har rett til innsyn, retting, sletting og dataportabilitet. Send forespørsel til personvern@nobeldrop.no. Vi svarer innen 30 dager, slik GDPR krever.",
+  },
+  {
+    title: "Cookies",
+    body: "Vi bruker tekniske cookies som er nødvendige for innlogging og handlekurv. Vi bruker ikke marketing-cookies eller tredjeparts-tracking på nobeldrop.no. Måling skjer kun på første-parts, anonymisert nivå.",
+  },
+];
+---
+
+<BaseLayout
+  title="Personvern"
+  description="Hvordan Nobel Drop samler inn, bruker og beskytter personopplysninger. GDPR-konform behandling."
+>
+  <section class="relative pt-24 pb-16 sm:pt-36 sm:pb-24">
+    <div class="container-edge">
+      <div class="mx-auto max-w-3xl">
+        <SectionLabel label="Personvern" />
+        <h1 class="mt-8 font-display text-5xl leading-[1.05] text-bone-100 sm:text-7xl" data-fade>
+          Personvern­erklæring
+        </h1>
+        <p class="mt-8 font-sans text-base text-bone-400" data-fade>
+          Sist oppdatert: {new Date().toLocaleDateString("nb-NO", { day: "numeric", month: "long", year: "numeric" })}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <section class="relative py-24 sm:py-32">
+    <div class="container-edge">
+      <div class="mx-auto max-w-3xl space-y-12">
+        {
+          sections.map((s, i) => (
+            <div data-fade>
+              <p class="font-sans text-[11px] uppercase tracking-ultra-wide text-gold-200/80">
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <h2 class="mt-3 font-display text-3xl text-bone-100 sm:text-4xl">{s.title}</h2>
+              <p class="mt-5 font-sans text-base leading-relaxed text-bone-300">{s.body}</p>
+            </div>
+          ))
+        }
+
+        <div class="border-t border-ink-600 pt-8" data-fade>
+          <p class="font-sans text-sm text-bone-400">
+            Spørsmål? Skriv til{" "}
+            <a href="mailto:personvern@nobeldrop.no" class="text-gold-200 hover:text-gold-100">
+              personvern@nobeldrop.no
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

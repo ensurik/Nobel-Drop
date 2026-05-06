@@ -1,0 +1,253 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import GoldButton from "~/components/GoldButton.astro";
+import SectionLabel from "~/components/SectionLabel.astro";
+import HairlineFrame from "~/components/HairlineFrame.astro";
+import CTABand from "~/components/CTABand.astro";
+
+const milestones = [
+  {
+    year: "1986",
+    title: "Nobelsgate 23",
+    body: "To gründere åpner et lite konditori i Nobelsgate 23, Oslo. De jobber dag og natt — derav navnet, og derav arbeidsmoralen som siden har bygget hele Nobel.",
+  },
+  {
+    year: "1990-tallet",
+    title: "Catering blir fundamentet",
+    body: "Konditoriet utvider til catering. Selskap, bedriftsarrangementer, bryllup. Det første Nobel-håndtrykket: kvalitet på porselen, levert med presisjon.",
+  },
+  {
+    year: "2000-tallet",
+    title: "To hus, ett håndverk",
+    body: "Veksten gjør at Nobel etablerer seg på Skedsmokorset i tillegg til Bærum. Samme oppskrifter, samme standarder — bare større volum.",
+  },
+  {
+    year: "2010-tallet",
+    title: "Miljøfyrtårn og elektrisk flåte",
+    body: "Bærekraft som kjerneprinsipp. Nobel sertifiseres som miljøfyrtårn. Hele leveringsflåten går elektrisk. Lokale, økologiske råvarer der det er mulig.",
+  },
+  {
+    year: "I dag",
+    title: "~40 ansatte, hele Østlandet",
+    body: "Nobel Catering & Conditori serverer privatpersoner og bedrifter på tvers av Østlandet. 39 år med håndverkstradisjon — og vendepunktet til en ny kanal.",
+  },
+  {
+    year: "Nå",
+    title: "Nobel Drop",
+    body: "Dette er ikke en ny merkevare. Det er en ny salgskanal — bygget oppå håndverkstradisjonen kundene allerede stoler på. App, drops, faste pickup-vinduer, datadrevet rute.",
+  },
+];
+
+const principles = [
+  {
+    label: "Bærekraft",
+    title: "Miljøvern fra grunnen av",
+    body: "Sertifisert miljøfyrtårn. Elektrisk leveringsflåte. Mat fra grunnen av — vi bruker mindre kjøtt og prioriterer lokale, økologiske råvarer.",
+  },
+  {
+    label: "Kvalitet & Variasjon",
+    title: "Best mulig variasjon",
+    body: "Kvalitet er aldri forhandlingsbart. Variasjon krever at vi alltid utfordrer egne oppskrifter — sesongdrevet, presist håndverk.",
+  },
+  {
+    label: "Håndverk",
+    title: "Fra grunnen av",
+    body: "Vi lager mat fra bunnen, hver dag. Det betyr færre snarveier, mer kompetanse i kjøkkenet, og produkter som tåler å bli spist sakte.",
+  },
+];
+---
+
+<BaseLayout
+  title="Arven"
+  description="Fra Nobelsgate 23 i 1986 til 39 år med håndverk. Slik bygde Nobel Catering & Conditori grunnmuren som Nobel Drop nå skalerer på."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden pt-24 pb-32 sm:pt-36 sm:pb-44">
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(200,162,76,0.08)_0%,transparent_55%)]"
+      aria-hidden="true"
+    >
+    </div>
+    <div class="container-edge relative">
+      <div class="mx-auto max-w-4xl">
+        <SectionLabel label="Arven · Etablert 1986" />
+        <h1
+          class="mt-8 font-display text-5xl leading-[1.02] text-bone-100 sm:text-7xl lg:text-[104px]"
+          data-fade
+        >
+          39 år med håndverk.
+          <br />
+          <span class="italic text-shimmer">Nå skalert.</span>
+        </h1>
+        <p class="mt-12 max-w-2xl font-sans text-lg leading-relaxed text-bone-300" data-fade>
+          Nobel Drop står ikke alene. Den står på skuldrene til et konditori som ble
+          grunnlagt i Nobelsgate 23 i 1986 — av to gründere som "jobbet dag og natt".
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <!-- INTRO + PORTRAIT -->
+  <section class="relative py-32 sm:py-44">
+    <div class="container-edge">
+      <div class="grid gap-16 lg:grid-cols-12 lg:items-center lg:gap-24">
+        <div class="lg:col-span-7" data-fade>
+          <SectionLabel label="Hvorfor det heter Nobel" />
+          <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-5xl">
+            Et navn som binder<br />
+            <span class="italic text-gold-200">historie til hver eske</span>.
+          </h2>
+          <div class="mt-10 space-y-6 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
+            <p>
+              I 1986 åpnet to gründere et lite konditori i Nobelsgate 23 i Oslo. De jobbet
+              dag og natt — bokstavelig talt — for å bygge en virksomhet der hver
+              detalj på porselenet var verdt å være stolt av.
+            </p>
+            <p>
+              Navnet ble til av adressen, og holder fortsatt. I dag har Nobel rundt 40
+              ansatte fordelt på Østerås (Bærum) og Skedsmokorset, og leverer mat og
+              kaker til privatpersoner og bedrifter over hele Østlandet.
+            </p>
+            <p>
+              Veksten har aldri kommet på bekostning av håndverket. Råvarer kommer
+              fortsatt fra lokale, økologiske leverandører der det er mulig. Hele
+              leveringsflåten er elektrisk. Vi har vært miljøfyrtårn-sertifisert lenge
+              før det var et markedsføringsord.
+            </p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5" data-fade>
+          <HairlineFrame class="aspect-[4/5] bg-gradient-to-br from-ink-850 via-ink-900 to-ink-800">
+            <div class="absolute inset-0 flex flex-col items-center justify-center p-10 text-center">
+              <p class="font-sans text-[10px] uppercase tracking-ultra-wide text-gold-200/80">
+                Etablert
+              </p>
+              <p class="mt-6 font-display text-[96px] leading-none text-gold-200 sm:text-[128px]">
+                1986
+              </p>
+              <div class="mt-8 h-px w-16 bg-gold-400/60"></div>
+              <p class="mt-8 max-w-xs font-display text-lg italic text-bone-200">
+                "Vi jobbet dag og natt."
+              </p>
+              <p class="mt-3 font-sans text-xs uppercase tracking-ultra-wide text-bone-500">
+                Grunnleggerne, om de første årene
+              </p>
+            </div>
+          </HairlineFrame>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <!-- TIDSLINJE -->
+  <section class="relative py-32 sm:py-44">
+    <div class="container-edge">
+      <div class="mx-auto max-w-3xl" data-fade>
+        <SectionLabel label="Tidslinje" />
+        <h2 class="mt-6 font-display text-4xl leading-[1.05] text-bone-100 sm:text-5xl">
+          Fra konditori til kanal.
+        </h2>
+      </div>
+
+      <div class="relative mt-20">
+        <div class="absolute left-6 top-0 bottom-0 hidden w-px bg-gradient-to-b from-gold-400/40 via-gold-400/20 to-transparent sm:block"></div>
+
+        <div class="space-y-16">
+          {
+            milestones.map((m) => (
+              <div class="relative flex gap-8 pl-0 sm:gap-12 sm:pl-16" data-fade>
+                <div class="absolute left-0 top-2 hidden h-3 w-3 -translate-x-[6px] rounded-full border border-gold-400 bg-ink-900 sm:block" />
+                <div class="w-32 shrink-0">
+                  <p class="font-display text-2xl text-gold-200 sm:text-3xl">{m.year}</p>
+                </div>
+                <div class="flex-1 border-l border-ink-600 pl-6">
+                  <h3 class="font-display text-2xl text-bone-100 sm:text-3xl">{m.title}</h3>
+                  <p class="mt-3 font-sans text-base leading-relaxed text-bone-300">{m.body}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <!-- PRINSIPPER -->
+  <section class="relative py-32 sm:py-44">
+    <div class="container-edge">
+      <div class="mx-auto max-w-3xl text-center" data-fade>
+        <SectionLabel label="Bærebjelker" align="center" />
+        <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
+          Tre prinsipper. <br /><span class="italic text-gold-200">Førti års arbeid.</span>
+        </h2>
+      </div>
+
+      <div class="mt-20 grid gap-px bg-gold-400/15 md:grid-cols-3" data-fade>
+        {
+          principles.map((p, i) => (
+            <div class="bg-ink-900 p-10">
+              <p class="font-display text-5xl text-gold-200">
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <p class="mt-6 font-sans text-[11px] uppercase tracking-ultra-wide text-gold-200/80">
+                {p.label}
+              </p>
+              <h3 class="mt-3 font-display text-2xl text-bone-100">{p.title}</h3>
+              <p class="mt-4 font-sans text-sm leading-relaxed text-bone-400">{p.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <!-- BROEN: KONDITORI → FOOD-TECH -->
+  <section class="relative overflow-hidden py-32 sm:py-44">
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(200,162,76,0.10)_0%,transparent_50%)]"
+      aria-hidden="true"
+    >
+    </div>
+    <div class="container-edge relative">
+      <div class="mx-auto max-w-3xl text-center" data-fade>
+        <SectionLabel label="Broen" align="center" />
+        <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
+          Fra tradisjonelt konditori<br /><span class="italic text-gold-200">til premium food-tech</span>.
+        </h2>
+        <p class="mt-10 font-sans text-lg leading-relaxed text-bone-300">
+          Nobel Drop bruker eksisterende kjøkken, eksisterende mannskap, eksisterende
+          kompetanse — og legger en ny D2C-infrastruktur oppå. Resultat: cashflow før
+          produksjon, null svinn, høyere margin per kjøp.
+        </p>
+      </div>
+
+      <div class="mx-auto mt-16 max-w-3xl border border-gold-400/40 bg-ink-850 p-10" data-fade>
+        <p class="font-sans text-[11px] uppercase tracking-ultra-wide text-gold-200/80">
+          Takeaway
+        </p>
+        <p class="mt-6 font-display text-2xl leading-relaxed text-bone-100 sm:text-3xl">
+          "Nobel Drop er ikke bare dessert. Det er en ferdigbygget infrastruktur for alt
+          premium D2C-salg i fremtiden."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CTABand
+    eyebrow="Klar for vår neste epoke?"
+    title="39 år med håndverk. Ett trykk unna."
+    body="Last ned, registrer deg, og bli en del av neste fredags drop."
+    primaryLabel="Åpne app.nobeldrop.no"
+    secondaryHref="/konseptet"
+    secondaryLabel="Slik fungerer det"
+  />
+</BaseLayout>

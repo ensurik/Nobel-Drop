@@ -1,0 +1,101 @@
+---
+import "~/styles/global.css";
+import Header from "~/components/Header.astro";
+import Footer from "~/components/Footer.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  noFooterCTA?: boolean;
+}
+
+const {
+  title,
+  description = "Nobel Drop — En ny standard for premium D2C. Fra Nobel Catering & Conditori, etablert 1986.",
+  image = "/og-image.jpg",
+} = Astro.props;
+
+const fullTitle = title === "Nobel Drop" ? title : `${title} — Nobel Drop`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const appUrl = "https://app.nobeldrop.no";
+---
+
+<!doctype html>
+<html lang="nb">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0A0A0B" />
+    <meta name="color-scheme" content="dark" />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, Astro.site).href} />
+    <meta property="og:locale" content="nb_NO" />
+    <meta property="og:site_name" content="Nobel Drop" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.site).href} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href={appUrl} />
+  </head>
+
+  <body class="bg-ink-900 text-bone-100 selection:bg-gold/40">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-ink-800 focus:px-4 focus:py-2 focus:text-bone-100 focus:outline focus:outline-1 focus:outline-gold"
+    >
+      Hopp til innhold
+    </a>
+
+    <div
+      class="pointer-events-none fixed inset-0 z-0 bg-hairline-grid bg-grid-1 opacity-30 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_85%)]"
+      aria-hidden="true"
+    >
+    </div>
+
+    <Header />
+
+    <main id="main" class="relative z-10">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <script is:inline>
+      // Soft fade-up for elements with [data-fade] when they enter viewport.
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("opacity-100", "translate-y-0");
+              e.target.classList.remove("opacity-0", "translate-y-4");
+              obs.unobserve(e.target);
+            }
+          });
+        },
+        { rootMargin: "0px 0px -10% 0px", threshold: 0.05 }
+      );
+      document.querySelectorAll("[data-fade]").forEach((el) => {
+        el.classList.add(
+          "opacity-0",
+          "translate-y-4",
+          "transition-all",
+          "duration-700",
+          "ease-out"
+        );
+        obs.observe(el);
+      });
+    </script>
+  </body>
+</html>

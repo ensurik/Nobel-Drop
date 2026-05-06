@@ -1,0 +1,225 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import GoldButton from "~/components/GoldButton.astro";
+import SectionLabel from "~/components/SectionLabel.astro";
+import HairlineFrame from "~/components/HairlineFrame.astro";
+import TagPill from "~/components/TagPill.astro";
+import CTABand from "~/components/CTABand.astro";
+
+const products = [
+  {
+    slug: "macron",
+    title: "Signaturmakronen",
+    role: "Hero · Inngangsport",
+    headline: "Den digitale popupen",
+    body: "Den digitale popupen. Visuelt optimalisert for sosiale medier, designet utelukkende for tidsbegrenset app-salg. Følger trender og skaper akutt Fear of Missing Out — produktet ser så bra ut at det fungerer som en selvstendig digital popup-butikk.",
+    facts: [
+      "4-pakk · 8-pakk · 12-pakk",
+      "Brent karamell · gull · sjokolade · hasselnøtt",
+      "Begrenset til hver fredags drop",
+    ],
+    accent: "FOMO som forretningsstrategi",
+  },
+  {
+    slug: "porsjonskaker",
+    title: "Porsjonskaker & Mini Cakes",
+    role: "Add-on · Kurvbygger",
+    headline: "Kurvens motor",
+    body: "Visuelt sterke desserter for 2–4 personer. Lett å si ja til i checkout — perfekt for å nå minimumsordre og sikre marginen på hele ordren. Petit four, slices, og porsjonskaker til alle anledninger.",
+    facts: [
+      "2–4 porsjoner per stk",
+      "Ulike smaker per drop · sesongstyrt",
+      "Ideell mellom hero og premiumkake",
+    ],
+    accent: "Petit four · slices · porsjonskaker",
+  },
+  {
+    slug: "premiumkake",
+    title: "Premiumkaken",
+    role: "Anledningen · Ordreløfter",
+    headline: "Selve ryggraden",
+    body: "Selve ryggraden. Kaken til bursdag, helg, besøk og feiring. Store premium-kaker som radikalt løfter snittordren og gjør Nobel Drop til mer enn et impulskjøp — det blir en fast del av planlegging.",
+    facts: [
+      "8 · 12 · 16 personer",
+      "Sjokolade · bringebær · hasselnøtt · sesong",
+      "Personalisering tilgjengelig på utvalgte drops",
+    ],
+    accent: "Voksen premium · ikke tenåringshype",
+  },
+  {
+    slug: "middag",
+    title: "Porsjonspakket Middag",
+    role: "Fase 2 · Premium D2C",
+    headline: "Hverdagsmiddag, premium-løftet",
+    body: "Singel-pakket luksus (Coq au Vin, Viltgryte) levert i samme app, samme ruter, samme pickup-logikk. Praktisk kraftkartong som tåler 200 grader, hevet til luksusprodukt med mørkt mage-belte og gullfoliert logo. Introduseres når pickup-vanen sitter 100 %.",
+    facts: [
+      "1–2 porsjoner per pakke",
+      "Coq au Vin · Viltgryte · Lakseretter",
+      "Ferdig pakket · klar til ovn 200° eller mikro",
+    ],
+    accent: "Klar Q4 · bygger ovenpå dropet",
+  },
+];
+---
+
+<BaseLayout
+  title="Produkter"
+  description="Produktuniverset bak Nobel Drop: signaturmakronen som inngangsport, porsjonskaker som kurv-byggere, premiumkaker som ordreløftere, og porsjonspakket middag i fase 2."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden pt-24 pb-24 sm:pt-36 sm:pb-32">
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(200,162,76,0.08)_0%,transparent_55%)]"
+      aria-hidden="true"
+    >
+    </div>
+    <div class="container-edge relative">
+      <div class="mx-auto max-w-4xl text-center">
+        <SectionLabel label="Produktuniverset" align="center" />
+        <h1
+          class="mt-8 font-display text-5xl leading-[1.02] text-bone-100 sm:text-7xl lg:text-[104px]"
+          data-fade
+        >
+          Fire kategorier.<br />
+          <span class="italic text-shimmer">Én kurv som bygges</span>.
+        </h1>
+        <p class="mx-auto mt-10 max-w-2xl font-sans text-lg leading-relaxed text-bone-300" data-fade>
+          Vi selger ikke et rotete sortiment. Hvert produkt har en presis rolle: trekke
+          kunden inn, bygge kurven, eller løfte den. Strukturert, ikke tilfeldig.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <!-- PRODUKTER (alternerende editorial layout) -->
+  <section class="relative py-24 sm:py-32">
+    <div class="container-edge">
+      <div class="space-y-32 sm:space-y-44">
+        {
+          products.map((p, i) => {
+            const reverse = i % 2 === 1;
+            return (
+              <article class="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-20">
+                <div
+                  class:list={[
+                    "lg:col-span-7",
+                    reverse ? "lg:order-2" : "lg:order-1",
+                  ]}
+                  data-fade
+                >
+                  <HairlineFrame class="aspect-[4/3] bg-gradient-to-br from-ink-850 via-ink-900 to-ink-800">
+                    <div class="absolute inset-0 flex items-center justify-center p-10">
+                      <div class="text-center">
+                        <p class="font-sans text-[10px] uppercase tracking-ultra-wide text-gold-200/70">
+                          Produkt {String(i + 1).padStart(2, "0")} / 04
+                        </p>
+                        <p class="mt-6 font-display text-4xl text-gold-200 sm:text-6xl">
+                          {p.title}
+                        </p>
+                        <div class="mx-auto mt-6 h-px w-16 bg-gold-400/40" />
+                        <p class="mt-6 font-sans text-xs uppercase tracking-ultra-wide text-bone-500">
+                          {p.accent}
+                        </p>
+                      </div>
+                    </div>
+                  </HairlineFrame>
+                </div>
+
+                <div
+                  class:list={[
+                    "lg:col-span-5",
+                    reverse ? "lg:order-1" : "lg:order-2",
+                  ]}
+                  data-fade
+                >
+                  <p class="font-sans text-[11px] uppercase tracking-ultra-wide text-gold-200/80">
+                    {p.role}
+                  </p>
+                  <h2 class="mt-4 font-display text-4xl leading-[1.05] text-bone-100 sm:text-5xl">
+                    {p.headline}
+                  </h2>
+                  <p class="mt-6 font-sans text-base leading-relaxed text-bone-300">
+                    {p.body}
+                  </p>
+
+                  <ul class="mt-10 space-y-4 border-l border-gold-400/40 pl-6">
+                    {p.facts.map((f) => (
+                      <li class="font-sans text-sm leading-relaxed text-bone-200">
+                        — {f}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div class="mt-10">
+                    <GoldButton href="https://app.nobeldrop.no" variant="primary">
+                      Se i app
+                    </GoldButton>
+                  </div>
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <!-- ROLLE I PYRAMIDEN -->
+  <section class="relative py-32 sm:py-44">
+    <div class="container-edge">
+      <div class="mx-auto max-w-3xl text-center" data-fade>
+        <SectionLabel label="Salgsarkitekturen" align="center" />
+        <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-5xl">
+          Hvert produkt har en rolle.
+        </h2>
+        <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
+          Disse produktene transformerer impuls-klikk til
+          <span class="italic text-gold-200">planlagte voksenkjøp med høy margin</span>.
+        </p>
+      </div>
+
+      <div class="mt-20 grid gap-px bg-gold-400/15 sm:grid-cols-3" data-fade>
+        <div class="bg-ink-900 p-10">
+          <p class="font-sans text-[10px] uppercase tracking-ultra-wide text-gold-200/80">
+            Skaper begjær
+          </p>
+          <p class="mt-4 font-display text-2xl text-bone-100">Hero</p>
+          <p class="mt-3 font-sans text-sm leading-relaxed text-bone-400">
+            Den digitale popupen. Drar kunden inn i plattformen via FOMO og deling.
+          </p>
+        </div>
+        <div class="bg-ink-900 p-10">
+          <p class="font-sans text-[10px] uppercase tracking-ultra-wide text-gold-200/80">
+            Bygger kurv
+          </p>
+          <p class="mt-4 font-display text-2xl text-bone-100">Add-ons</p>
+          <p class="mt-3 font-sans text-sm leading-relaxed text-bone-400">
+            Lett-å-si-ja-til-tilbud i checkout. Sikrer at kurven krysser minimumsordre og kreditt-stigen.
+          </p>
+        </div>
+        <div class="bg-ink-900 p-10">
+          <p class="font-sans text-[10px] uppercase tracking-ultra-wide text-gold-200/80">
+            Løfter ordren
+          </p>
+          <p class="mt-4 font-display text-2xl text-bone-100">Anledning</p>
+          <p class="mt-3 font-sans text-sm leading-relaxed text-bone-400">
+            Premiumkaker for bursdag, helg, besøk, feiring. Den som tar snittordren over 1 500 kr.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABand
+    eyebrow="Klar?"
+    title="Hver fredag kl. 10. Begrenset antall."
+    body="Når dropet går live, har du minutter — ikke timer. Sett varselet, vær klar."
+    primaryLabel="Åpne app"
+    secondaryHref="/leveringsruter"
+    secondaryLabel="Se ruter"
+  />
+</BaseLayout>

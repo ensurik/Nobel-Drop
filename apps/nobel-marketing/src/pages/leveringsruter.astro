@@ -1,0 +1,254 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import GoldButton from "~/components/GoldButton.astro";
+import SectionLabel from "~/components/SectionLabel.astro";
+import HairlineFrame from "~/components/HairlineFrame.astro";
+import TagPill from "~/components/TagPill.astro";
+import CTABand from "~/components/CTABand.astro";
+
+const route = [
+  {
+    num: "1",
+    city: "Lier",
+    type: "Partnerutlevering",
+    detail: "Samarbeidspunkt uten faste ansatte. Aktiveres når data viser betalingsvilje.",
+    status: "scout",
+  },
+  {
+    num: "2",
+    city: "Drammen",
+    type: "Partnerutlevering",
+    detail: "Sentralt knutepunkt. Aktivt under utvalgte drops.",
+    status: "scout",
+  },
+  {
+    num: "3",
+    city: "Holmestrand",
+    type: "90-min stopp",
+    detail: "Aktivt stopp. 90-minutters henteopphold per drop, delt i tre 30-min slots.",
+    status: "active",
+  },
+  {
+    num: "4",
+    city: "Horten",
+    type: "90-min stopp",
+    detail: "Aktivt stopp. 90-minutters henteopphold per drop, delt i tre 30-min slots.",
+    status: "active",
+  },
+  {
+    num: "5",
+    city: "Tønsberg",
+    type: "90-min stopp",
+    detail: "Aktivt stopp. 90-minutters henteopphold per drop, delt i tre 30-min slots.",
+    status: "active",
+  },
+];
+---
+
+<BaseLayout
+  title="Leveringsruter"
+  description="Faste pickup-noder fra Lier til Tønsberg. 90-minutters opphold per stopp, 30-min slots, maks 10 kunder per slot. Datadrevet ekspansjon — vi åpner kun der dataen viser etterspørsel."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden pt-24 pb-24 sm:pt-36 sm:pb-32">
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(200,162,76,0.08)_0%,transparent_55%)]"
+      aria-hidden="true"
+    >
+    </div>
+    <div class="container-edge relative">
+      <div class="mx-auto max-w-4xl text-center">
+        <SectionLabel label="Datadrevet rute- og stoppmekanikk" align="center" />
+        <h1
+          class="mt-8 font-display text-5xl leading-[1.02] text-bone-100 sm:text-7xl lg:text-[96px]"
+          data-fade
+        >
+          Presisjonslogistikk<br /><span class="italic text-shimmer">uten butikkostnader</span>.
+        </h1>
+        <p class="mx-auto mt-10 max-w-2xl font-sans text-lg leading-relaxed text-bone-300" data-fade>
+          Bilene kjører utelukkende til områder hvor betalingsviljen er bekreftet på
+          forhånd. Null tomkjøring. Risikofri ekspansjon.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <!-- KART (stilisert) -->
+  <section class="relative py-24 sm:py-32">
+    <div class="container-edge">
+      <div data-fade>
+        <HairlineFrame class="relative aspect-[16/9] overflow-hidden bg-ink-950">
+          <!-- Stilisert "kart" med gull-veier -->
+          <svg
+            class="absolute inset-0 h-full w-full"
+            viewBox="0 0 1600 900"
+            fill="none"
+            preserveAspectRatio="xMidYMid slice"
+            aria-hidden="true"
+          >
+            <!-- Bakgrunns-grid -->
+            <g stroke="rgba(200,162,76,0.06)" stroke-width="1">
+              {Array.from({ length: 30 }).map((_, i) => (
+                <line x1={i * 60} y1="0" x2={i * 60} y2="900" />
+              ))}
+              {Array.from({ length: 18 }).map((_, i) => (
+                <line x1="0" y1={i * 60} x2="1600" y2={i * 60} />
+              ))}
+            </g>
+
+            <!-- Hovedrute (gull) -->
+            <path
+              d="M 120 480 Q 320 360 500 420 T 880 460 Q 1080 520 1280 540 T 1480 600"
+              stroke="rgba(200,162,76,0.7)"
+              stroke-width="2"
+              fill="none"
+            />
+            <path
+              d="M 120 480 Q 320 360 500 420 T 880 460 Q 1080 520 1280 540 T 1480 600"
+              stroke="rgba(232,197,122,0.4)"
+              stroke-width="6"
+              fill="none"
+              filter="blur(4px)"
+            />
+
+            <!-- Noder -->
+            <g>
+              <circle cx="120" cy="480" r="8" fill="#0A0A0B" stroke="#C8A24C" stroke-width="2" />
+              <text x="120" y="450" text-anchor="middle" fill="#C9C2AE" font-size="14" font-family="Inter">Lier</text>
+              <text x="120" y="510" text-anchor="middle" fill="#8E8B82" font-size="11" font-family="Inter" letter-spacing="2">PARTNER</text>
+
+              <circle cx="450" cy="395" r="8" fill="#0A0A0B" stroke="#C8A24C" stroke-width="2" />
+              <text x="450" y="365" text-anchor="middle" fill="#C9C2AE" font-size="14" font-family="Inter">Drammen</text>
+              <text x="450" y="425" text-anchor="middle" fill="#8E8B82" font-size="11" font-family="Inter" letter-spacing="2">PARTNER</text>
+
+              <circle cx="780" cy="450" r="10" fill="#C8A24C" stroke="#E8C57A" stroke-width="2" />
+              <circle cx="780" cy="450" r="20" fill="none" stroke="rgba(200,162,76,0.4)" />
+              <text x="780" y="420" text-anchor="middle" fill="#F5F2EA" font-size="15" font-family="Inter" font-weight="600">Holmestrand</text>
+              <text x="780" y="490" text-anchor="middle" fill="#C8A24C" font-size="11" font-family="Inter" letter-spacing="2">90-MIN STOPP</text>
+
+              <circle cx="1080" cy="525" r="10" fill="#C8A24C" stroke="#E8C57A" stroke-width="2" />
+              <circle cx="1080" cy="525" r="20" fill="none" stroke="rgba(200,162,76,0.4)" />
+              <text x="1080" y="495" text-anchor="middle" fill="#F5F2EA" font-size="15" font-family="Inter" font-weight="600">Horten</text>
+              <text x="1080" y="565" text-anchor="middle" fill="#C8A24C" font-size="11" font-family="Inter" letter-spacing="2">90-MIN STOPP</text>
+
+              <circle cx="1380" cy="580" r="10" fill="#C8A24C" stroke="#E8C57A" stroke-width="2" />
+              <circle cx="1380" cy="580" r="20" fill="none" stroke="rgba(200,162,76,0.4)" />
+              <text x="1380" y="550" text-anchor="middle" fill="#F5F2EA" font-size="15" font-family="Inter" font-weight="600">Tønsberg</text>
+              <text x="1380" y="620" text-anchor="middle" fill="#C8A24C" font-size="11" font-family="Inter" letter-spacing="2">90-MIN STOPP</text>
+            </g>
+          </svg>
+
+          <!-- Compass -->
+          <div class="absolute right-6 top-6 flex items-center gap-2 text-xs uppercase tracking-ultra-wide text-bone-500">
+            <span>SØR</span>
+            <span class="text-gold-400">→</span>
+          </div>
+        </HairlineFrame>
+      </div>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <!-- NODER LISTE -->
+  <section class="relative py-24 sm:py-32">
+    <div class="container-edge">
+      <div class="mx-auto max-w-3xl" data-fade>
+        <SectionLabel label="Stoppene" />
+        <h2 class="mt-6 font-display text-4xl leading-[1.05] text-bone-100 sm:text-5xl">
+          Fra Lier til Tønsberg, fast hver fredag.
+        </h2>
+        <p class="mt-6 font-sans text-base leading-relaxed text-bone-300">
+          Aktive stopp har faste 90-minutters vinduer per drop, delt i tre 30-min slots
+          med maks 10 kunder per slot. Partnerstopp aktiveres datastyrt når
+          betalingsviljen er bekreftet.
+        </p>
+      </div>
+
+      <div class="mt-16 divide-y divide-ink-600/60 border-y border-ink-600/60">
+        {
+          route.map((r) => (
+            <div class="grid grid-cols-12 items-center gap-4 px-2 py-8" data-fade>
+              <div class="col-span-2 sm:col-span-1">
+                <span class="font-display text-3xl text-gold-200 sm:text-5xl">{r.num}</span>
+              </div>
+              <div class="col-span-10 sm:col-span-4">
+                <p class="font-display text-2xl text-bone-100 sm:text-3xl">{r.city}</p>
+                <p class="mt-1 font-sans text-xs uppercase tracking-ultra-wide text-bone-500">
+                  {r.type}
+                </p>
+              </div>
+              <div class="col-span-12 sm:col-span-5">
+                <p class="font-sans text-sm leading-relaxed text-bone-300">{r.detail}</p>
+              </div>
+              <div class="col-span-12 flex justify-start sm:col-span-2 sm:justify-end">
+                {r.status === "active" ? (
+                  <span class="inline-flex items-center gap-2 border border-moss/40 bg-moss/5 px-3 py-1.5 font-sans text-[11px] uppercase tracking-ultra-wide text-moss">
+                    <span class="h-1.5 w-1.5 rounded-full bg-moss animate-pulse-soft" />
+                    Aktiv
+                  </span>
+                ) : (
+                  <span class="inline-flex items-center gap-2 border border-bone-500/40 px-3 py-1.5 font-sans text-[11px] uppercase tracking-ultra-wide text-bone-400">
+                    <span class="h-1.5 w-1.5 rounded-full bg-bone-500" />
+                    Scout
+                  </span>
+                )}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <!-- 90/30/10 MEKANIKK -->
+  <section class="relative py-32 sm:py-44">
+    <div class="container-edge">
+      <div class="mx-auto max-w-3xl text-center" data-fade>
+        <SectionLabel label="Matematikken bak" align="center" />
+        <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
+          Kø-fri logistikk,<br /><span class="italic text-gold-200">presist tidsstyrt</span>.
+        </h2>
+      </div>
+
+      <div class="mx-auto mt-20 grid max-w-5xl gap-px bg-gold-400/15 md:grid-cols-3" data-fade>
+        <div class="bg-ink-900 p-12 text-center">
+          <p class="font-display text-[88px] leading-none text-gold-200 tabular-nums">90</p>
+          <p class="mt-4 font-sans text-xs uppercase tracking-ultra-wide text-bone-400">
+            Minutters opphold
+          </p>
+        </div>
+        <div class="bg-ink-900 p-12 text-center">
+          <p class="font-display text-[88px] leading-none text-gold-200 tabular-nums">30</p>
+          <p class="mt-4 font-sans text-xs uppercase tracking-ultra-wide text-bone-400">
+            Minutters slots
+          </p>
+        </div>
+        <div class="bg-ink-900 p-12 text-center">
+          <p class="font-display text-[88px] leading-none text-gold-200 tabular-nums">10</p>
+          <p class="mt-4 font-sans text-xs uppercase tracking-ultra-wide text-bone-400">
+            Kunder per slot
+          </p>
+        </div>
+      </div>
+
+      <p class="mx-auto mt-12 max-w-2xl text-center font-sans text-base leading-relaxed text-bone-300" data-fade>
+        Resultat: 3 minutter per kunde, ingen kø, ingen kaos. Appen styrer kapasiteten
+        automatisk og hindrer overbooking på databasenivå.
+      </p>
+    </div>
+  </section>
+
+  <CTABand
+    eyebrow="Velg ditt stopp"
+    title="Bestill nå. Hent fredag."
+    body="Velg ditt nærmeste pickup-stopp i appen, lås tidsvinduet, og hent på 3 minutter."
+    primaryLabel="Åpne app"
+    secondaryHref="/faq"
+    secondaryLabel="Hva om jeg ikke rekker?"
+  />
+</BaseLayout>

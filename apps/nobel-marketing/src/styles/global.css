@@ -1,0 +1,147 @@
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/400-italic.css";
+@import "@fontsource/playfair-display/700.css";
+@import "@fontsource/playfair-display/700-italic.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/700.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --gold: 200 162 76;
+    --gold-bright: 232 197 122;
+    --ink: 10 10 11;
+  }
+
+  html {
+    background-color: #0a0a0b;
+    color: #f5f2ea;
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background-color: #0a0a0b;
+    color: #f5f2ea;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgba(200, 162, 76, 0.4);
+    color: #fbfaf6;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0a0b;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a2a33;
+    border-radius: 0;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a3a44;
+  }
+}
+
+@layer components {
+  .container-edge {
+    @apply mx-auto w-full max-w-8xl px-6 sm:px-10 lg:px-16;
+  }
+
+  .hairline {
+    background-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(200, 162, 76, 0.4) 20%,
+      rgba(200, 162, 76, 0.4) 80%,
+      transparent 100%
+    );
+    height: 1px;
+  }
+
+  .hairline-vert {
+    background-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(200, 162, 76, 0.4) 20%,
+      rgba(200, 162, 76, 0.4) 80%,
+      transparent 100%
+    );
+    width: 1px;
+  }
+
+  .label-tiny {
+    @apply font-sans text-[11px] font-medium uppercase tracking-ultra-wide text-gold-200/80;
+  }
+
+  .text-shimmer {
+    background: linear-gradient(
+      90deg,
+      #c8a24c 0%,
+      #e8c57a 35%,
+      #fbf6e8 50%,
+      #e8c57a 65%,
+      #c8a24c 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 6s linear infinite;
+  }
+
+  .gold-frame {
+    position: relative;
+  }
+  .gold-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(200, 162, 76, 0.45);
+    pointer-events: none;
+  }
+  .gold-frame::after {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(200, 162, 76, 0.18);
+    pointer-events: none;
+  }
+
+  .corner-marks {
+    position: relative;
+  }
+  .corner-marks::before,
+  .corner-marks::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgba(200, 162, 76, 0.7);
+    pointer-events: none;
+  }
+  .corner-marks::before {
+    top: -1px;
+    left: -1px;
+    border-right: 0;
+    border-bottom: 0;
+  }
+  .corner-marks::after {
+    bottom: -1px;
+    right: -1px;
+    border-left: 0;
+    border-top: 0;
+  }
+}

@@ -18,7 +18,9 @@
       "PowerShell(Get-NetTCPConnection *)",
       "Bash(npx expo *)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:54331/auth/v1/health)",
-      "Bash(grep -E \"expo-router|expo$|react-native$|nativewind\")"
+      "Bash(grep -E \"expo-router|expo$|react-native$|nativewind\")",
+      "WebFetch(domain:nobelcatering.no)",
+      "WebSearch"
     ]
   }
 }
