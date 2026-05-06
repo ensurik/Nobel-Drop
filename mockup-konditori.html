@@ -1,0 +1,1127 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#F5EFE2" />
+<title>Nobel Drop — Mockup (Konditori × Claude)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Cream / paper backgrounds */
+    --cream-50:  #FBF8F1;
+    --cream-100: #F5EFE2;
+    --cream-200: #ECE3CE;
+    --butter:    #E8D9B5;
+
+    /* Warm cocoa inks */
+    --cocoa-900: #1F140C;
+    --cocoa-800: #2D1E12;
+    --cocoa-700: #3D2817;
+    --cocoa-500: #6B4F38;
+    --cocoa-400: #8C7560;
+    --cocoa-300: #B5A089;
+
+    /* Gold (lifted from PDF foil) */
+    --gold-700: #7A6532;
+    --gold-500: #B08A3A;
+    --gold-400: #C8A24C;
+    --gold-300: #D8B25E;
+    --gold-200: #E8C57A;
+
+    /* Konditori accents */
+    --clay:      #C26A4A;   /* terrakotta */
+    --pistachio: #8FA876;   /* pastry green */
+    --raspberry: #A14A5C;   /* berry */
+
+    /* Borders */
+    --line: rgba(61, 40, 23, 0.14);
+    --line-strong: rgba(61, 40, 23, 0.28);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html {
+    background: var(--cream-100);
+    color: var(--cocoa-700);
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--cream-100);
+    overflow-x: hidden;
+    /* Subtle paper grain */
+    background-image:
+      radial-gradient(rgba(61, 40, 23, 0.022) 1px, transparent 1px);
+    background-size: 4px 4px;
+  }
+  ::selection { background: rgba(200,162,76,0.45); color: var(--cocoa-900); }
+
+  .display { font-family: 'Fraunces', 'Playfair Display', ui-serif, Georgia, serif; font-weight: 400; letter-spacing: -0.012em; }
+  .italic-d { font-style: italic; font-weight: 400; }
+  .container { max-width: 1320px; margin: 0 auto; padding: 0 28px; }
+  .label-tiny {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    font-weight: 500;
+    color: var(--cocoa-500);
+  }
+  .hairline {
+    height: 1px;
+    background: linear-gradient(to right, transparent 0%, var(--line) 18%, var(--line) 82%, transparent 100%);
+  }
+
+  /* ============== NAV ============== */
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px) saturate(140%);
+    background: rgba(245, 239, 226, 0.78);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.top .row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 0;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--cocoa-900);
+    letter-spacing: -0.01em;
+  }
+  .brand .seal {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold-300), var(--gold-500));
+    color: var(--cream-50);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-size: 18px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 2px rgba(61,40,23,0.18);
+  }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    color: var(--cocoa-700);
+    font-size: 14px;
+    text-decoration: none;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--cocoa-900); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 22px;
+    font-size: 14px; font-weight: 500;
+    text-decoration: none;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+  }
+  .btn-primary {
+    background: var(--cocoa-900);
+    color: var(--cream-50);
+    border: 1px solid var(--cocoa-900);
+  }
+  .btn-primary:hover { background: var(--cocoa-700); transform: translateY(-1px); }
+  .btn-ghost {
+    color: var(--cocoa-900);
+    border: 1px solid var(--line-strong);
+    background: transparent;
+  }
+  .btn-ghost:hover { background: rgba(61,40,23,0.04); }
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold-300) 0%, var(--gold-500) 100%);
+    color: var(--cocoa-900);
+    border: 1px solid var(--gold-500);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 4px 16px rgba(176,138,58,0.22);
+  }
+  .btn-gold:hover { transform: translateY(-1px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 6px 20px rgba(176,138,58,0.32); }
+
+  /* ============== HERO ============== */
+  .hero {
+    padding: 90px 0 70px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 70px;
+    align-items: center;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(48px, 7vw, 104px);
+    line-height: 0.97;
+    letter-spacing: -0.025em;
+    color: var(--cocoa-900);
+    margin: 22px 0 0;
+    font-weight: 400;
+  }
+  .hero h1 .accent {
+    font-style: italic;
+    color: var(--gold-500);
+    font-weight: 400;
+  }
+  .hero p.lede {
+    margin-top: 28px;
+    font-size: 19px;
+    line-height: 1.55;
+    max-width: 510px;
+    color: var(--cocoa-500);
+    font-weight: 400;
+  }
+  .hero .ctas { display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
+  .hero .badges { display: flex; gap: 10px; margin-top: 40px; flex-wrap: wrap; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: var(--cream-50);
+    border: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--cocoa-500);
+    font-weight: 500;
+  }
+  .badge .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold-400); }
+
+  .hero-img-wrap {
+    position: relative;
+    aspect-ratio: 4/5;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .hero-img-wrap::before {
+    content: "";
+    position: absolute; inset: -1px;
+    border: 1px solid var(--gold-400);
+    border-radius: 4px;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .hero-img-wrap::after {
+    content: "";
+    position: absolute; inset: 12px;
+    border: 1px solid rgba(200, 162, 76, 0.32);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .hero-img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: saturate(1.04);
+  }
+  .hero-tag {
+    position: absolute; left: 24px; bottom: 24px; z-index: 3;
+    background: rgba(31, 20, 12, 0.78);
+    backdrop-filter: blur(10px);
+    color: var(--cream-50);
+    padding: 14px 18px;
+    border: 1px solid rgba(232, 197, 122, 0.35);
+  }
+  .hero-tag .l { font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-200); }
+  .hero-tag .v { font-family: 'Fraunces', serif; font-size: 22px; margin-top: 4px; }
+  .hero-marker {
+    position: absolute; right: 18px; top: 18px; z-index: 3;
+    background: var(--cream-50);
+    padding: 10px 14px;
+    font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cocoa-700);
+    border: 1px solid var(--line-strong);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .pulse-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--clay);
+    box-shadow: 0 0 0 0 rgba(194, 106, 74, 0.55);
+    animation: pulse 1.8s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(194, 106, 74, 0.55); }
+    70% { box-shadow: 0 0 0 10px rgba(194, 106, 74, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(194, 106, 74, 0); }
+  }
+
+  /* ============== TRUST STRIP ============== */
+  .trust {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 28px 0;
+    background: var(--cream-50);
+  }
+  .trust-row {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 20px;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 13px; color: var(--cocoa-500);
+  }
+  .trust-item svg { color: var(--gold-500); }
+
+  /* ============== KJERNEMODELLEN ============== */
+  section.section { padding: 120px 0; position: relative; }
+  .sect-head {
+    max-width: 720px; margin: 0 auto 70px; text-align: center;
+  }
+  .sect-num {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--gold-500);
+  }
+  .sect-num .line { width: 28px; height: 1px; background: var(--gold-500); }
+  .sect-head h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 5vw, 62px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--cocoa-900);
+    margin: 22px 0 0;
+    font-weight: 400;
+  }
+  .sect-head h2 .accent { font-style: italic; color: var(--gold-500); }
+  .sect-head p {
+    margin-top: 22px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--cocoa-500);
+  }
+
+  .loop-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border: 1px solid var(--line);
+    background: var(--cream-50);
+  }
+  .loop-cell {
+    padding: 36px 28px;
+    border-right: 1px solid var(--line);
+    transition: background 0.25s ease;
+    position: relative;
+  }
+  .loop-cell:last-child { border-right: none; }
+  .loop-cell:hover { background: var(--cream-200); }
+  .loop-cell .num {
+    font-family: 'Fraunces', serif;
+    font-size: 38px;
+    color: var(--gold-500);
+    font-weight: 400;
+  }
+  .loop-cell .bar { height: 1px; width: 28px; background: var(--gold-400); margin: 18px 0; transition: width 0.3s ease; }
+  .loop-cell:hover .bar { width: 48px; }
+  .loop-cell h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    color: var(--cocoa-900);
+    margin: 0 0 10px;
+    font-weight: 500;
+  }
+  .loop-cell p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--cocoa-500);
+  }
+
+  /* ============== FOMO / Dark contrast section ============== */
+  .dark-section {
+    background: var(--cocoa-900);
+    color: var(--cream-100);
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .dark-section::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 25% 30%, rgba(200,162,76,0.10) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 80%, rgba(194,106,74,0.06) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .dark-section .container { position: relative; z-index: 1; }
+  .dark-section .sect-num { color: var(--gold-300); }
+  .dark-section .sect-num .line { background: var(--gold-300); }
+  .dark-section h2 { color: var(--cream-50); }
+  .dark-section h2 .accent { color: var(--gold-300); }
+  .dark-section .sect-head p { color: var(--cocoa-300); }
+
+  .fomo-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .fomo-col-r { display: flex; flex-direction: column; gap: 16px; }
+  .drop-card {
+    border: 1px solid rgba(232, 197, 122, 0.35);
+    background: rgba(45, 30, 18, 0.55);
+    backdrop-filter: blur(8px);
+    padding: 22px 26px;
+    width: fit-content;
+  }
+  .drop-card.r1 { margin-left: auto; }
+  .drop-card.r2 { width: 80%; max-width: 460px; }
+  .drop-card.r3 { margin-left: 40px; }
+  .drop-card .l {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.32em;
+    color: var(--cocoa-300);
+  }
+  .drop-card .v {
+    font-family: 'Fraunces', serif;
+    font-size: 28px; margin-top: 6px;
+    color: var(--gold-200);
+  }
+  .countdown {
+    margin-top: 36px;
+    border-top: 1px solid rgba(232, 197, 122, 0.18);
+    padding-top: 26px;
+  }
+  .countdown-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .countdown-row .l { font-size: 11px; text-transform: uppercase; letter-spacing: 0.32em; color: var(--cocoa-300); }
+  .countdown-row .v { font-family: 'Fraunces', serif; font-size: 26px; color: var(--gold-200); font-variant-numeric: tabular-nums; }
+  .progress {
+    height: 3px; background: rgba(232,197,122,0.12);
+    margin-top: 14px; overflow: hidden;
+  }
+  .progress > div {
+    height: 100%; width: 68%;
+    background: linear-gradient(90deg, var(--gold-700), var(--gold-400), var(--gold-200));
+  }
+  .fomo-pillars { margin-top: 40px; display: grid; gap: 22px; }
+  .fomo-pillar {
+    border-left: 1px solid rgba(232,197,122,0.45);
+    padding-left: 22px;
+  }
+  .fomo-pillar h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 19px; color: var(--cream-50); margin: 0 0 6px;
+    font-weight: 500;
+  }
+  .fomo-pillar p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--cocoa-300); }
+
+  /* ============== PYRAMID / SALES ARCH ============== */
+  .pyramid {
+    display: flex; flex-direction: column; align-items: center; gap: 18px;
+    margin-top: 30px;
+  }
+  .py-tier {
+    background: var(--cream-50);
+    border: 1px solid var(--line);
+    padding: 26px 28px;
+    text-align: center;
+    position: relative;
+  }
+  .py-tier .l { font-size: 11px; text-transform: uppercase; letter-spacing: 0.32em; color: var(--gold-500); }
+  .py-tier h3 { font-family: 'Fraunces', serif; font-size: 22px; margin: 12px 0 8px; color: var(--cocoa-900); font-weight: 500; }
+  .py-tier p { margin: 0; font-size: 13px; line-height: 1.55; color: var(--cocoa-500); }
+  .py-tier.t1 { width: 280px; border-color: var(--gold-400); box-shadow: 0 8px 30px rgba(176,138,58,0.16); }
+  .py-tier.t2 { width: 460px; }
+  .py-tier.t3 { width: 620px; }
+  .quote-card {
+    margin: 60px auto 0; max-width: 720px;
+    padding: 34px 40px;
+    background: var(--cream-50);
+    border-left: 3px solid var(--gold-500);
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    line-height: 1.4;
+    color: var(--cocoa-900);
+    font-weight: 400;
+  }
+  .quote-card .em { color: var(--gold-500); font-style: italic; }
+
+  /* ============== PRODUKTUNIVERS ============== */
+  .product-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  }
+  .product-card {
+    background: var(--cream-50);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+  .product-card:hover {
+    border-color: var(--gold-400);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 40px rgba(61,40,23,0.10);
+  }
+  .product-img {
+    aspect-ratio: 1/1;
+    background: var(--cream-200);
+    overflow: hidden;
+    position: relative;
+  }
+  .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+  .product-card:hover .product-img img { transform: scale(1.06); }
+  .product-body { padding: 22px 24px 26px; }
+  .product-body .role {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.28em;
+    color: var(--gold-500); font-weight: 500;
+  }
+  .product-body h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px; color: var(--cocoa-900); margin: 10px 0 8px;
+    font-weight: 500;
+  }
+  .product-body p { margin: 0; font-size: 13px; line-height: 1.55; color: var(--cocoa-500); }
+  .product-body .meta {
+    margin-top: 18px; padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font-size: 12px; color: var(--cocoa-400);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .product-body .meta .price { color: var(--cocoa-900); font-weight: 600; }
+
+  /* ============== OCCASIONS ============== */
+  .occasion-row {
+    display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+  }
+  .occasion {
+    padding: 14px 26px;
+    border-radius: 999px;
+    background: var(--cream-50);
+    border: 1px solid var(--line);
+    font-size: 14px;
+    color: var(--cocoa-700);
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  .occasion:hover {
+    background: var(--cocoa-900);
+    color: var(--cream-50);
+    border-color: var(--cocoa-900);
+  }
+  .occasion-tag {
+    text-align: center;
+    margin-top: 50px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--gold-500);
+  }
+
+  /* ============== ARV / HERITAGE ============== */
+  .heritage-grid {
+    display: grid; grid-template-columns: 1.1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .heritage-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--line);
+    background: var(--cream-50);
+  }
+  .stat-cell {
+    padding: 36px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .stat-cell:nth-child(2n) { border-right: none; }
+  .stat-cell:nth-child(n+3) { border-bottom: none; }
+  .stat-cell .num {
+    font-family: 'Fraunces', serif;
+    font-size: 50px;
+    color: var(--gold-500);
+    line-height: 1;
+    font-weight: 400;
+  }
+  .stat-cell .label {
+    margin-top: 14px;
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.28em;
+    color: var(--cocoa-700); font-weight: 500;
+  }
+  .stat-cell .desc {
+    margin-top: 8px;
+    font-size: 12px; line-height: 1.55; color: var(--cocoa-400);
+  }
+
+  .heritage-img-wrap {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--gold-400);
+  }
+  .heritage-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .heritage-img-wrap .stamp {
+    position: absolute; bottom: 22px; left: 22px;
+    background: var(--cream-50); padding: 14px 18px;
+    border: 1px solid var(--gold-400);
+  }
+  .heritage-img-wrap .stamp .l { font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-500); }
+  .heritage-img-wrap .stamp .v { font-family: 'Fraunces', serif; font-size: 18px; color: var(--cocoa-900); margin-top: 4px; }
+
+  /* ============== ROUTES ============== */
+  .route-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    border: 1px solid var(--line);
+    background: var(--cream-50);
+  }
+  .route-cell {
+    padding: 38px 18px;
+    text-align: center;
+    border-right: 1px solid var(--line);
+    position: relative;
+  }
+  .route-cell:last-child { border-right: none; }
+  .route-cell .num {
+    font-family: 'Fraunces', serif;
+    font-size: 44px; color: var(--gold-500); font-weight: 400;
+  }
+  .route-cell .city {
+    font-family: 'Fraunces', serif;
+    font-size: 20px; color: var(--cocoa-900); margin-top: 12px;
+    font-weight: 500;
+  }
+  .route-cell .type {
+    margin-top: 8px;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.28em;
+    color: var(--cocoa-400);
+  }
+
+  /* ============== CTA BAND ============== */
+  .cta-band {
+    background: var(--cocoa-900);
+    color: var(--cream-50);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-band::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(200,162,76,0.13) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .cta-band .container { position: relative; z-index: 1; text-align: center; }
+  .cta-band h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.05; margin: 0 0 22px;
+    color: var(--cream-50);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+  .cta-band h2 .accent { font-style: italic; color: var(--gold-300); }
+  .cta-band p {
+    font-size: 17px; color: var(--cocoa-300);
+    max-width: 540px; margin: 0 auto 36px;
+    line-height: 1.55;
+  }
+  .cta-band .ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-on-dark-ghost {
+    color: var(--cream-50);
+    border: 1px solid rgba(245, 239, 226, 0.3);
+    background: transparent;
+  }
+  .btn-on-dark-ghost:hover { background: rgba(245,239,226,0.07); }
+
+  /* ============== FOOTER ============== */
+  footer.site {
+    background: var(--cream-200);
+    padding: 60px 0 40px;
+    border-top: 1px solid var(--line);
+  }
+  .foot-grid {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+  }
+  .foot-col h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 16px; color: var(--cocoa-900); margin: 0 0 18px;
+    font-weight: 500;
+  }
+  .foot-col a {
+    display: block; color: var(--cocoa-500); text-decoration: none;
+    font-size: 13px; padding: 5px 0;
+  }
+  .foot-col a:hover { color: var(--cocoa-900); }
+  .foot-bottom {
+    margin-top: 50px; padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    font-size: 12px; color: var(--cocoa-400);
+  }
+
+  /* Animations */
+  [data-fade] { opacity: 0; transform: translateY(14px); transition: all 0.8s cubic-bezier(0.22,1,0.36,1); }
+  [data-fade].in { opacity: 1; transform: translateY(0); }
+
+  /* Responsive */
+  @media (max-width: 980px) {
+    .hero-grid, .fomo-grid, .heritage-grid { grid-template-columns: 1fr; gap: 50px; }
+    .hero { padding: 60px 0 40px; }
+    .loop-grid { grid-template-columns: 1fr 1fr; }
+    .loop-cell { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .product-grid { grid-template-columns: 1fr 1fr; }
+    .heritage-stats { grid-template-columns: 1fr 1fr; }
+    .route-grid { grid-template-columns: 1fr 1fr; }
+    .py-tier.t1, .py-tier.t2, .py-tier.t3 { width: 100%; max-width: 460px; }
+    .nav-links a:not(.btn) { display: none; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .product-grid { grid-template-columns: 1fr; }
+    .loop-grid { grid-template-columns: 1fr; }
+    .route-grid { grid-template-columns: 1fr; }
+    .heritage-stats { grid-template-columns: 1fr; }
+    .stat-cell { border-right: none !important; }
+    .foot-grid { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ============== NAV ============== -->
+<nav class="top">
+  <div class="container row">
+    <a class="brand" href="#">
+      <span class="seal">N</span>
+      <span>Nobel Drop</span>
+    </a>
+    <div class="nav-links">
+      <a href="#konseptet">Konseptet</a>
+      <a href="#produkter">Produkter</a>
+      <a href="#ruter">Leveringsruter</a>
+      <a href="#historien">Historien</a>
+      <a class="btn btn-primary" href="#">Sikre din drop →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============== HERO ============== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div data-fade>
+        <span class="label-tiny">En kanal av Nobel Catering &amp; Conditori · Etablert 1986</span>
+        <h1>
+          Håndverk,<br/>
+          servert som <span class="accent">drop</span>.
+        </h1>
+        <p class="lede">
+          Fredag kl. 10:00 åpner et begrenset antall bokser. Du sikrer din,
+          velger pickup, og henter den friskbakt — i nabolaget, på avtalt tid.
+        </p>
+        <div class="ctas">
+          <a class="btn btn-gold" href="#">Sikre fredagens drop →</a>
+          <a class="btn btn-ghost" href="#">Se hvordan det fungerer</a>
+        </div>
+        <div class="badges">
+          <span class="badge"><span class="dot"></span>100% forhåndsbetalt</span>
+          <span class="badge"><span class="dot"></span>Faste pickup-vinduer</span>
+          <span class="badge"><span class="dot"></span>Friskbakt samme dag</span>
+        </div>
+      </div>
+      <div class="hero-img-wrap" data-fade>
+        <img class="hero-img"
+             src="https://images.unsplash.com/photo-1558326567-98166e232c40?auto=format&fit=crop&w=1200&q=80"
+             alt="Macarons" />
+        <div class="hero-marker">
+          <span class="pulse-dot"></span>
+          Live · 18 igjen
+        </div>
+        <div class="hero-tag">
+          <div class="l">Ukens drop · uke 19</div>
+          <div class="v">Pistasj &amp; bringebær</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== TRUST STRIP ============== -->
+<section class="trust">
+  <div class="container trust-row">
+    <div class="trust-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg>
+      Etablert 1986
+    </div>
+    <div class="trust-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
+      Norsk konditori
+    </div>
+    <div class="trust-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      Friskbakt samme dag
+    </div>
+    <div class="trust-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 9h14l-1 11H6L5 9zM9 9V6a3 3 0 016 0v3"/></svg>
+      Vipps · Apple Pay · Klarna
+    </div>
+    <div class="trust-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v6m0 8v6M4 12h6m6 0h4M5.6 5.6l4.2 4.2m4.4 4.4l4.2 4.2M5.6 18.4l4.2-4.2m4.4-4.4l4.2-4.2"/></svg>
+      Miljøfyrtårn-sertifisert
+    </div>
+  </div>
+</section>
+
+<!-- ============== KJERNEMODELLEN ============== -->
+<section class="section" id="konseptet">
+  <div class="container">
+    <div class="sect-head" data-fade>
+      <span class="sect-num"><span class="line"></span>I. Kjernemodellen<span class="line"></span></span>
+      <h2>En lukket sløyfe.<br/><span class="accent">Fra impuls til levering.</span></h2>
+      <p>Push-varsel, valg, betaling, tidsvindu, henting. Ingen ledd glir; hver overgang er bygget for null friksjon — og maksimert margin.</p>
+    </div>
+
+    <div class="loop-grid" data-fade>
+      <div class="loop-cell">
+        <div class="num">01</div><div class="bar"></div>
+        <h3>Push-varsel</h3>
+        <p>Når dropet går live får du beskjed direkte i appen.</p>
+      </div>
+      <div class="loop-cell">
+        <div class="num">02</div><div class="bar"></div>
+        <h3>20 sekunders kasse</h3>
+        <p>Vipps, Apple Pay eller Klarna. 100 % forhåndsbetalt før produksjon.</p>
+      </div>
+      <div class="loop-cell">
+        <div class="num">03</div><div class="bar"></div>
+        <h3>Stopp &amp; vindu</h3>
+        <p>Velg geografisk node og 90-minutters tidsvindu som passer deg.</p>
+      </div>
+      <div class="loop-cell">
+        <div class="num">04</div><div class="bar"></div>
+        <h3>Bygg kurven</h3>
+        <p>Legg til porsjonskaker, slices og premium-kaker mens du er i kassen.</p>
+      </div>
+      <div class="loop-cell">
+        <div class="num">05</div><div class="bar"></div>
+        <h3>Friskbakt henting</h3>
+        <p>Vi leverer kun til stopp som har nådd minimumsvolum. Null tomkjøring.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hairline" style="max-width: 1320px; margin: 0 auto;"></div>
+
+<!-- ============== FOMO (DARK CONTRAST SECTION) ============== -->
+<section class="dark-section">
+  <div class="container">
+    <div class="sect-head" data-fade>
+      <span class="sect-num"><span class="line"></span>II. Den digitale popupen<span class="line"></span></span>
+      <h2>Knapphet,<br/>som <span class="accent">ingeniørkunst</span>.</h2>
+      <p>Et begrenset antall produkter frigjøres på faste tider. Vi bygger ikke kampanjer — vi bygger begjær.</p>
+    </div>
+
+    <div class="fomo-grid">
+      <div class="fomo-pillars" data-fade>
+        <div class="fomo-pillar">
+          <h4>Digital knapphet</h4>
+          <p>Begrenset antall slippes på faste tider — knapphet tvinger frem umiddelbar konvertering.</p>
+        </div>
+        <div class="fomo-pillar">
+          <h4>Eliminerer nøling</h4>
+          <p>Kundene vet at hvis de ikke kjøper nå, er muligheten borte. Ingen ventelister.</p>
+        </div>
+        <div class="fomo-pillar">
+          <h4>Sosial validering</h4>
+          <p>Et produkt som forsvinner raskt, bygger sin egen verdi og status. The Supreme of snacks.</p>
+        </div>
+      </div>
+
+      <div class="fomo-col-r" data-fade>
+        <div class="drop-card r1">
+          <div class="l">Live · uke 19</div>
+          <div class="v">Kun 22 bokser igjen</div>
+        </div>
+        <div class="drop-card r2">
+          <div class="l">Avsluttet · uke 18</div>
+          <div class="v">Utsolgt på 14 minutter</div>
+        </div>
+        <div class="drop-card r3">
+          <div class="l">Neste drop</div>
+          <div class="v">Fredag kl. 10:00</div>
+        </div>
+        <div class="countdown">
+          <div class="countdown-row">
+            <span class="l">Konvertering, fredag kl. 10:00</span>
+            <span class="v">14:59:59 → 00:00:00</span>
+          </div>
+          <div class="progress"><div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PYRAMID / SALES ARCH ============== -->
+<section class="section">
+  <div class="container">
+    <div class="sect-head" data-fade>
+      <span class="sect-num"><span class="line"></span>III. Salgsarkitekturen<span class="line"></span></span>
+      <h2>Vi selger ikke et sortiment.<br/><span class="accent">Vi selger en kurv.</span></h2>
+      <p>Hvert produkt har en presis rolle: trekke kunden inn, bygge kurven, eller løfte den.</p>
+    </div>
+
+    <div class="pyramid" data-fade>
+      <div class="py-tier t1">
+        <div class="l">Topp · Anledning</div>
+        <h3>Ordreløftere</h3>
+        <p>Premium-kaker som radikalt løfter snittordren.</p>
+      </div>
+      <div class="py-tier t2">
+        <div class="l">Midt · Kurvbygger</div>
+        <h3>Add-ons</h3>
+        <p>Små fristelser kunden lett sier ja til i checkout. Petit four, porsjonskaker, slices.</p>
+      </div>
+      <div class="py-tier t3">
+        <div class="l">Bunn · Inngangsport</div>
+        <h3>Hero-produkt (Digital Pop-up)</h3>
+        <p>Skaper lyst, oppmerksomhet og drar kunden inn i plattformen. Eksempel: Nobel Drop-signaturmakron.</p>
+      </div>
+    </div>
+
+    <div class="quote-card" data-fade>
+      "Disse produktene transformerer impuls-klikk til
+      <span class="em">planlagte voksenkjøp med høy margin</span>."
+    </div>
+  </div>
+</section>
+
+<!-- ============== PRODUKTUNIVERSET ============== -->
+<section class="section" id="produkter" style="background: var(--cream-50); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+  <div class="container">
+    <div class="sect-head" data-fade>
+      <span class="sect-num"><span class="line"></span>IV. Produktuniverset<span class="line"></span></span>
+      <h2>Fra impuls til <span class="accent">Nobel-cakes-universet</span>.</h2>
+      <p>Når kunden først er inne for å sikre seg dagens drop, møter de hele premiumsortimentet i én friksjonsfri kasse.</p>
+    </div>
+
+    <div class="product-grid" data-fade>
+      <article class="product-card">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?auto=format&fit=crop&w=900&q=80" alt="Macaron"/>
+        </div>
+        <div class="product-body">
+          <div class="role">Hero · Inngangsport</div>
+          <h3>Macronen</h3>
+          <p>Den digitale popupen. Visuelt optimalisert for sosiale medier, kun tilgjengelig i tidsbegrenset drop.</p>
+          <div class="meta"><span>Boks · 6 stk</span><span class="price">kr 189</span></div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80" alt="Porsjonskaker"/>
+        </div>
+        <div class="product-body">
+          <div class="role">Add-on · Kurvbygger</div>
+          <h3>Porsjonskaker</h3>
+          <p>Visuelt sterke desserter for 2–4 personer. Lett å si ja til i checkout — perfekt for å nå minimumsordren.</p>
+          <div class="meta"><span>Pakke · 4 stk</span><span class="price">kr 249</span></div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80" alt="Premiumkaken"/>
+        </div>
+        <div class="product-body">
+          <div class="role">Anledningen · Ordreløfter</div>
+          <h3>Premiumkaken</h3>
+          <p>Selve ryggraden. Bursdag, helg, besøk, feiring. Den store kaken som radikalt løfter snittordren.</p>
+          <div class="meta"><span>10–12 personer</span><span class="price">kr 749</span></div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=80" alt="Porsjonspakket"/>
+        </div>
+        <div class="product-body">
+          <div class="role">Fase 2 · Skalering</div>
+          <h3>Porsjonspakket Middag</h3>
+          <p>Hverdagsmiddag av høy kvalitet. Singelpakket luksus levert i samme app, samme rute.</p>
+          <div class="meta"><span>Single · 1 porsjon</span><span class="price">kr 159</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== OCCASIONS ============== -->
+<section class="section">
+  <div class="container">
+    <div class="sect-head" data-fade>
+      <span class="sect-num"><span class="line"></span>V. Målgruppen<span class="line"></span></span>
+      <h2>Planleggere,<br/><span class="accent">ikke bare impuls</span>.</h2>
+      <p>Vi bruker hype som inngang, men bygger for voksne kunder som planlegger. Det sikrer en vesentlig høyere handlekurv og naturlig gjenkjøp.</p>
+    </div>
+
+    <div class="occasion-row" data-fade>
+      <span class="occasion">Helg</span>
+      <span class="occasion">Bursdag</span>
+      <span class="occasion">Feiring</span>
+      <span class="occasion">Gave</span>
+      <span class="occasion">Vertinnegave</span>
+      <span class="occasion">Besøk</span>
+      <span class="occasion">Hverdagskos</span>
+      <span class="occasion">Jul &amp; høytid</span>
+    </div>
+
+    <div class="occasion-tag" data-fade>Vi bygger for anledninger.</div>
+  </div>
+</section>
+
+<!-- ============== ARV / HERITAGE ============== -->
+<section class="section" id="historien" style="background: var(--cream-200);">
+  <div class="container">
+    <div class="heritage-grid">
+      <div class="heritage-img-wrap" data-fade>
+        <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=900&q=80" alt="Konditori"/>
+        <div class="stamp">
+          <div class="l">Sertifisert siden</div>
+          <div class="v">1986 · Oslo</div>
+        </div>
+      </div>
+
+      <div data-fade>
+        <span class="sect-num" style="justify-content: flex-start;"><span class="line"></span>Arven</span>
+        <h2 style="font-family: 'Fraunces', serif; font-size: clamp(34px, 4.5vw, 56px); line-height: 1.05; letter-spacing: -0.02em; color: var(--cocoa-900); margin: 22px 0; font-weight: 400;">
+          39 år med håndverk.<br/>
+          <span style="font-style: italic; color: var(--gold-500);">Nå skalert.</span>
+        </h2>
+        <p style="font-size: 17px; line-height: 1.6; color: var(--cocoa-500); margin: 0 0 18px;">
+          Nobel Catering &amp; Conditori ble grunnlagt i 1986 ved Nobelsgate 23 av to gründere som "jobbet dag og natt". I dag er det et hus på rundt 40 ansatte, miljøfyrtårn-sertifisert.
+        </p>
+        <p style="font-size: 17px; line-height: 1.6; color: var(--cocoa-500); margin: 0 0 30px;">
+          Nobel Drop er ikke en ny merkevare. Det er en ny salgskanal — bygget oppå en håndverkstradisjon kundene allerede stoler på.
+        </p>
+
+        <div class="heritage-stats">
+          <div class="stat-cell">
+            <div class="num">1986</div>
+            <div class="label">Etablert</div>
+            <div class="desc">Nobelsgate 23, Oslo. To gründere, dag og natt.</div>
+          </div>
+          <div class="stat-cell">
+            <div class="num">~40</div>
+            <div class="label">Ansatte</div>
+            <div class="desc">Bærum og Skedsmokorset. Hele Østlandet.</div>
+          </div>
+          <div class="stat-cell">
+            <div class="num">100%</div>
+            <div class="label">Elektrisk flåte</div>
+            <div class="desc">Miljøfyrtårn-sertifisert. Lokale råvarer.</div>
+          </div>
+          <div class="stat-cell">
+            <div class="num">D2C</div>
+            <div class="label">Ny kanal</div>
+            <div class="desc">Drop-mekanikk på toppen av eksisterende kapasitet.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== ROUTES ============== -->
+<section class="section" id="ruter">
+  <div class="container">
+    <div class="sect-head" data-fade>
+      <span class="sect-num"><span class="line"></span>VI. Leveringsruter<span class="line"></span></span>
+      <h2>Datadrevet rute<br/><span class="accent">— uten butikk-kostnader</span>.</h2>
+      <p>Bilene kjører utelukkende til områder hvor betalingsviljen er bekreftet. Null tomkjøring. Risikofri ekspansjon.</p>
+    </div>
+
+    <div class="route-grid" data-fade>
+      <div class="route-cell">
+        <div class="num">01</div>
+        <div class="city">Lier</div>
+        <div class="type">Partner</div>
+      </div>
+      <div class="route-cell">
+        <div class="num">02</div>
+        <div class="city">Drammen</div>
+        <div class="type">Partner</div>
+      </div>
+      <div class="route-cell">
+        <div class="num">03</div>
+        <div class="city">Holmestrand</div>
+        <div class="type">90-min stopp</div>
+      </div>
+      <div class="route-cell">
+        <div class="num">04</div>
+        <div class="city">Horten</div>
+        <div class="type">90-min stopp</div>
+      </div>
+      <div class="route-cell">
+        <div class="num">05</div>
+        <div class="city">Tønsberg</div>
+        <div class="type">90-min stopp</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CTA BAND ============== -->
+<section class="cta-band">
+  <div class="container">
+    <h2>Neste drop går live<br/><span class="accent">fredag kl. 10:00</span>.</h2>
+    <p>Aktiver push-varsler i appen. 100% forhåndsbetalt. Friskbakt samme dag, hentet på avtalt tid.</p>
+    <div class="ctas">
+      <a class="btn btn-gold" href="#">Last ned appen</a>
+      <a class="btn btn-on-dark-ghost" href="#">Se hvordan det fungerer</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="brand" style="font-size: 24px; margin-bottom: 16px;">
+          <span class="seal">N</span>
+          <span>Nobel Drop</span>
+        </div>
+        <p style="font-size: 13px; line-height: 1.6; color: var(--cocoa-500); margin: 0 0 14px; max-width: 320px;">
+          En kanal av Nobel Catering &amp; Conditori. Etablert 1986, ved Nobelsgate 23, Oslo.
+        </p>
+      </div>
+      <div class="foot-col">
+        <h4>Konsept</h4>
+        <a href="#">Konseptet</a>
+        <a href="#">Produkter</a>
+        <a href="#">Leveringsruter</a>
+        <a href="#">Historien</a>
+      </div>
+      <div class="foot-col">
+        <h4>Kunde</h4>
+        <a href="#">Last ned app</a>
+        <a href="#">FAQ</a>
+        <a href="#">Kontakt</a>
+        <a href="#">Pickup-kart</a>
+      </div>
+      <div class="foot-col">
+        <h4>Juridisk</h4>
+        <a href="#">Vilkår</a>
+        <a href="#">Personvern</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Nobel Catering &amp; Conditori AS · Org. nr. 123 456 789</span>
+      <span>Laget i Oslo · Miljøfyrtårn-sertifisert</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+  document.querySelectorAll('[data-fade]').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>

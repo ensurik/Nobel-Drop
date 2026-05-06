@@ -8,58 +8,58 @@ import CTABand from "~/components/CTABand.astro";
 const milestones = [
   {
     year: "1986",
-    title: "Nobelsgate 23",
-    body: "To gründere åpner et lite konditori i Nobelsgate 23, Oslo. De jobber dag og natt — derav navnet, og derav arbeidsmoralen som siden har bygget hele Nobel.",
+    title: "Et lite konditori i Nobelsgate 23",
+    body: "To gründere åpner et lite konditori midt i Oslo. De jobber dag og natt — bokstavelig — for å bygge et sted der hver kake som forlater disken har vært verdt å bli plukket ut. Adressen ga navnet, og navnet ble sittende.",
   },
   {
     year: "1990-tallet",
-    title: "Catering blir fundamentet",
-    body: "Konditoriet utvider til catering. Selskap, bedriftsarrangementer, bryllup. Det første Nobel-håndtrykket: kvalitet på porselen, levert med presisjon.",
+    title: "Catering blir naturlig forlengelse",
+    body: "Konditoriet vokser. Bryllup, dåp, konfirmasjon, bursdager — folk spør oftere om de kan få hele bordet, ikke bare kakene. Vi sier ja, og catering blir den andre halvdelen av Nobel.",
   },
   {
     year: "2000-tallet",
-    title: "To hus, ett håndverk",
-    body: "Veksten gjør at Nobel etablerer seg på Skedsmokorset i tillegg til Bærum. Samme oppskrifter, samme standarder — bare større volum.",
+    title: "Bærum og Skedsmokorset",
+    body: "Veksten gjør at vi etablerer et nytt kjøkken på Skedsmokorset i tillegg til Bærum. Samme oppskrifter, samme standarder — bare større ovner og flere hender. Hele Østlandet blir nedslagsfeltet vårt.",
   },
   {
     year: "2010-tallet",
-    title: "Miljøfyrtårn og elektrisk flåte",
-    body: "Bærekraft som kjerneprinsipp. Nobel sertifiseres som miljøfyrtårn. Hele leveringsflåten går elektrisk. Lokale, økologiske råvarer der det er mulig.",
+    title: "Miljøfyrtårn og elektrisk kjøring",
+    body: "Vi sertifiserer oss som miljøfyrtårn lenge før det blir et markedsføringsord. Hele leveringsflåten settes om til elektrisk. Lokale, økologiske råvarer der de finnes — fordi vi skal være her i 39 år til.",
   },
   {
     year: "I dag",
-    title: "~40 ansatte, hele Østlandet",
-    body: "Nobel Catering & Conditori serverer privatpersoner og bedrifter på tvers av Østlandet. 39 år med håndverkstradisjon — og vendepunktet til en ny kanal.",
+    title: "Rundt 40 hender på kjøkkenet",
+    body: "Bakere, konditorer, kjøkkensjefer, sjåfører. Vi serverer privatpersoner og bedrifter over hele Østlandet — bryllup om sommeren, julebord om vinteren, og noe nytt på fredagene.",
   },
   {
     year: "Nå",
-    title: "Nobel Drop",
-    body: "Dette er ikke en ny merkevare. Det er en ny salgskanal — bygget oppå håndverkstradisjonen kundene allerede stoler på. App, drops, faste pickup-vinduer, datadrevet rute.",
+    title: "Nobel Drop åpner dørene",
+    body: "Tradisjonell catering har alltid krevd at du ringer inn en bestilling i forveien. Med Nobel Drop åpner vi en ny dør — du kan bestille for fredagskvelden mens du sitter i kø på vei til jobb mandag morgen. Samme kjøkken, samme håndverk, ny måte å nå deg på.",
   },
 ];
 
 const principles = [
   {
+    label: "Kvalitet",
+    title: "Bakt fra bunnen, hver gang",
+    body: "Smør, ekte mandelmel, friske bær, sjokolade fra produsenter vi kjenner. Vi tar snarveiene aldri i kjøkkenet — det er det vi har 39 år for å vite.",
+  },
+  {
+    label: "Variasjon",
+    title: "Sesongstyrt sortiment",
+    body: "Drops varierer gjennom året. Vinteren har mer sjokolade og krydder; sommeren har bær og lette kremer. Vi følger råvarene, ikke kalenderen.",
+  },
+  {
     label: "Bærekraft",
-    title: "Miljøvern fra grunnen av",
-    body: "Sertifisert miljøfyrtårn. Elektrisk leveringsflåte. Mat fra grunnen av — vi bruker mindre kjøtt og prioriterer lokale, økologiske råvarer.",
-  },
-  {
-    label: "Kvalitet & Variasjon",
-    title: "Best mulig variasjon",
-    body: "Kvalitet er aldri forhandlingsbart. Variasjon krever at vi alltid utfordrer egne oppskrifter — sesongdrevet, presist håndverk.",
-  },
-  {
-    label: "Håndverk",
-    title: "Fra grunnen av",
-    body: "Vi lager mat fra bunnen, hver dag. Det betyr færre snarveier, mer kompetanse i kjøkkenet, og produkter som tåler å bli spist sakte.",
+    title: "Mindre kjøtt, kortere transport",
+    body: "Hele leveringsflåten er elektrisk. Vi prioriterer lokalt og økologisk der det er mulig, og bruker mindre kjøtt år for år. Drop-modellen betyr i tillegg at vi nesten ikke kaster noe — vi baker mot låste bestillinger.",
   },
 ];
 ---
 
 <BaseLayout
-  title="Arven"
-  description="Fra Nobelsgate 23 i 1986 til 39 år med håndverk. Slik bygde Nobel Catering & Conditori grunnmuren som Nobel Drop nå skalerer på."
+  title="Om Nobel"
+  description="Nobel Catering & Conditori ble etablert i Nobelsgate 23 i 1986 av to gründere som 'jobbet dag og natt'. 39 år senere bakes hver Nobel Drop fortsatt fra bunnen, fra de samme kjøkkenene."
 >
   <!-- HERO -->
   <section class="relative overflow-hidden pt-24 pb-32 sm:pt-36 sm:pb-44">
@@ -70,18 +70,18 @@ const principles = [
     </div>
     <div class="container-edge relative">
       <div class="mx-auto max-w-4xl">
-        <SectionLabel label="Arven · Etablert 1986" />
+        <SectionLabel label="Om Nobel · Etablert 1986" />
         <h1
           class="mt-8 font-display text-5xl leading-[1.02] text-bone-100 sm:text-7xl lg:text-[104px]"
           data-fade
         >
-          39 år med håndverk.
+          Bakt for hånd
           <br />
-          <span class="italic text-shimmer">Nå skalert.</span>
+          <span class="italic text-shimmer">i 39 år.</span>
         </h1>
         <p class="mt-12 max-w-2xl font-sans text-lg leading-relaxed text-bone-300" data-fade>
-          Nobel Drop står ikke alene. Den står på skuldrene til et konditori som ble
-          grunnlagt i Nobelsgate 23 i 1986 — av to gründere som "jobbet dag og natt".
+          Nobel Drop er ikke et nytt selskap. Det er en ny måte å dele kakene fra et
+          konditori som har stått i Oslo og Bærum siden 1986.
         </p>
       </div>
     </div>
@@ -96,25 +96,26 @@ const principles = [
         <div class="lg:col-span-7" data-fade>
           <SectionLabel label="Hvorfor det heter Nobel" />
           <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-5xl">
-            Et navn som binder<br />
-            <span class="italic text-gold-200">historie til hver eske</span>.
+            Et navn som
+            <br />
+            <span class="italic text-gold-200">begynte med en adresse</span>.
           </h2>
           <div class="mt-10 space-y-6 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
             <p>
-              I 1986 åpnet to gründere et lite konditori i Nobelsgate 23 i Oslo. De jobbet
-              dag og natt — bokstavelig talt — for å bygge en virksomhet der hver
-              detalj på porselenet var verdt å være stolt av.
+              I 1986 åpnet to gründere et lite konditori i Nobelsgate 23 i Oslo. De
+              hadde verken stort budsjett eller en plan om å bli store — bare en idé om
+              at det fantes plass for noen som baket kakene fra bunnen, hver morgen.
             </p>
             <p>
-              Navnet ble til av adressen, og holder fortsatt. I dag har Nobel rundt 40
-              ansatte fordelt på Østerås (Bærum) og Skedsmokorset, og leverer mat og
-              kaker til privatpersoner og bedrifter over hele Østlandet.
+              Navnet kom av adressen, og det har stått siden. Selv etter at vi flyttet
+              til Bærum og senere åpnet et andre kjøkken på Skedsmokorset, har Nobel
+              vært det samme: en kake skal smake av smør, mandel, sjokolade — ikke av
+              snarveier.
             </p>
             <p>
-              Veksten har aldri kommet på bekostning av håndverket. Råvarer kommer
-              fortsatt fra lokale, økologiske leverandører der det er mulig. Hele
-              leveringsflåten er elektrisk. Vi har vært miljøfyrtårn-sertifisert lenge
-              før det var et markedsføringsord.
+              I dag er det rundt 40 ansatte som baker, koker og pakker fra de to
+              kjøkkenene. Vi leverer mat og kaker til private selskaper, bryllup, dåp og
+              bedrifter over hele Østlandet. Nobel Drop er bare den nyeste døren ut til deg.
             </p>
           </div>
         </div>
@@ -150,7 +151,7 @@ const principles = [
       <div class="mx-auto max-w-3xl" data-fade>
         <SectionLabel label="Tidslinje" />
         <h2 class="mt-6 font-display text-4xl leading-[1.05] text-bone-100 sm:text-5xl">
-          Fra konditori til kanal.
+          Fra konditoridisk til pickup-stopp.
         </h2>
       </div>
 
@@ -185,7 +186,8 @@ const principles = [
       <div class="mx-auto max-w-3xl text-center" data-fade>
         <SectionLabel label="Bærebjelker" align="center" />
         <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
-          Tre prinsipper. <br /><span class="italic text-gold-200">Førti års arbeid.</span>
+          Tre prinsipper.
+          <br /><span class="italic text-gold-200">Bakt inn i alt vi gjør.</span>
         </h2>
       </div>
 
@@ -210,7 +212,7 @@ const principles = [
 
   <div class="hairline mx-auto max-w-5xl"></div>
 
-  <!-- BROEN: KONDITORI → FOOD-TECH -->
+  <!-- BROEN -->
   <section class="relative overflow-hidden py-32 sm:py-44">
     <div
       class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(200,162,76,0.10)_0%,transparent_50%)]"
@@ -219,35 +221,38 @@ const principles = [
     </div>
     <div class="container-edge relative">
       <div class="mx-auto max-w-3xl text-center" data-fade>
-        <SectionLabel label="Broen" align="center" />
+        <SectionLabel label="Drop er Nobel" align="center" />
         <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
-          Fra tradisjonelt konditori<br /><span class="italic text-gold-200">til premium food-tech</span>.
+          Samme hender.<br /><span class="italic text-gold-200">Ny måte å dele.</span>
         </h2>
         <p class="mt-10 font-sans text-lg leading-relaxed text-bone-300">
-          Nobel Drop bruker eksisterende kjøkken, eksisterende mannskap, eksisterende
-          kompetanse — og legger en ny D2C-infrastruktur oppå. Resultat: cashflow før
-          produksjon, null svinn, høyere margin per kjøp.
+          Nobel Drop er bakt på de samme to kjøkkenene som leverer bryllupskaken til
+          tantes andre forsøk. Forskjellen er at du ikke trenger å ringe en uke i
+          forveien. Last ned appen, slå på varsler, og du er klar til neste fredag.
         </p>
       </div>
 
       <div class="mx-auto mt-16 max-w-3xl border border-gold-400/40 bg-ink-850 p-10" data-fade>
-        <p class="font-sans text-[11px] uppercase tracking-ultra-wide text-gold-200/80">
-          Takeaway
+        <p class="font-display text-2xl leading-relaxed text-bone-100 sm:text-3xl">
+          "Vi har bakt for byen i 39 år. Nobel Drop er bare første gang vi sender det
+          <span class="italic text-gold-200">direkte til deg</span>."
         </p>
-        <p class="mt-6 font-display text-2xl leading-relaxed text-bone-100 sm:text-3xl">
-          "Nobel Drop er ikke bare dessert. Det er en ferdigbygget infrastruktur for alt
-          premium D2C-salg i fremtiden."
-        </p>
+      </div>
+
+      <div class="mt-12 flex justify-center">
+        <GoldButton href="https://nobelcatering.no" external variant="ghost">
+          Bestill catering på nobelcatering.no
+        </GoldButton>
       </div>
     </div>
   </section>
 
   <CTABand
-    eyebrow="Klar for vår neste epoke?"
+    eyebrow="Klar for fredag?"
     title="39 år med håndverk. Ett trykk unna."
-    body="Last ned, registrer deg, og bli en del av neste fredags drop."
-    primaryLabel="Åpne app.nobeldrop.no"
-    secondaryHref="/konseptet"
+    body="Last ned, slå på varsler, og bli en del av neste fredags drop."
+    primaryLabel="Last ned appen"
+    secondaryHref="/slik-fungerer-det"
     secondaryLabel="Slik fungerer det"
   />
 </BaseLayout>

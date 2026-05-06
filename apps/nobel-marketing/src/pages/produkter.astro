@@ -10,61 +10,61 @@ const products = [
   {
     slug: "macron",
     title: "Signaturmakronen",
-    role: "Hero · Inngangsport",
-    headline: "Den digitale popupen",
-    body: "Den digitale popupen. Visuelt optimalisert for sosiale medier, designet utelukkende for tidsbegrenset app-salg. Følger trender og skaper akutt Fear of Missing Out — produktet ser så bra ut at det fungerer som en selvstendig digital popup-butikk.",
+    line: "Hovedboksen",
+    headline: "Friskpiped fredag morgen",
+    body: "Sprø skall, mykt indre, brent karamell på toppen. Vi piper hver makron for hånd samme morgen som dropet. Du smaker forskjellen — det er hele grunnen til at boksen er begrenset.",
     facts: [
-      "4-pakk · 8-pakk · 12-pakk",
-      "Brent karamell · gull · sjokolade · hasselnøtt",
-      "Begrenset til hver fredags drop",
+      "4-pakk · 6-pakk · 8-pakk",
+      "Brent karamell · mørk sjokolade · hasselnøtt · sesongens smak",
+      "Holder seg fersk i 3 dager — om du klarer å vente",
     ],
-    accent: "FOMO som forretningsstrategi",
+    accent: "Hver fredag · ingen abonnement",
   },
   {
     slug: "porsjonskaker",
     title: "Porsjonskaker & Mini Cakes",
-    role: "Add-on · Kurvbygger",
-    headline: "Kurvens motor",
-    body: "Visuelt sterke desserter for 2–4 personer. Lett å si ja til i checkout — perfekt for å nå minimumsordre og sikre marginen på hele ordren. Petit four, slices, og porsjonskaker til alle anledninger.",
+    line: "For de små fredene",
+    headline: "Petit four, mini-cheesecake, mousse",
+    body: "Små desserter for to til fire personer — perfekte til søndagskaffen, til dåpsfeiringen, eller bare som en stille kveld med noen du er glad i. Vi varierer utvalget gjennom året; sjekk hvilke som er klare i appen før du bestiller.",
     facts: [
-      "2–4 porsjoner per stk",
-      "Ulike smaker per drop · sesongstyrt",
-      "Ideell mellom hero og premiumkake",
+      "2–4 porsjoner per stykk",
+      "Sjokolademousse · sitronterte · bær på vanilje · pistasj-petit four",
+      "Skiftende sortiment — sesongstyrt",
     ],
-    accent: "Petit four · slices · porsjonskaker",
+    accent: "Lett å legge til når du bestiller boks",
   },
   {
     slug: "premiumkake",
     title: "Premiumkaken",
-    role: "Anledningen · Ordreløfter",
-    headline: "Selve ryggraden",
-    body: "Selve ryggraden. Kaken til bursdag, helg, besøk og feiring. Store premium-kaker som radikalt løfter snittordren og gjør Nobel Drop til mer enn et impulskjøp — det blir en fast del av planlegging.",
+    line: "Når det skal feires",
+    headline: "Hele kaker for helgen",
+    body: "Bursdag, dåp, helgebesøk, søndagsmiddag. Bestill fredag, hent samme dag, server lørdag eller søndag. Ekte mandelbunn, ekte krem, friske bær — den slags kake du husker fra barndommen, fortsatt bakt på samme måte.",
     facts: [
       "8 · 12 · 16 personer",
       "Sjokolade · bringebær · hasselnøtt · sesong",
-      "Personalisering tilgjengelig på utvalgte drops",
+      "Gluten- og laktosefri på utvalgte drops",
     ],
-    accent: "Voksen premium · ikke tenåringshype",
+    accent: "Ferdig pakket · klar til å settes på bordet",
   },
   {
     slug: "middag",
-    title: "Porsjonspakket Middag",
-    role: "Fase 2 · Premium D2C",
+    title: "Middag i porsjon",
+    line: "Kommer Q4 2026",
     headline: "Hverdagsmiddag, premium-løftet",
-    body: "Singel-pakket luksus (Coq au Vin, Viltgryte) levert i samme app, samme ruter, samme pickup-logikk. Praktisk kraftkartong som tåler 200 grader, hevet til luksusprodukt med mørkt mage-belte og gullfoliert logo. Introduseres når pickup-vanen sitter 100 %.",
+    body: "Coq au vin, viltgryte, lakseretter — singel-pakket og klar for ovnen. Praktisk kraftkartong som tåler 200 grader, hevet til luksus med et mørkt mage-belte og gullfoliert logo. Samme app, samme stopp, samme håndverk.",
     facts: [
       "1–2 porsjoner per pakke",
-      "Coq au Vin · Viltgryte · Lakseretter",
-      "Ferdig pakket · klar til ovn 200° eller mikro",
+      "Coq au vin · viltgryte · lakseretter · vegetar",
+      "Klar i ovn på 25 minutter — eller mikro på 5",
     ],
-    accent: "Klar Q4 · bygger ovenpå dropet",
+    accent: "Lanseres når makron-rutinen sitter",
   },
 ];
 ---
 
 <BaseLayout
-  title="Produkter"
-  description="Produktuniverset bak Nobel Drop: signaturmakronen som inngangsport, porsjonskaker som kurv-byggere, premiumkaker som ordreløftere, og porsjonspakket middag i fase 2."
+  title="Bakverket"
+  description="Signaturmakronen er hovedboksen. Porsjonskaker passer til søndagskaffen. Hele kaker til helgens feiring. Alt friskbakt fredag morgen, alt fra Nobels kjøkken."
 >
   <!-- HERO -->
   <section class="relative overflow-hidden pt-24 pb-24 sm:pt-36 sm:pb-32">
@@ -75,17 +75,18 @@ const products = [
     </div>
     <div class="container-edge relative">
       <div class="mx-auto max-w-4xl text-center">
-        <SectionLabel label="Produktuniverset" align="center" />
+        <SectionLabel label="Bakverket" align="center" />
         <h1
           class="mt-8 font-display text-5xl leading-[1.02] text-bone-100 sm:text-7xl lg:text-[104px]"
           data-fade
         >
-          Fire kategorier.<br />
-          <span class="italic text-shimmer">Én kurv som bygges</span>.
+          Det vi baker<br />
+          <span class="italic text-shimmer">til hver fredag</span>.
         </h1>
         <p class="mx-auto mt-10 max-w-2xl font-sans text-lg leading-relaxed text-bone-300" data-fade>
-          Vi selger ikke et rotete sortiment. Hvert produkt har en presis rolle: trekke
-          kunden inn, bygge kurven, eller løfte den. Strukturert, ikke tilfeldig.
+          Hovedboksen er signaturmakronen — det er det vi er kjent for. Du kan legge til
+          porsjonskaker for to, eller en hel premiumkake til helgens besøk. Alt i samme
+          bestilling, alt klart samme morgen.
         </p>
       </div>
     </div>
@@ -93,7 +94,7 @@ const products = [
 
   <div class="hairline mx-auto max-w-5xl"></div>
 
-  <!-- PRODUKTER (alternerende editorial layout) -->
+  <!-- PRODUKTER -->
   <section class="relative py-24 sm:py-32">
     <div class="container-edge">
       <div class="space-y-32 sm:space-y-44">
@@ -113,7 +114,7 @@ const products = [
                     <div class="absolute inset-0 flex items-center justify-center p-10">
                       <div class="text-center">
                         <p class="font-sans text-[10px] uppercase tracking-ultra-wide text-gold-200/70">
-                          Produkt {String(i + 1).padStart(2, "0")} / 04
+                          Bakverk {String(i + 1).padStart(2, "0")} / 04
                         </p>
                         <p class="mt-6 font-display text-4xl text-gold-200 sm:text-6xl">
                           {p.title}
@@ -135,7 +136,7 @@ const products = [
                   data-fade
                 >
                   <p class="font-sans text-[11px] uppercase tracking-ultra-wide text-gold-200/80">
-                    {p.role}
+                    {p.line}
                   </p>
                   <h2 class="mt-4 font-display text-4xl leading-[1.05] text-bone-100 sm:text-5xl">
                     {p.headline}
@@ -154,7 +155,7 @@ const products = [
 
                   <div class="mt-10">
                     <GoldButton href="https://app.nobeldrop.no" variant="primary">
-                      Se i app
+                      Se i appen
                     </GoldButton>
                   </div>
                 </div>
@@ -168,47 +169,96 @@ const products = [
 
   <div class="hairline mx-auto max-w-5xl"></div>
 
-  <!-- ROLLE I PYRAMIDEN -->
+  <!-- BAKT FOR ANLEDNINGEN -->
   <section class="relative py-32 sm:py-44">
     <div class="container-edge">
       <div class="mx-auto max-w-3xl text-center" data-fade>
-        <SectionLabel label="Salgsarkitekturen" align="center" />
+        <SectionLabel label="Når det smaker best" align="center" />
         <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-5xl">
-          Hvert produkt har en rolle.
+          Bakt for fredagen.<br />Klar til lørdagen.
         </h2>
         <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
-          Disse produktene transformerer impuls-klikk til
-          <span class="italic text-gold-200">planlagte voksenkjøp med høy margin</span>.
+          De fleste bestiller før helgen — en boks til kvelden, en hel kake til søndagens
+          besøk. Andre tar med en boks som vertinnegave, eller fyller en porsjonskake i
+          fanget på fredagskvelden.
         </p>
       </div>
 
-      <div class="mt-20 grid gap-px bg-gold-400/15 sm:grid-cols-3" data-fade>
-        <div class="bg-ink-900 p-10">
-          <p class="font-sans text-[10px] uppercase tracking-ultra-wide text-gold-200/80">
-            Skaper begjær
+      <div class="mt-16 flex flex-wrap items-center justify-center gap-3 sm:gap-4" data-fade>
+        <TagPill>Fredagskos</TagPill>
+        <TagPill>Søndagskaffe</TagPill>
+        <TagPill>Bursdagskake</TagPill>
+        <TagPill>Helgebesøk</TagPill>
+        <TagPill>Vertinnegave</TagPill>
+        <TagPill>Dåp & feiring</TagPill>
+      </div>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <!-- INGREDIENSER -->
+  <section class="relative py-32 sm:py-44">
+    <div class="container-edge">
+      <div class="grid gap-16 lg:grid-cols-2 lg:items-center lg:gap-24">
+        <div data-fade>
+          <SectionLabel label="Råvarene" />
+          <h2 class="mt-8 font-display text-4xl leading-[1.05] text-bone-100 sm:text-6xl">
+            Smør, mandler,
+            <br /><span class="italic text-gold-200">og tid.</span>
+          </h2>
+          <p class="mt-8 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
+            Vi tar snarveiene aldri i kjøkkenet. Smør fra norske leverandører, mandler
+            fra Spania, sjokolade fra produsenter vi har jobbet med i tjue år. Bær og
+            frukt etter sesong — vi følger hva som er friskt, ikke hva som er
+            tilgjengelig året rundt.
           </p>
-          <p class="mt-4 font-display text-2xl text-bone-100">Hero</p>
-          <p class="mt-3 font-sans text-sm leading-relaxed text-bone-400">
-            Den digitale popupen. Drar kunden inn i plattformen via FOMO og deling.
+          <p class="mt-6 font-sans text-base leading-relaxed text-bone-300 sm:text-lg">
+            Vi har vært miljøfyrtårn-sertifisert lenge. Hele leveringsflåten er elektrisk.
+            Drop-modellen betyr i tillegg at vi nesten ikke kaster noe — vi baker mot
+            låste bestillinger, så ingenting står og blir gammelt på en disk.
           </p>
         </div>
-        <div class="bg-ink-900 p-10">
-          <p class="font-sans text-[10px] uppercase tracking-ultra-wide text-gold-200/80">
-            Bygger kurv
-          </p>
-          <p class="mt-4 font-display text-2xl text-bone-100">Add-ons</p>
-          <p class="mt-3 font-sans text-sm leading-relaxed text-bone-400">
-            Lett-å-si-ja-til-tilbud i checkout. Sikrer at kurven krysser minimumsordre og kreditt-stigen.
-          </p>
-        </div>
-        <div class="bg-ink-900 p-10">
-          <p class="font-sans text-[10px] uppercase tracking-ultra-wide text-gold-200/80">
-            Løfter ordren
-          </p>
-          <p class="mt-4 font-display text-2xl text-bone-100">Anledning</p>
-          <p class="mt-3 font-sans text-sm leading-relaxed text-bone-400">
-            Premiumkaker for bursdag, helg, besøk, feiring. Den som tar snittordren over 1 500 kr.
-          </p>
+
+        <div data-fade>
+          <div class="grid grid-cols-2 gap-px bg-gold-400/15">
+            <div class="bg-ink-900 p-8">
+              <p class="font-display text-5xl text-gold-200">100%</p>
+              <p class="mt-3 font-sans text-sm uppercase tracking-ultra-wide text-bone-400">
+                Ekte smør
+              </p>
+              <p class="mt-2 font-sans text-xs leading-relaxed text-bone-500">
+                Aldri margarin. Aldri palmeolje. Smaken kommer fra grunnlaget.
+              </p>
+            </div>
+            <div class="bg-ink-900 p-8">
+              <p class="font-display text-5xl text-gold-200">39 år</p>
+              <p class="mt-3 font-sans text-sm uppercase tracking-ultra-wide text-bone-400">
+                Med samme oppskrift
+              </p>
+              <p class="mt-2 font-sans text-xs leading-relaxed text-bone-500">
+                Vi har endret menyen mange ganger, men aldri grunnoppskriftene.
+              </p>
+            </div>
+            <div class="bg-ink-900 p-8">
+              <p class="font-display text-5xl text-gold-200">≈ 0</p>
+              <p class="mt-3 font-sans text-sm uppercase tracking-ultra-wide text-bone-400">
+                Svinn
+              </p>
+              <p class="mt-2 font-sans text-xs leading-relaxed text-bone-500">
+                Vi baker mot låste bestillinger — ingenting blir kastet på fredag kveld.
+              </p>
+            </div>
+            <div class="bg-ink-900 p-8">
+              <p class="font-display text-5xl text-gold-200">EL</p>
+              <p class="mt-3 font-sans text-sm uppercase tracking-ultra-wide text-bone-400">
+                Hele leveringsflåten
+              </p>
+              <p class="mt-2 font-sans text-xs leading-relaxed text-bone-500">
+                Bilene som kjører til ditt hentested er elektriske. Miljøfyrtårn-sertifisert.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -218,8 +268,8 @@ const products = [
     eyebrow="Klar?"
     title="Hver fredag kl. 10. Begrenset antall."
     body="Når dropet går live, har du minutter — ikke timer. Sett varselet, vær klar."
-    primaryLabel="Åpne app"
-    secondaryHref="/leveringsruter"
-    secondaryLabel="Se ruter"
+    primaryLabel="Last ned appen"
+    secondaryHref="/hentesteder"
+    secondaryLabel="Se hentestedene"
   />
 </BaseLayout>

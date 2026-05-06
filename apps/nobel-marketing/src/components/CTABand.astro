@@ -12,12 +12,12 @@ interface Props {
 }
 
 const {
-  eyebrow = "Neste drop",
-  title = "Du vil ikke se det komme. Du vil føle det.",
-  body = "Push-varselet kommer fredag kl. 10. Begrenset antall, faste pickup-vinduer, ingen ventelister. Last ned, registrer deg, og vær klar.",
+  eyebrow = "Neste drop · fredag kl. 10",
+  title = "Vær klar når ovnen åpnes.",
+  body = "Vi sender deg push i samme sekund neste drop går live. Last ned appen, slå på varsler, og du er først i køen.",
   primaryHref = "https://app.nobeldrop.no",
-  primaryLabel = "Åpne app.nobeldrop.no",
-  secondaryHref = "/konseptet",
+  primaryLabel = "Last ned appen",
+  secondaryHref = "/slik-fungerer-det",
   secondaryLabel = "Slik fungerer det",
 } = Astro.props;
 ---
@@ -51,7 +51,7 @@ const {
       </div>
 
       <p class="mt-10 font-sans text-xs uppercase tracking-ultra-wide text-bone-500">
-        Vipps · Apple Pay · Klarna · 100 % forhåndsbetalt
+        Betal med Vipps · Apple Pay · Klarna
       </p>
     </div>
   </div>
