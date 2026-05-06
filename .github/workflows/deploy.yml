@@ -32,7 +32,7 @@ jobs:
         env:
           EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL }}
           EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
-          EXPO_PUBLIC_APP_URL: https://app.nobeldrop.no
+          EXPO_PUBLIC_APP_URL: https://shop.nobeldrop.no
           EXPO_PUBLIC_VAPID_PUBLIC_KEY: ${{ secrets.EXPO_PUBLIC_VAPID_PUBLIC_KEY }}
           EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${{ secrets.EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY }}
         run: npx expo export --platform web
@@ -49,7 +49,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./apps/nobel-drop/dist/
-          server-dir: /public_html/app.nobeldrop.no/
+          server-dir: /public_html/shop.nobeldrop.no/
           # NB: protocol=ftp er ren, ukryptert FTP. Brukes som diagnose.
           # Bytt til ftps (explicit, port 21) eller ftps-legacy (implicit, port 990)
           # når vi vet hva Dedia støtter.
