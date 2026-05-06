@@ -1,0 +1,160 @@
+---
+// Cinematic intro film overlay.
+// Plays muted-autoplay on first visit, fades to wordmark, then reveals page.
+// Respects prefers-reduced-motion and sessionStorage so users see it once per session.
+---
+
+<div
+  id="intro-overlay"
+  class="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden bg-espresso-950 opacity-100 transition-opacity duration-700 ease-out"
+  role="presentation"
+  aria-hidden="true"
+>
+  <!-- Cinematic video -->
+  <video
+    id="intro-video"
+    src="/assets/hero/intro.mp4"
+    autoplay
+    muted
+    playsinline
+    preload="auto"
+    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-[800ms] ease-out"
+  ></video>
+
+  <!-- Subtle film vignette (always on top of video) -->
+  <div
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(15,10,6,0.65)_100%)]"
+  >
+  </div>
+
+  <!-- Wordmark stage — fades in after video -->
+  <div
+    id="intro-wordmark"
+    class="relative z-10 flex flex-col items-center text-center opacity-0 transition-opacity duration-[900ms] ease-out"
+  >
+    <p
+      class="font-display font-medium leading-none tracking-tight text-cream-50"
+      style="font-size: clamp(54px, 11vw, 156px); text-shadow: 0 2px 24px rgba(0,0,0,0.45);"
+    >
+      Nobel<span class="display-italic text-brass-200">&nbsp;Drop</span>
+    </p>
+    <span class="mt-7 h-px w-12 bg-brass-300"></span>
+    <p
+      class="mt-5 font-sans text-[11px] uppercase tracking-ultra-wide text-brass-100 sm:text-[12px]"
+      style="text-shadow: 0 2px 12px rgba(0,0,0,0.5);"
+    >
+      Bærum siden 1986
+    </p>
+  </div>
+
+  <!-- Skip button — appears after 1.6s -->
+  <button
+    id="intro-skip"
+    type="button"
+    class="absolute bottom-6 right-6 z-20 rounded-full border border-cream-50/25 bg-cream-50/5 px-5 py-2 font-sans text-[11px] uppercase tracking-ultra-wide text-cream-100 opacity-0 backdrop-blur transition-all duration-500 hover:border-cream-50/50 hover:bg-cream-50/15"
+    aria-label="Hopp over intro"
+  >
+    Hopp over
+  </button>
+</div>
+
+<script is:inline>
+  (function () {
+    const overlay = document.getElementById("intro-overlay");
+    const video = document.getElementById("intro-video");
+    const wordmark = document.getElementById("intro-wordmark");
+    const skipBtn = document.getElementById("intro-skip");
+
+    if (!overlay || !video || !wordmark || !skipBtn) return;
+
+    // Skip if already seen this session, or if user prefers reduced motion
+    const seen = (function () {
+      try {
+        return sessionStorage.getItem("nobel-intro-seen") === "1";
+      } catch (e) {
+        return false;
+      }
+    })();
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (seen || reduced) {
+      overlay.remove();
+      return;
+    }
+
+    // Lock body scroll while intro is playing
+    const html = document.documentElement;
+    const prevOverflow = html.style.overflow;
+    html.style.overflow = "hidden";
+
+    let phase = "video"; // 'video' | 'wordmark' | 'done'
+    let exitTimer = null;
+
+    const showWordmark = () => {
+      if (phase !== "video") return;
+      phase = "wordmark";
+      video.style.opacity = "0";
+      wordmark.style.opacity = "1";
+      // After wordmark holds, exit
+      exitTimer = setTimeout(exit, 1800);
+    };
+
+    const exit = () => {
+      if (phase === "done") return;
+      phase = "done";
+      try {
+        sessionStorage.setItem("nobel-intro-seen", "1");
+      } catch (e) {}
+      overlay.style.opacity = "0";
+      setTimeout(() => {
+        overlay.remove();
+        html.style.overflow = prevOverflow;
+      }, 750);
+    };
+
+    // Skip jumps directly to exit
+    skipBtn.addEventListener("click", exit);
+
+    // Show skip button after 1.6s
+    setTimeout(() => {
+      skipBtn.style.opacity = "1";
+    }, 1600);
+
+    // Fade video in once it can play
+    video.addEventListener(
+      "canplay",
+      () => {
+        video.style.opacity = "1";
+      },
+      { once: true }
+    );
+
+    // Wordmark stage when video ends
+    video.addEventListener("ended", showWordmark);
+
+    // Cap the whole video stage at 7s in case the file is long
+    setTimeout(showWordmark, 7000);
+
+    // Bail out if video errors
+    video.addEventListener("error", showWordmark);
+
+    // If video can't even start within 2s, skip to wordmark
+    const playStartTimer = setTimeout(() => {
+      if (video.readyState < 2) showWordmark();
+    }, 2000);
+    video.addEventListener(
+      "playing",
+      () => clearTimeout(playStartTimer),
+      { once: true }
+    );
+
+    // Allow Esc to skip
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        exit();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+  })();
+</script>
