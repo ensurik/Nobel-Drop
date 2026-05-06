@@ -50,9 +50,11 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./apps/nobel-drop/dist/
           server-dir: /public_html/app.nobeldrop.no/
-          protocol: ftps
+          # NB: protocol=ftp er ren, ukryptert FTP. Brukes som diagnose.
+          # Bytt til ftps (explicit, port 21) eller ftps-legacy (implicit, port 990)
+          # når vi vet hva Dedia støtter.
+          protocol: ftp
           port: 21
-          # Inkluder dotfiles (f.eks. .htaccess) i opplasting
           dangerous-clean-slate: false
           exclude: |
             **/.git*
