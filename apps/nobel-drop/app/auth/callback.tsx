@@ -1,14 +1,13 @@
+// Magic-link callback er ikke lenger i bruk (telefon+passord auth gir umiddelbar
+// session). Vi beholder ruten som en rein redirect for å unngå broken links
+// fra eldre lenker eller eksterne referanser.
 import { useEffect } from "react";
 import { ActivityIndicator, View } from "react-native";
 import { router } from "expo-router";
-import { supabase } from "../../lib/supabase";
 
 export default function Callback() {
   useEffect(() => {
-    const sub = supabase.auth.onAuthStateChange((_event, session) => {
-      if (session) router.replace("/");
-    });
-    return () => sub.data.subscription.unsubscribe();
+    router.replace("/");
   }, []);
 
   return (
