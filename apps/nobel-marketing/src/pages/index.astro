@@ -112,23 +112,22 @@ const occasions = [
 
       <h1
         id="hero-headline"
-        class="font-display max-w-[18ch] font-medium leading-[0.95] tracking-tight text-cream-50"
-        style="font-size: clamp(48px, 8.4vw, 124px); text-shadow: 0 2px 32px rgba(0,0,0,0.45);"
+        class="font-display max-w-[14ch] font-medium leading-[0.95] tracking-tight text-cream-50"
+        style="font-size: clamp(52px, 9.5vw, 144px); text-shadow: 0 2px 32px rgba(0,0,0,0.45);"
       >
-        <span class="hero-word" style="--d: 350ms">Bakeriet</span>
-        <span class="hero-word" style="--d: 1100ms">kommer</span>
+        <span class="hero-word" style="--d: 400ms">Ikke</span>
+        <span class="hero-word" style="--d: 950ms">butikk.</span>
         <br />
-        <span class="hero-word display-italic text-brass-200" style="--d: 1900ms">
-          til deg.
-        </span>
+        <span class="hero-word" style="--d: 1600ms">Bare</span>
+        <span class="hero-word display-italic text-brass-200" style="--d: 2150ms">drop.</span>
       </h1>
 
       <p
-        class="hero-subline mt-10 max-w-md font-sans text-[16px] leading-relaxed text-cream-200 opacity-0 sm:text-[18px]"
+        class="hero-subline mt-10 max-w-lg font-sans text-[16px] leading-relaxed text-cream-200 opacity-0 sm:text-[18px]"
         style="text-shadow: 0 1px 16px rgba(0,0,0,0.5);"
       >
-        Friskbakte makroner og kaker fra et 39-årig konditori. Bestilt med ett
-        trykk når et drop er klart, hentet på et stopp nær deg.
+        Eksklusive delikatesser fra Nobel Catering & Conditori. Begrenset antall,
+        faste hentepunkter — snart nær deg.
       </p>
 
       <div
@@ -198,13 +197,13 @@ const occasions = [
     }
 
     .hero-subline {
-      animation: hero-fade-up 900ms cubic-bezier(0.22, 1, 0.36, 1) 2700ms forwards;
-    }
-    .hero-cta {
       animation: hero-fade-up 900ms cubic-bezier(0.22, 1, 0.36, 1) 3000ms forwards;
     }
+    .hero-cta {
+      animation: hero-fade-up 900ms cubic-bezier(0.22, 1, 0.36, 1) 3300ms forwards;
+    }
     #hero-skip {
-      animation: hero-fade-up 900ms cubic-bezier(0.22, 1, 0.36, 1) 3400ms forwards;
+      animation: hero-fade-up 900ms cubic-bezier(0.22, 1, 0.36, 1) 3700ms forwards;
     }
     @keyframes hero-fade-up {
       from { opacity: 0; transform: translate3d(0, 8px, 0); }
@@ -368,17 +367,18 @@ const occasions = [
 
   <div class="hairline mx-auto max-w-5xl"></div>
 
-  <!-- ============== BAKVERKET ============== -->
+  <!-- ============== SORTIMENTET ============== -->
   <section class="relative py-24 sm:py-32">
     <div class="container-edge">
       <div class="mx-auto mb-20 max-w-3xl text-center" data-fade>
-        <SectionLabel label="Bakverket" align="center" />
+        <SectionLabel label="Sortimentet" align="center" />
         <h2 class="mt-8 font-display text-[40px] font-medium leading-[1.05] text-espresso-900 sm:text-6xl">
-          Det vi <span class="display-italic text-brass-700">faktisk baker</span>.
+          Delikatessene <span class="display-italic text-brass-700">som slippes</span>.
         </h2>
         <p class="mt-8 font-sans text-[17px] leading-relaxed text-espresso-700">
           Hovedboksen er signaturmakronen. Du kan legge til porsjonskaker for to,
-          eller en hel kake til helgens besøk. Alt i samme bestilling.
+          en hel premiumkake, eller — når middagen lanseres — singel-pakkede
+          retter. Alt i samme bestilling.
         </p>
       </div>
 
@@ -413,7 +413,7 @@ const occasions = [
 
       <div class="mt-20 text-center" data-fade>
         <GoldButton href="/produkter" variant="ghost">
-          Se hele bakverket
+          Se hele sortimentet
         </GoldButton>
       </div>
     </div>
@@ -582,6 +582,59 @@ const occasions = [
           Se kart og tider
         </GoldButton>
       </div>
+    </div>
+  </section>
+
+  <div class="hairline mx-auto max-w-5xl"></div>
+
+  <!-- ============== STEM FREM DITT OMRÅDE ============== -->
+  <section class="relative py-24 sm:py-32">
+    <div class="container-edge">
+      <div class="mx-auto max-w-3xl text-center" data-fade>
+        <SectionLabel label="Etterspørselsstyrt rute" align="center" />
+        <h2 class="mt-8 font-display text-[40px] font-medium leading-[1.05] text-espresso-900 sm:text-6xl">
+          Stem frem
+          <br />
+          <span class="display-italic text-brass-700">ditt område</span>.
+        </h2>
+        <p class="mt-8 font-sans text-[17px] leading-relaxed text-espresso-700 sm:text-[18px]">
+          Vi velger ikke ruter etter algoritme — vi kommer dit folket vil. Si fra
+          hvor du holder til, så prioriteres områder med flest stemmer på neste
+          rute. Ingen e-postliste, ingen oppfølging — bare én linje fra deg
+          om hvor vi burde være neste gang.
+        </p>
+      </div>
+
+      <form
+        action="mailto:omrade@nobeldrop.no"
+        method="post"
+        enctype="text/plain"
+        class="mx-auto mt-14 flex max-w-xl flex-col gap-3 sm:flex-row sm:gap-2"
+        data-fade
+      >
+        <label class="sr-only" for="omrade-input">Området ditt</label>
+        <input
+          id="omrade-input"
+          type="text"
+          name="omrade"
+          required
+          placeholder="Hvor holder du til? F.eks. Sandefjord eller Kongsberg"
+          class="flex-1 rounded-full border border-espresso-900/15 bg-cream-50 px-6 py-4 font-sans text-[15px] text-espresso-900 placeholder:text-espresso-500 focus:border-brass-400 focus:outline-none focus:ring-2 focus:ring-brass-300/40"
+        />
+        <button
+          type="submit"
+          class="group inline-flex items-center justify-center gap-3 rounded-full bg-espresso-900 px-7 py-4 font-sans text-[14px] font-medium text-cream-50 transition hover:bg-espresso-800"
+        >
+          Send stemme
+          <svg class="h-3.5 w-3.5 transition group-hover:translate-x-0.5" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M2 6h8M7 2l4 4-4 4" />
+          </svg>
+        </button>
+      </form>
+
+      <p class="mx-auto mt-6 max-w-xl text-center font-sans text-[12px] uppercase tracking-ultra-wide text-espresso-500" data-fade>
+        Vi kommer dit folket vil
+      </p>
     </div>
   </section>
 
