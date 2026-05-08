@@ -13,6 +13,10 @@ interface ProfileLite {
 
 interface AuthResult {
   error?: string;
+  /** True når signup trigget OTP-utsending og UI bør gå til "skriv inn kode"-steg. */
+  otpRequired?: boolean;
+  /** Det normaliserte E.164-nummeret som ble brukt — gi det videre til verifyPhoneOtp. */
+  phone?: string;
 }
 
 interface AuthContextValue {
@@ -22,6 +26,8 @@ interface AuthContextValue {
   loading: boolean;
   signUpWithPhone: (phone: string, password: string) => Promise<AuthResult>;
   signInWithPhone: (phone: string, password: string) => Promise<AuthResult>;
+  verifyPhoneOtp: (phone: string, code: string) => Promise<AuthResult>;
+  resendPhoneOtp: (phone: string) => Promise<AuthResult>;
   signOut: () => Promise<void>;
 }
 
@@ -58,28 +64,67 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       .then(({ data }) => setProfile(data as ProfileLite | null));
   }, [session]);
 
-  const signUpWithPhone = async (phone: string, password: string): Promise<AuthResult> => {
-    const normalized = normalizePhone(phone);
-    if (!normalized) return { error: "Ugyldig telefonnummer" };
+  const signUpWithPhone = async (phoneInput: string, password: string): Promise<AuthResult> => {
+    const phone = normalizePhone(phoneInput);
+    if (!phone) return { error: "Ugyldig telefonnummer" };
     if (password.length < PASSWORD_MIN) {
       return { error: `Passordet må være minst ${PASSWORD_MIN} tegn` };
     }
-    const { error } = await supabase.auth.signUp({
-      phone: normalized,
-      password,
+    const { data, error } = await supabase.auth.signUp({ phone, password });
+    if (error) {
+      // Hvis brukeren signet opp før men ikke verifiserte, sender vi en ny OTP
+      // og hopper rett til OTP-steget.
+      if (
+        error.message.toLowerCase().includes("already registered") ||
+        error.message.toLowerCase().includes("phone already")
+      ) {
+        const resend = await supabase.auth.resend({ type: "sms", phone });
+        if (!resend.error) {
+          return { otpRequired: true, phone };
+        }
+        return { error: "Denne telefonen er allerede registrert. Logg inn i stedet." };
+      }
+      return { error: humanReadableError(error.message) };
+    }
+    // Hvis Supabase returnerer en session umiddelbart, er konfigurasjonen
+    // "Confirm phone" av — bruker er pålogget. Ellers ble en OTP sendt.
+    if (data.session) return {};
+    return { otpRequired: true, phone };
+  };
+
+  const verifyPhoneOtp = async (phone: string, code: string): Promise<AuthResult> => {
+    const cleanCode = code.replace(/\D/g, "");
+    if (cleanCode.length < 4) return { error: "Skriv inn hele koden" };
+    const { error } = await supabase.auth.verifyOtp({
+      phone,
+      token: cleanCode,
+      type: "sms",
     });
     if (error) return { error: humanReadableError(error.message) };
     return {};
   };
 
-  const signInWithPhone = async (phone: string, password: string): Promise<AuthResult> => {
-    const normalized = normalizePhone(phone);
-    if (!normalized) return { error: "Ugyldig telefonnummer" };
-    const { error } = await supabase.auth.signInWithPassword({
-      phone: normalized,
-      password,
-    });
+  const resendPhoneOtp = async (phone: string): Promise<AuthResult> => {
+    const { error } = await supabase.auth.resend({ type: "sms", phone });
     if (error) return { error: humanReadableError(error.message) };
+    return {};
+  };
+
+  const signInWithPhone = async (phoneInput: string, password: string): Promise<AuthResult> => {
+    const phone = normalizePhone(phoneInput);
+    if (!phone) return { error: "Ugyldig telefonnummer" };
+    const { error } = await supabase.auth.signInWithPassword({ phone, password });
+    if (error) {
+      // Bruker som signet opp men aldri bekreftet OTP — send dem til OTP-steget.
+      if (
+        error.message.toLowerCase().includes("not confirmed") ||
+        error.message.toLowerCase().includes("phone not verified")
+      ) {
+        await supabase.auth.resend({ type: "sms", phone });
+        return { otpRequired: true, phone };
+      }
+      return { error: humanReadableError(error.message) };
+    }
     return {};
   };
 
@@ -96,6 +141,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         loading,
         signUpWithPhone,
         signInWithPhone,
+        verifyPhoneOtp,
+        resendPhoneOtp,
         signOut,
       }}
     >
@@ -113,9 +160,12 @@ export function useAuth() {
 function humanReadableError(raw: string): string {
   const lower = raw.toLowerCase();
   if (lower.includes("invalid login credentials")) return "Feil telefonnummer eller passord";
-  if (lower.includes("phone already")) return "Denne telefonen er allerede registrert. Logg inn i stedet.";
-  if (lower.includes("user already registered")) return "Denne telefonen er allerede registrert. Logg inn i stedet.";
+  if (lower.includes("token has expired") || lower.includes("invalid otp") || lower.includes("token is invalid")) {
+    return "Koden er ugyldig eller utløpt. Be om en ny.";
+  }
+  if (lower.includes("rate limit") || lower.includes("too many")) {
+    return "For mange forsøk. Vent et minutt og prøv igjen.";
+  }
   if (lower.includes("password")) return "Passordet er ikke gyldig";
-  if (lower.includes("rate limit")) return "For mange forsøk. Prøv igjen om litt.";
   return raw;
 }
