@@ -3,6 +3,22 @@ import type {
   Drop, DropItem, Order, PickupWindow, PaymentProvider,
 } from "@nobel/types";
 
+export interface DropStats {
+  drop_id: string;
+  status: string;
+  total_units: number;
+  units_sold: number;
+  units_left: number;
+  sold_last_5min: number;
+  sold_last_15min: number;
+  sold_total: number;
+  velocity_label: "cold" | "warm" | "hot" | "sold_out";
+  first_paid_at: string | null;
+  minutes_since_first_sale: number | null;
+  estimated_sold_out_at: string | null;
+  computed_at: string;
+}
+
 export const api = {
   drops: {
     listLive: async () => {
@@ -23,6 +39,12 @@ export const api = {
         .single();
       if (error) throw error;
       return data as Drop & { drop_items: DropItem[] };
+    },
+
+    stats: async (id: string) => {
+      const { data, error } = await supabase.rpc("get_drop_stats", { p_drop_id: id });
+      if (error) throw error;
+      return data as DropStats;
     },
   },
 

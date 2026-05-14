@@ -27,7 +27,8 @@
       "Bash(supabase functions *)",
       "Bash(supabase secrets *)",
       "Bash(curl -s -o /dev/null -w \"REST: %{http_code}\\\\n\" \"https://fcbfejvbmxfivttopgwe.supabase.co/rest/v1/\" -H \"apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjYmZlanZibXhmaXZ0dG9wZ3dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwMDA4OTgsImV4cCI6MjA5MzU3Njg5OH0.9KGs4wUE5LmTUlaf7ofd5yVWKJsBoxnzH2XWJJ6mU6U\")",
-      "Bash(curl -s \"https://fcbfejvbmxfivttopgwe.supabase.co/rest/v1/products?select=name&limit=3\" -H \"apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjYmZlanZibXhmaXZ0dG9wZ3dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwMDA4OTgsImV4cCI6MjA5MzU3Njg5OH0.9KGs4wUE5LmTUlaf7ofd5yVWKJsBoxnzH2XWJJ6mU6U\")"
+      "Bash(curl -s \"https://fcbfejvbmxfivttopgwe.supabase.co/rest/v1/products?select=name&limit=3\" -H \"apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjYmZlanZibXhmaXZ0dG9wZ3dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwMDA4OTgsImV4cCI6MjA5MzU3Njg5OH0.9KGs4wUE5LmTUlaf7ofd5yVWKJsBoxnzH2XWJJ6mU6U\")",
+      "Bash(curl -s \"https://fcbfejvbmxfivttopgwe.supabase.co/rest/v1/drops?select=id&limit=1\" -H \"apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjYmZlanZibXhmaXZ0dG9wZ3dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwMDA4OTgsImV4cCI6MjA5MzU3Njg5OH0.9KGs4wUE5LmTUlaf7ofd5yVWKJsBoxnzH2XWJJ6mU6U\")"
     ]
   }
 }

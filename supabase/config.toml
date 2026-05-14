@@ -81,3 +81,6 @@ verify_jwt = false
 
 [functions.send-drop-notification]
 verify_jwt = true
+
+[functions.compute-drop-velocity]
+verify_jwt = false

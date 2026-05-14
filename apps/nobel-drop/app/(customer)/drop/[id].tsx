@@ -1,6 +1,6 @@
 import { ScrollView, View, Text, Image, Pressable } from "react-native";
 import { useLocalSearchParams, Stack, router } from "expo-router";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { api } from "../../../lib/api";
 import { useCart } from "../../../lib/cart";
@@ -13,32 +13,46 @@ import { formatNok } from "../../../lib/format";
 export default function DropDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const cart = useCart();
-  const { data: drop, refetch } = useQuery({
+  const queryClient = useQueryClient();
+  const { data: drop } = useQuery({
     queryKey: ["drop", id],
     queryFn: () => api.drops.byId(id!),
     enabled: !!id,
   });
 
+  // Live-stats (velocity, sold_last_5min) — pollet hvert 30. sek for å fange
+  // velocity-endringer som ikke triggeres av drop_items-update alene.
+  const { data: stats } = useQuery({
+    queryKey: ["drop-stats", id],
+    queryFn: () => api.drops.stats(id!),
+    enabled: !!id,
+    refetchInterval: 30_000,
+  });
+
   // Realtime: subscribe på drop_items endringer for live "kun X igjen"
   useEffect(() => {
     if (!id) return;
+    const invalidate = () => {
+      queryClient.invalidateQueries({ queryKey: ["drop", id] });
+      queryClient.invalidateQueries({ queryKey: ["drop-stats", id] });
+    };
     const channel = supabase
       .channel(`drop_${id}`)
       .on(
         "postgres_changes",
         { event: "UPDATE", schema: "public", table: "drop_items", filter: `drop_id=eq.${id}` },
-        () => refetch(),
+        invalidate,
       )
       .on(
         "postgres_changes",
         { event: "UPDATE", schema: "public", table: "drops", filter: `id=eq.${id}` },
-        () => refetch(),
+        invalidate,
       )
       .subscribe();
     return () => {
       supabase.removeChannel(channel);
     };
-  }, [id, refetch]);
+  }, [id, queryClient]);
 
   if (!drop) return null;
 
@@ -67,8 +81,10 @@ export default function DropDetail() {
             <Countdown to={drop.ends_at} variant="expanded" label="Stenger om" />
             <View className="w-full mt-4">
               <ScarcityBar
-                remaining={drop.total_units - drop.units_sold}
+                remaining={stats?.units_left ?? drop.total_units - drop.units_sold}
                 total={drop.total_units}
+                velocityLabel={stats?.velocity_label}
+                soldLast5min={stats?.sold_last_5min}
               />
             </View>
           </View>
