@@ -136,6 +136,15 @@ jobs:
           test -f apps/nobel-admin/index.html || (echo "Mangler apps/nobel-admin/index.html" && exit 1)
           ls -la apps/nobel-admin
 
+      - name: Generate admin config from secrets
+        run: |
+          cat <<EOF > apps/nobel-admin/config.js
+          window.__ADMIN_CONFIG = {
+            SUPABASE_URL: "${{ secrets.EXPO_PUBLIC_SUPABASE_URL }}",
+            SUPABASE_ANON_KEY: "${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY }}",
+          };
+          EOF
+
       - name: Deploy admin via FTP til /public_html/admin.nobeldrop.no/
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:

@@ -35,6 +35,84 @@
         min-height: 100vh;
       }
 
+      .center-wrap {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .auth-card {
+        width: 100%;
+        max-width: 420px;
+        background: linear-gradient(180deg, var(--panel), var(--panel-soft));
+        border: 1px solid #2b2b31;
+        border-radius: 14px;
+        padding: 18px;
+      }
+
+      .auth-title {
+        margin: 0 0 4px;
+        color: var(--gold);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.86rem;
+      }
+
+      .auth-sub {
+        margin: 0 0 14px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .field {
+        display: grid;
+        gap: 6px;
+        margin-bottom: 10px;
+      }
+
+      .field label {
+        color: var(--muted);
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .field input {
+        border: 1px solid #34343d;
+        background: #121217;
+        color: var(--text);
+        border-radius: 10px;
+        padding: 10px 12px;
+        font-size: 0.95rem;
+      }
+
+      .btn {
+        border: 1px solid var(--gold-soft);
+        background: #1d1a14;
+        color: var(--text);
+        border-radius: 10px;
+        padding: 10px 12px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      .auth-error {
+        margin: 8px 0 0;
+        color: var(--danger);
+        min-height: 1.2rem;
+        font-size: 0.88rem;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
       .sidebar {
         border-right: 1px solid #2a2a2f;
         padding: 20px 14px;
@@ -220,7 +298,42 @@
     </style>
   </head>
   <body>
-    <div class="layout">
+    <div id="loading-screen" class="center-wrap">
+      <div class="auth-card">
+        <p class="auth-title">Nobel Admin</p>
+        <p class="auth-sub">Sjekker tilgang...</p>
+      </div>
+    </div>
+
+    <div id="login-screen" class="center-wrap hidden">
+      <form id="login-form" class="auth-card">
+        <p class="auth-title">Nobel Admin</p>
+        <p class="auth-sub">Logg inn med admin-konto.</p>
+
+        <div class="field">
+          <label for="email">E-post</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+
+        <div class="field">
+          <label for="password">Passord</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required />
+        </div>
+
+        <button id="login-btn" class="btn" type="submit">Logg inn</button>
+        <p id="login-error" class="auth-error"></p>
+      </form>
+    </div>
+
+    <div id="forbidden-screen" class="center-wrap hidden">
+      <div class="auth-card">
+        <p class="auth-title">Ingen tilgang</p>
+        <p class="auth-sub">Brukeren din har ikke admin-rolle.</p>
+        <button id="forbidden-logout" class="btn" type="button">Logg ut</button>
+      </div>
+    </div>
+
+    <div id="admin-app" class="layout hidden">
       <aside class="sidebar">
         <div class="brand">Nobel Admin</div>
         <nav class="menu">
@@ -240,7 +353,10 @@
             <h1>Admin Panel Mockup</h1>
             <p>Første versjon med innsikt og operasjonspanel.</p>
           </div>
-          <div class="status">Miljø: Prod • Oppdatert nå</div>
+          <div style="display: flex; gap: 8px; align-items: center">
+            <div class="status">Miljø: Prod • Oppdatert nå</div>
+            <button id="logout-btn" class="btn" type="button">Logg ut</button>
+          </div>
         </header>
 
         <section class="grid kpi-grid">
@@ -320,5 +436,106 @@
         </section>
       </main>
     </div>
+
+    <script src="./config.js"></script>
+    <script type="module">
+      import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+      const config = window.__ADMIN_CONFIG ?? {};
+      const supabaseUrl = config.SUPABASE_URL;
+      const supabaseAnonKey = config.SUPABASE_ANON_KEY;
+
+      const screens = {
+        loading: document.getElementById("loading-screen"),
+        login: document.getElementById("login-screen"),
+        forbidden: document.getElementById("forbidden-screen"),
+        app: document.getElementById("admin-app"),
+      };
+
+      const show = (name) => {
+        Object.values(screens).forEach((node) => node.classList.add("hidden"));
+        screens[name].classList.remove("hidden");
+      };
+
+      if (!supabaseUrl || !supabaseAnonKey) {
+        show("forbidden");
+        document.querySelector("#forbidden-screen .auth-sub").textContent =
+          "Admin config mangler. Sjekk deploy secrets.";
+      } else {
+        const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+        const loginForm = document.getElementById("login-form");
+        const loginBtn = document.getElementById("login-btn");
+        const loginError = document.getElementById("login-error");
+        const logoutBtn = document.getElementById("logout-btn");
+        const forbiddenLogout = document.getElementById("forbidden-logout");
+
+        const asMessage = (err) => {
+          const raw = (err && err.message ? err.message : String(err || "")).toLowerCase();
+          if (raw.includes("invalid login credentials")) return "Feil e-post eller passord.";
+          if (raw.includes("email")) return "Ugyldig e-post.";
+          return "Kunne ikke logge inn akkurat nå.";
+        };
+
+        const ensureAdmin = async (session) => {
+          if (!session?.user) {
+            show("login");
+            return;
+          }
+
+          const { data, error } = await supabase
+            .from("profiles")
+            .select("role")
+            .eq("id", session.user.id)
+            .single();
+
+          if (error || !data) {
+            show("forbidden");
+            return;
+          }
+
+          if (data.role !== "admin") {
+            show("forbidden");
+            return;
+          }
+
+          show("app");
+        };
+
+        loginForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          loginError.textContent = "";
+          loginBtn.disabled = true;
+
+          const email = document.getElementById("email").value.trim().toLowerCase();
+          const password = document.getElementById("password").value;
+
+          const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+          loginBtn.disabled = false;
+
+          if (error) {
+            loginError.textContent = asMessage(error);
+            return;
+          }
+
+          await ensureAdmin(data.session);
+        });
+
+        const logout = async () => {
+          await supabase.auth.signOut();
+          show("login");
+        };
+
+        logoutBtn.addEventListener("click", logout);
+        forbiddenLogout.addEventListener("click", logout);
+
+        const { data: sessionData } = await supabase.auth.getSession();
+        await ensureAdmin(sessionData.session);
+
+        supabase.auth.onAuthStateChange(async (_event, session) => {
+          await ensureAdmin(session);
+        });
+      }
+    </script>
   </body>
 </html>
