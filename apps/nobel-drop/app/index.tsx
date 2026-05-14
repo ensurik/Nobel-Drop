@@ -1,5 +1,5 @@
 import { Redirect } from "expo-router";
-import { ActivityIndicator, View } from "react-native";
+import { ActivityIndicator, Platform, View } from "react-native";
 import { useAuth } from "../lib/auth";
 
 export default function Index() {
@@ -13,7 +13,17 @@ export default function Index() {
     );
   }
 
-  if (profile?.role === "admin") return <Redirect href="/(admin)" />;
+  if (profile?.role === "admin") {
+    if (Platform.OS === "web" && typeof window !== "undefined") {
+      window.location.replace("https://admin.nobeldrop.no/");
+      return (
+        <View className="flex-1 items-center justify-center bg-ink-900">
+          <ActivityIndicator color="#C8A24C" />
+        </View>
+      );
+    }
+    return <Redirect href="/(admin)" />;
+  }
   if (profile?.role === "driver") return <Redirect href="/(pickup)" />;
   return <Redirect href="/(customer)" />;
 }
