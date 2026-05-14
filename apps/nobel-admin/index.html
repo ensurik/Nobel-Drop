@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nobel Drop Admin</title>
+    <style>
+      :root {
+        --bg: #111114;
+        --panel: #19191d;
+        --panel-soft: #202028;
+        --text: #f2ecdf;
+        --muted: #a9a59a;
+        --gold: #c8a24c;
+        --gold-soft: #7f6840;
+        --ok: #3aa36f;
+        --warn: #dbb84b;
+        --danger: #d96868;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        background: radial-gradient(circle at top right, #1b1a18, var(--bg) 40%);
+        color: var(--text);
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        border-right: 1px solid #2a2a2f;
+        padding: 20px 14px;
+        background: rgba(10, 10, 12, 0.65);
+        backdrop-filter: blur(6px);
+      }
+
+      .brand {
+        font-size: 1.05rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 24px;
+      }
+
+      .menu {
+        display: grid;
+        gap: 8px;
+      }
+
+      .menu a {
+        color: var(--muted);
+        text-decoration: none;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid transparent;
+      }
+
+      .menu a.active,
+      .menu a:hover {
+        color: var(--text);
+        border-color: var(--gold-soft);
+        background: #1d1a14;
+      }
+
+      .content {
+        padding: 24px;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+
+      .title h1 {
+        margin: 0;
+        font-size: 1.45rem;
+      }
+
+      .title p {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .status {
+        font-size: 0.82rem;
+        color: var(--muted);
+        border: 1px solid #2f2f36;
+        border-radius: 999px;
+        padding: 6px 10px;
+      }
+
+      .grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .kpi-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .card {
+        background: linear-gradient(180deg, var(--panel), var(--panel-soft));
+        border: 1px solid #2b2b31;
+        border-radius: 14px;
+        padding: 14px;
+      }
+
+      .kpi-label {
+        color: var(--muted);
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .kpi-value {
+        margin-top: 8px;
+        font-size: 1.6rem;
+        font-weight: 700;
+      }
+
+      .kpi-sub {
+        margin-top: 6px;
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+
+      .sections {
+        margin-top: 14px;
+        grid-template-columns: 2fr 1fr;
+      }
+
+      .section-title {
+        margin: 0 0 10px;
+        font-size: 0.92rem;
+        color: var(--gold);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .table th,
+      .table td {
+        padding: 10px 8px;
+        text-align: left;
+        border-bottom: 1px solid #2a2a30;
+        font-size: 0.9rem;
+      }
+
+      .table th {
+        color: var(--muted);
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+      }
+
+      .ok {
+        background: rgba(58, 163, 111, 0.15);
+        color: var(--ok);
+      }
+      .warn {
+        background: rgba(219, 184, 75, 0.13);
+        color: var(--warn);
+      }
+      .danger {
+        background: rgba(217, 104, 104, 0.14);
+        color: var(--danger);
+      }
+
+      .note {
+        margin-top: 14px;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      .spark {
+        margin-top: 10px;
+        width: 100%;
+        height: 42px;
+        display: block;
+      }
+
+      @media (max-width: 1024px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          border-right: 0;
+          border-bottom: 1px solid #2a2a2f;
+        }
+        .kpi-grid,
+        .sections {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">Nobel Admin</div>
+        <nav class="menu">
+          <a class="active" href="#">Dashboard</a>
+          <a href="#">Drops</a>
+          <a href="#">Ordrer</a>
+          <a href="#">Noder</a>
+          <a href="#">Vinduer</a>
+          <a href="#">Kunder</a>
+          <a href="#">Innstillinger</a>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <header class="topbar">
+          <div class="title">
+            <h1>Admin Panel Mockup</h1>
+            <p>Første versjon med innsikt og operasjonspanel.</p>
+          </div>
+          <div class="status">Miljø: Prod • Oppdatert nå</div>
+        </header>
+
+        <section class="grid kpi-grid">
+          <article class="card">
+            <div class="kpi-label">Live drops</div>
+            <div class="kpi-value">2</div>
+            <div class="kpi-sub">1 ny siste 24t</div>
+          </article>
+          <article class="card">
+            <div class="kpi-label">Bestillinger i dag</div>
+            <div class="kpi-value">184</div>
+            <div class="kpi-sub">+14% mot i går</div>
+          </article>
+          <article class="card">
+            <div class="kpi-label">Brutto i dag</div>
+            <div class="kpi-value">kr 126 400</div>
+            <div class="kpi-sub">AOV: kr 687</div>
+          </article>
+          <article class="card">
+            <div class="kpi-label">Sold-out rate</div>
+            <div class="kpi-value">67%</div>
+            <div class="kpi-sub">7 dager snitt</div>
+          </article>
+        </section>
+
+        <section class="grid sections">
+          <article class="card">
+            <h2 class="section-title">Operasjon nå</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Vindu</th>
+                  <th>Node</th>
+                  <th>Volum</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>18:00 - 19:30</td>
+                  <td>Asker Sentrum</td>
+                  <td>23 / 20</td>
+                  <td><span class="badge ok">Bekreftet</span></td>
+                </tr>
+                <tr>
+                  <td>19:30 - 21:00</td>
+                  <td>Sandvika Vest</td>
+                  <td>12 / 18</td>
+                  <td><span class="badge warn">Avventer cutoff</span></td>
+                </tr>
+                <tr>
+                  <td>17:00 - 18:30</td>
+                  <td>Lier Nord</td>
+                  <td>7 / 15</td>
+                  <td><span class="badge danger">Risiko</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="note">Mockdata: neste steg er å koble dette til ekte Supabase KPI-funksjoner.</p>
+          </article>
+
+          <article class="card">
+            <h2 class="section-title">Trend siste 7 dager</h2>
+            <svg class="spark" viewBox="0 0 240 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 35L32 29L62 31L92 19L122 22L152 10L182 12L212 6L238 9" stroke="#C8A24C" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <h2 class="section-title" style="margin-top: 16px;">Hendelser</h2>
+            <table class="table">
+              <tbody>
+                <tr><td>Ny drop opprettet</td><td>10:44</td></tr>
+                <tr><td>Webhook Stripe OK</td><td>10:31</td></tr>
+                <tr><td>Window eval kjørt</td><td>10:30</td></tr>
+                <tr><td>3 nye area votes</td><td>10:22</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

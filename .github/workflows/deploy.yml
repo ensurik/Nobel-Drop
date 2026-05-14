@@ -63,6 +63,8 @@ jobs:
             shop.nobeldrop.no
             app.nobeldrop.no/**
             app.nobeldrop.no
+            admin.nobeldrop.no/**
+            admin.nobeldrop.no
 
   # ============================================================
   # App — shop.nobeldrop.no → /public_html/shop.nobeldrop.no/
@@ -108,6 +110,40 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./apps/nobel-drop/dist/
           server-dir: /public_html/shop.nobeldrop.no/
+          protocol: ftp
+          port: 21
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.DS_Store
+
+  # ============================================================
+  # Admin mockup — admin.nobeldrop.no → /public_html/admin.nobeldrop.no/
+  # ============================================================
+  deploy-admin:
+    name: Deploy admin til admin.nobeldrop.no
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Verify admin mockup files
+        run: |
+          test -f apps/nobel-admin/index.html || (echo "Mangler apps/nobel-admin/index.html" && exit 1)
+          ls -la apps/nobel-admin
+
+      - name: Deploy admin via FTP til /public_html/admin.nobeldrop.no/
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./apps/nobel-admin/
+          server-dir: /public_html/admin.nobeldrop.no/
           protocol: ftp
           port: 21
           dangerous-clean-slate: false
